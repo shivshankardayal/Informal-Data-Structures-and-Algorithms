@@ -19,9 +19,12 @@ latex:
 
 fop: src/*.xml fop.xsl Makefile
 #	cd src && xmllint --xinclude c.xml>resolvedc.xml
-	xsltproc --xinclude --output src/dsa.fo fop.xsl src/dsa.xml
-	perl -pi -e "s/png/pdf/g;" src/dsa.fo
+	rm -rf pdf
+	cp -r src pdf	
+	perl -pi -e "s/\.png\"/\.pdf\"/g;" pdf/*.xml	
+	xsltproc --xinclude --output pdf/dsa.fo fop.xsl pdf/dsa.xml
+	perl -pi -e "s/png/pdf/g;" pdf/dsa.fo
 #	./fop.py
 #	perl -pi -e "s/<html><body>//g;" src/c.fo
 #	perl -pi -e "s/<\/body><\/html>//g;" src/c.fo
-	cd src && fop dsa.fo dsa.pdf 
+	cd pdf && fop dsa.fo dsa.pdf 

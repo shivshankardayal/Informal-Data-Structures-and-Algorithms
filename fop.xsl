@@ -13,10 +13,10 @@
     </xsl:choose>
   </xsl:param>
   <xsl:attribute-set name="monospace.properties">
-    <xsl:attribute name="font-size">9pt</xsl:attribute>
+    <xsl:attribute name="font-size">9.5pt</xsl:attribute>
   </xsl:attribute-set>
   <xsl:attribute-set name="monospace.verbatim.properties" use-attribute-sets="verbatim.properties monospace.properties">
-    <xsl:attribute name="font-size">9pt</xsl:attribute>
+    <xsl:attribute name="font-size">9.5pt</xsl:attribute>
     <xsl:attribute name="wrap-option">wrap</xsl:attribute>
     <xsl:attribute name="hyphenation-character">&#x25BA;</xsl:attribute>
   </xsl:attribute-set>  

@@ -32,7 +32,7 @@
     most famous being Pascal, <d:quote>Algorithms + Data Structures =
     Programs</d:quote>.
   </d:para>
-  <d:sect1>
+  <d:simplesect>
     <d:title>Why I wrote this book?</d:title>
     <d:para>
       I wrote this book for myself! There are a lot of excellent books which
@@ -40,8 +40,15 @@
       have attempted to put what I have learned and learning in this book. Any
       other usage of this book is a side-effect which was not intended.
     </d:para>
-  </d:sect1>
-  <d:sect1>
+    <d:para>
+      There are two things presented in the book. One is abstract concept while
+      the other is concrete code. If you are a beginner it may be hard to grasp
+      the abstract concepts but I believe as you will gain knowledge as you go
+      through the book you should be able to understand the abstract concepts
+      with ease.
+    </d:para>
+  </d:simplesect>
+  <d:simplesect>
     <d:title>How to read this book?</d:title>
     <d:para>
       As always start form beginning and try not to skip. Even if you know the
@@ -58,16 +65,83 @@
       Certain chapters in the book will contain specific material dedicated to
       that particular topic. You can read those if you are solely interested in
       that topic and nothing else. This book contains a lot of code and you
-      must read it else you will loose the implementation knowledge.
+      must read it else you will loose the implementation knowledge. All the
+      concepts are explained with a lot of examples and problems are given at
+      the end of chapter for practice. Solutions of selected problems are given
+      at the end of book. Please try to solve problems by yourself and once you
+      have exhausted only then look at solutions. Problems vary in complexity
+      and detail. Some are trivial to implement while others are harder.
     </d:para>
-  </d:sect1>
-  <d:sect1>
+  </d:simplesect>
+  <d:simplesect>
+    <d:title>Who should read the book?</d:title>
+    <d:para>
+      Anyone casually interested in programming should read this book. This
+      book intends to present the subject in a manner so that it can be used
+      both as a tutorial and reference on the subject matter. If you know any
+      programming language then you should be able to easily follow the
+      book. If you are already an experienced programmer then you can read
+      selected topics as needed.
+    </d:para>
+  </d:simplesect>
+  <d:simplesect>
     <d:title>Prerequisite</d:title>
     <d:para>
       I have wrote code using C programming language using <d:code>gcc</d:code>
       following C11 standards. Thus you should get fairly modern compiler. I
-      would recommend one which comes with your GNU/Linux distribution
-      
+      would recommend one which comes with your GNU/Linux distribution. Just
+      make sure that your GNU/Linux distribution is a recent one. Although, I
+      have used <d:code>gcc</d:code> to compile the code, code is portable to
+      any C compiler which supports C99 at least.
     </d:para>
-  </d:sect1>
+    <d:para>
+      I have chosen C to implement the solutions because C compilers are
+      available for many platforms and C is one of the languages which most
+      people know. Also, C is usually a language which is taught at all the
+      universities to students. One big advantage of C is its simplicity and
+      thus it is very easy to predict the assembly generated from C code. As
+      Donald Knuth says that machine language is very important for programmers
+      and therefore he designed MIX and later MMIX computers and uses assembly
+      to write <d:quote>The Art of Computer Programming</d:quote>, I think C is
+      a portable assembler. If you know your compiler well it is very easy to
+      know equivalent assembly. C as a language is simple enough so as it is
+      easy to learn it and is quite powerful. At the same time C does not get
+      in your way. For example, if I use C++ then I would have to give
+      overloaded assignment operator and copy constructor for each data
+      structure because programs will not behave correctly otherwise.
+    </d:para>
+  </d:simplesect>
+  <d:simplesect>
+    <d:title>Acknowledgements</d:title>
+    <d:para>
+      As with any book there are a lot of people involved with this book but
+      not in traditional sense of a typical book. I have written this book
+      using Docbook thus Norman Walsh deserves
+      praise. <d:code>xsltproc</d:code> has been used to process
+      <d:code>xml</d:code> to <d:code>html</d:code> and it is a wonderful piece
+      of software written by James Clark. Dennis Ritchie as always deserve
+      praise for creating such a wonderful language as C. Richard Stallman and
+      all people who contribute to Free(as in freedom not beer) Software
+      definitely are heroes of humanity.
+    </d:para>
+    <d:para>
+      I must say thanks to my family particularly to my parents, wife and my
+      son whose precious time I have taken to write this book and gave them
+      numerous trouble in general. They have been the major force which
+      supported while writing it. This book would not have been possible
+      without their support.
+    </d:para>
+    <d:para>
+      I am not native English speaker and it has gone through only one pair of
+      eyes thus you should expect all kind of errors, particularly related to
+      punctuation. I would be glad if you could report all errors, suggestions
+      and feedback to me at <d:email>shivshankar.dayal@gmail.com</d:email>. I
+      would be happy to incorporate those.
+    </d:para>
+    <d:para>
+      Although I would like to give a pdf version of the book for download but
+      the content keep changing and there will be just too many versions of the
+      book. Thus please read html version until a final release can be done.
+    </d:para>
+  </d:simplesect>
 </d:preface>
