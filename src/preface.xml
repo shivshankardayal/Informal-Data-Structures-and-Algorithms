@@ -16,6 +16,8 @@
     to implement your own version of data structures and algorithms. Another
     point is that for a programmer this subject allows one to excercise his
     knowledge of programming language to various problems this subject offers.
+    To really appreciate the library code you must know the inner working of
+    the data strutcture and algorithm implemneted by that library.
   </d:para>
   <d:para>
     One of the critical learnings from this subject which you, the reader, will
@@ -30,4 +32,42 @@
     most famous being Pascal, <d:quote>Algorithms + Data Structures =
     Programs</d:quote>.
   </d:para>
+  <d:sect1>
+    <d:title>Why I wrote this book?</d:title>
+    <d:para>
+      I wrote this book for myself! There are a lot of excellent books which
+      cover a lot of material but they are all spread and not put together. I
+      have attempted to put what I have learned and learning in this book. Any
+      other usage of this book is a side-effect which was not intended.
+    </d:para>
+  </d:sect1>
+  <d:sect1>
+    <d:title>How to read this book?</d:title>
+    <d:para>
+      As always start form beginning and try not to skip. Even if you know the
+      topic try to read it through as you will learn somehting out of text
+      written. If there is a mathematical problem then try to solve using pen
+      and paper and if it is a programming problem then try to implement
+      it. Without solving problems given in the book you will not go
+      far. Problem solving is an essential activity no matter what subject you
+      read and you will find the same advice in all the books. If you do not
+      understand a topic then you can skip the material for time being and come
+      later or take a break from studies go out and come back and try again.
+    </d:para>
+    <d:para>
+      Certain chapters in the book will contain specific material dedicated to
+      that particular topic. You can read those if you are solely interested in
+      that topic and nothing else. This book contains a lot of code and you
+      must read it else you will loose the implementation knowledge.
+    </d:para>
+  </d:sect1>
+  <d:sect1>
+    <d:title>Prerequisite</d:title>
+    <d:para>
+      I have wrote code using C programming language using <d:code>gcc</d:code>
+      following C11 standards. Thus you should get fairly modern compiler. I
+      would recommend one which comes with your GNU/Linux distribution
+      
+    </d:para>
+  </d:sect1>
 </d:preface>
