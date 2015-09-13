@@ -4,4 +4,30 @@
   <?xml-stylesheet href="../css/style.css" type="text/css"?>
   <?dbhtml filename="preface/index.html" ?>
   <d:title>Preface</d:title>
+  <d:para>
+    This book is a natural successor of my C programming book. There is no
+    about that data structures and algorithms is one of the most critical
+    subjects in computer science. Computer programming has changed a lot in
+    last few decades. Programmers typically do not implement basic data
+    structures in real-world code but rather they use ready-made libraries
+    which are of very high quality. However, that does not decrease the
+    importance of the subject. The importance is same even though a lot in
+    programming world has changed and there will be times when you would want
+    to implement your own version of data structures and algorithms. Another
+    point is that for a programmer this subject allows one to excercise his
+    knowledge of programming language to various problems this subject offers.
+  </d:para>
+  <d:para>
+    One of the critical learnings from this subject which you, the reader, will
+    learn is complexity computation. I am sure that you will certainly
+    appreciate the value of knowledge after learning it. I cannot put enough
+    stress on the importance of data structures and algorithms. The application
+    of data structures and algorithms is there in almost all branches of
+    computer science without exception. Any program you write will involve some
+    algorithm and data structure. The importance of data structure and
+    algorithms can be found from the title of the book on the subject, written
+    by one of the great programmers Niklaus Wirth who created several languages
+    most famous being Pascal, <d:quote>Algorithms + Data Structures =
+    Programs</d:quote>.
+  </d:para>
 </d:preface>
