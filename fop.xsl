@@ -5,6 +5,10 @@
   <xsl:import href="/usr/share/xml/docbook/stylesheet/docbook-xsl-ns/fo/docbook.xsl"/> 
   <xsl:param name="paper.type" select="'A4'"/> 
   <xsl:param name="double.sided" select="1"/>
+  <xsl:param name="page.margin.bottom">2in</xsl:param>
+  <xsl:param name="page.margin.inner">1.25in</xsl:param>
+  <xsl:param name="page.margin.outer">1.25in</xsl:param>
+  <xsl:param name="page.margin.top">1in</xsl:param>
   <xsl:param name="fop1.extensions" select="1"/>
   <xsl:param name="body.start.indent">
     <xsl:choose>
@@ -13,10 +17,10 @@
     </xsl:choose>
   </xsl:param>
   <xsl:attribute-set name="monospace.properties">
-    <xsl:attribute name="font-size">9.5pt</xsl:attribute>
+    <xsl:attribute name="font-size">10pt</xsl:attribute>
   </xsl:attribute-set>
   <xsl:attribute-set name="monospace.verbatim.properties" use-attribute-sets="verbatim.properties monospace.properties">
-    <xsl:attribute name="font-size">9.5pt</xsl:attribute>
+    <xsl:attribute name="font-size">10pt</xsl:attribute>
     <xsl:attribute name="wrap-option">wrap</xsl:attribute>
     <xsl:attribute name="hyphenation-character">&#x25BA;</xsl:attribute>
   </xsl:attribute-set>  

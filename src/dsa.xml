@@ -5,7 +5,7 @@
   xmlns:mml="http://www.w3.org/1998/Math/MathML">
   <?xml-stylesheet href="../css/style.css" type="text/css"?>
   <d:info>
-    <d:title>Informal Data Structures and Algorithms</d:title>
+    <d:title>Informal Mathematics, Data Structures and Algorithms</d:title>
     <d:author>
       <d:personname>
         <d:firstname>Shiv</d:firstname>
@@ -33,7 +33,10 @@ the section entitled &#8220;GNU Free Documentation License&#8221;.
     </d:para>
   </d:dedication>
   <xi:include href="preface.xml"/>
+  <d:part>
+    <d:title>Basic Data Structures</d:title>
   <xi:include href="introduction.xml"/>
+  </d:part>
   <xi:include href="fdl.xml" />
   <d:index>
     <d:title>Index</d:title>

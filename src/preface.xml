@@ -91,14 +91,16 @@
     <d:para>
       I have wrote code using C programming language using <d:code>gcc</d:code>
       following C11 standards. Thus, you should get fairly modern compiler. I
-      would recommend one which comes with your GNU/Linux distribution. Just
+      would recommend the one which comes with your GNU/Linux distribution. Just
       make sure that your GNU/Linux distribution is a recent one. Although, I
       have used <d:code>gcc</d:code> to compile the code, code is portable to
       any C compiler which supports C99 at least. It is assumed that you are
       familiar with C programming language(later C++ examples will also be
       provided). Since algorithms involve complexity computation thus some
       mathematics is definitely going to be involved. It is assumed that you
-      are familiar with high school mathematics at least.
+      are familiar with high school mathematics at least. However, necessary
+      mathematics in last part will be provided with the book so as you, my
+      dear reader, won't have to search for another book.
     </d:para>
     <d:para>
       I have chosen C to implement the solutions because C compilers are
