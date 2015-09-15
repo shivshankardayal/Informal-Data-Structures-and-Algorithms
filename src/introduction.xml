@@ -4,4 +4,73 @@
   <?xml-stylesheet href="../css/style.css" type="text/css"?>
   <?dbhtml filename="introduction/index.html" ?>
   <d:title>Introduction</d:title>
+  <d:para>
+    First thing first. Definitely this is not the only book on data structures
+    and algorithms. There are many great books on the subject. I will mention
+    few of those. No links to any online shop will be given as it will show my
+    bias towards that store. The first book is the most authoritative book on
+    the subject 
+    which treats topics in great depth. It is the <d:quote>The Art of Computer
+    Programming</d:quote> by Donald E. Knuth. The book is available in several
+    volumes. Volume 1 describes Fundamental Algorithms, 2 describes numerical
+    algorithms, 3 details sorting and searching and 4A deals with
+    combinatorial algorithms. As of now only these volumes have been
+    published. But these books are not for weak hearted people and I really
+    mean that. This series is very heavy on mathematics and implementation is
+    done using a computer designed by Knuth MMIX. However, it is a must read
+    for advanced readers. The second book is also a classic. It is
+    <d:quote>Introduction to Algorithms</d:quote> written by Thomas H. Cormen,
+    Charles E. Leiserson, Ronald L. Rivest and Clifford Stein. This book is
+    also known as <d:quote>CLRS</d:quote>. While Knuth is very deep this book
+    covers topics in breadth. Once again an excellent book but examples are
+    given in pseudo programming language. There are many other introductory
+    books on this subject with little difference in quality and almost all of
+    them are a good read.
+  </d:para>
+  <d:para>
+    The subject of this book is data structure and algorithms. That involves
+    three words. Data, structure and algorithms. A computer stores and
+    manipulates data i.e. information. We use computer to store, manipulate and
+    use data. We present same information in many ways which is about
+    structure. The data and structure determines that what kind of operations
+    i.e. algorithms can be performed over them. For example, we cannot perform
+    addition on two character strings but then we can concatenate them using +
+    operator in an object-oriented language which support operator
+    overloading. Thus, these words summarize the soul of computer programming
+    and software. Every program which we use and every operation we do involve
+    these three basic elements.
+  </d:para>
+  <d:para>
+    There are specific structures which facilitate specific operations if they
+    are used to hold the data. For example, a stack allows to access data only
+    from top. A queue is helpful to realize a life-like queue. A linked list
+    allows traversal in forward or backward or both directions but not
+    random. Binary trees are helpful for faster searches. Graphs can be used
+    for path-finding and and to solve network problems. Hash maps are very good
+    for finding information quickly. These are just few cases which I have
+    cited. The area of data structures and algorithms is immense and ever
+    expanding.
+  </d:para>
+  <d:sect1>
+    <d:title>Problem to solution</d:title>
+    <d:para>
+      Usually while programming you will face the situation when you have to
+      write a program to solve a problem. You will end up using few data
+      structures and a few algorithms to solve that program. This book
+      describes the most common data strutures and algorithms which have
+      evolved over several centuries of mathematical work by
+      mathematicians. Given a problem we build a model of solution (read
+      program) in our mind. The details of that mental model varies from
+      individual to individual. Once that mental model is built our brains
+      orientation is fixed to a certain way of thinking. Now because of this we
+      choose certain data structures and algorithms and try to find out
+      solution using data starutures and algorithms chosen. Sometimes we are
+      successful other times we fail may be partially maybe fully. Now the most
+      important thing when we fail is to think over the problem again and get a
+      fresh thinking. So better take a break. This is most serious advice I can
+      give. Whenever you have difficulty solving a problem for more than 30
+      minutes take a break. This will reset your thinking and allow you to
+      think in new way and you can try to find the solution afresh.
+    </d:para>
+  </d:sect1>
 </d:chapter>

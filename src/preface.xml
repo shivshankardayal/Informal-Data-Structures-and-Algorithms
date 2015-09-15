@@ -70,7 +70,9 @@
       the end of chapter for practice. Solutions of selected problems are given
       at the end of book. Please try to solve problems by yourself and once you
       have exhausted only then look at solutions. Problems vary in complexity
-      and detail. Some are trivial to implement while others are harder.
+      and detail. Some are trivial to implement while others are harder. I have
+      tried to maintain balance between mathematical concepts, abstract
+      concepts and implementation part.
     </d:para>
   </d:simplesect>
   <d:simplesect>
@@ -81,18 +83,22 @@
       both as a tutorial and reference on the subject matter. If you know any
       programming language then you should be able to easily follow the
       book. If you are already an experienced programmer then you can read
-      selected topics as needed.
+     selected topics as needed.
     </d:para>
   </d:simplesect>
   <d:simplesect>
     <d:title>Prerequisite</d:title>
     <d:para>
       I have wrote code using C programming language using <d:code>gcc</d:code>
-      following C11 standards. Thus you should get fairly modern compiler. I
+      following C11 standards. Thus, you should get fairly modern compiler. I
       would recommend one which comes with your GNU/Linux distribution. Just
       make sure that your GNU/Linux distribution is a recent one. Although, I
       have used <d:code>gcc</d:code> to compile the code, code is portable to
-      any C compiler which supports C99 at least.
+      any C compiler which supports C99 at least. It is assumed that you are
+      familiar with C programming language(later C++ examples will also be
+      provided). Since algorithms involve complexity computation thus some
+      mathematics is definitely going to be involved. It is assumed that you
+      are familiar with high school mathematics at least.
     </d:para>
     <d:para>
       I have chosen C to implement the solutions because C compilers are
@@ -125,6 +131,12 @@
       definitely are heroes of humanity.
     </d:para>
     <d:para>
+      There are a lot of diagrams in this text and those have bene drawn using
+      Tikz. Thanks for its developers Till Tantau and Christian Feuersaenger
+      along with all the contributors for creating such a wonderful piece of
+      vector graphics library for TeX.
+    </d:para>
+    <d:para>
       I must say thanks to my family particularly to my parents, wife and my
       son whose precious time I have taken to write this book and gave them
       numerous trouble in general. They have been the major force which
@@ -134,7 +146,12 @@
     <d:para>
       There have been many teachers in my life who have helped me with various
       lessons in life and otherwise. I will try to remmeber all of them here
-      and seek forgiveness if I miss anyone.
+      and seek forgiveness if I miss anyone. My maths teachers Yogendra Yadav,
+      Hriday Nayaran Singh and Satyanand Satyarthi have helped me a lot with
+      basics of Mathematics. Anurag Johri, Sirnivasa Kotu, Shreyas Majthia and
+      Mufti Mohammed for their technical discussions and insight into
+      programming. My professors S. Sen, S. Sengupta and T. K. Basu for showing
+      faith in me during troubled times.
     </d:para>
     <d:para>
       I am not native English speaker and it has gone through only one pair of
@@ -148,11 +165,5 @@
       the content keep changing and there will be just too many versions of the
       book. Thus please read html version until a final release can be done.
     </d:para>
-      <d:para role="right">
-        Shiv Shankar Dayal
-      </d:para>
-      <d:para role="right">
-        India
-      </d:para>
   </d:simplesect>
 </d:preface>
