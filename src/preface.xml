@@ -100,7 +100,12 @@
       mathematics is definitely going to be involved. It is assumed that you
       are familiar with high school mathematics at least. However, necessary
       mathematics in last part will be provided with the book so as you, my
-      dear reader, won't have to search for another book.
+      dear reader, won't have to search for another book. I have found that
+      people usually lack mathematical skill to study data structures and
+      algorithms in depth and they think that data structures and algorithms
+      are a programming course. While it is  true that you need to program but
+      solid mathematical understanding is required for fully understanding the
+      beauty of this subject.
     </d:para>
     <d:para>
       I have chosen C to implement the solutions because C compilers are

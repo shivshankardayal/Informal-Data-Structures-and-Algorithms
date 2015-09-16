@@ -37,6 +37,48 @@ the section entitled &#8220;GNU Free Documentation License&#8221;.
     <d:title>Basic Data Structures</d:title>
   <xi:include href="introduction.xml"/>
   </d:part>
+  <!--d:part>
+    <d:title>Sorting</d:title>
+  </d:part>
+  <d:part>
+    <d:title>Trees</d:title>
+  </d:part>
+  <d:part>
+    <d:title>Searching</d:title>
+  </d:part>
+  <d:part>
+    <d:title>Graphs</d:title>
+  </d:part>
+  <d:part>
+    <d:title>Dynamic Programming</d:title>
+  </d:part>
+  <d:part>
+    <d:title>String Algorithms</d:title>
+  </d:part>
+  <d:part>
+    <d:title>Algebra</d:title>
+  </d:part>
+  <d:part>
+    <d:title>Trigonometry</d:title>
+  </d:part>
+  <d:part>
+    <d:title>Calculus</d:title>
+  </d:part>
+  <d:part>
+    <d:title>Probability</d:title>
+  </d:part>
+  <d:part>
+    <d:title>Vectors</d:title>
+  </d:part>
+  <d:part>
+    <d:title>Co-ordinate Geometry</d:title>
+  </d:part>
+  <d:part>
+    <d:title>Vector Calculus</d:title>
+  </d:part-->
+  <d:part>
+    <d:title>Solutions</d:title>
+  </d:part>
   <xi:include href="fdl.xml" />
   <d:index>
     <d:title>Index</d:title>
