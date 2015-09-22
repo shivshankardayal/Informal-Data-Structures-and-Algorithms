@@ -4,7 +4,7 @@
   <?xml-stylesheet href="../css/style.css" type="text/css"?>
   <?dbhtml filename="introduction/index.html" ?>
   <d:title>Introduction</d:title>
-  <d:para>
+  <d:para> 
     First thing first. Definitely this is not the only book on data structures
     and algorithms. There are many great books on the subject. I will mention
     few of those. No links to any online shop will be given as it will show my
@@ -21,7 +21,7 @@
     for advanced readers. The second book is also a classic. It is
     <d:quote>Introduction to Algorithms</d:quote> written by Thomas H. Cormen,
     Charles E. Leiserson, Ronald L. Rivest and Clifford Stein. This book is
-    also known as <d:quote>CLRS</d:quote>. While Knuth is very deep this book
+    also known as <d:quote>CLRS</d:quote>. While Knuth is very deep, this book
     covers topics in breadth. Once again an excellent book but examples are
     given in pseudo programming language. There are many other introductory
     books on this subject with little difference in quality and almost all of
@@ -37,16 +37,26 @@
     addition on two character strings but then we can concatenate them using +
     operator in an object-oriented language which support operator
     overloading. Thus, these words summarize the soul of computer programming
-    and software. Every program which we use and every operation we do involve
+    and software. All programs which we use and all operations we do involve
     these three basic elements.
   </d:para>
   <d:para>
-    There are specific structures which facilitate specific operations if they
-    are used to hold the data. For example, a stack allows to access data only
+    Oh you would say that I missed the word mathematics. Well, then you have
+    been observant! That was deliberate. :) Mathematics which will be treated
+    in this book is although separate from the main subject but certain
+    portions of the book like computer graphics and computational geometry will
+    require a great deal of mathematics. Certainly the mathematics part can form
+    a new book and can be read as such in isolation but I am a fan of thicker
+    books so I intend to make it thick. Since I have no intention of getting it
+    printed that, is all good. Such is miracle of digital technology.
+  </d:para>
+  <d:para>
+    There are specific structures which facilitate specific operations. For
+    example, a stack allows access of data only 
     from top. A queue is helpful to realize a life-like queue. A linked list
     allows traversal in forward or backward or both directions but not
     random. Binary trees are helpful for faster searches. Graphs can be used
-    for path-finding and and to solve network problems. Hash maps are very good
+    for path-finding and to solve network problems. Hash maps are very good
     for finding information quickly. These are just few cases which I have
     cited. The area of data structures and algorithms is immense and ever
     expanding.
@@ -57,14 +67,14 @@
       Usually while programming you will face the situation when you have to
       write a program to solve a problem. You will end up using few data
       structures and a few algorithms to solve that program. This book
-      describes the most common data strutures and algorithms which have
+      describes the most common data structures and algorithms which have
       evolved over several centuries of mathematical work by
       mathematicians. Given a problem we build a model of solution (read
       program) in our mind. The details of that mental model varies from
-      individual to individual. Once that mental model is built our brains
+      individual to individual. Once that mental model is built, our brains
       orientation is fixed to a certain way of thinking. Now because of this we
       choose certain data structures and algorithms and try to find out
-      solution using data starutures and algorithms chosen. Sometimes we are
+      solution using data structure and algorithms chosen. Sometimes we are
       successful other times we fail may be partially maybe fully. Now the most
       important thing when we fail is to think over the problem again and get a
       fresh thinking. So better take a break. This is most serious advice I can
@@ -74,6 +84,116 @@
     </d:para>
   </d:sect1>
   <d:sect1>
-    
+    <d:title>Abstract Data Types</d:title>
+    <d:para>
+      While code is definitely the final goal, to reach their we make models in
+      our mind. For example, when we think of numbers as humans we can think of
+      numbers without the restriction of range but in case of computers we are
+      constrained by the amount of memory available. Howvever, that does not
+      stop us from making abstract models because typically computers have
+      enough memory available for storing large enough numbers available for
+      all practical purposes. An <d:emphasis role="italic"><d:emphasis
+      role="bold">abstract data type</d:emphasis></d:emphasis> specifies the
+      logical properties of a data type. As you know a data type like
+      <d:code>int, char</d:code> and <d:code>float</d:code> represent
+      collection of values and these types determine what operations can be
+      performed on those types. For example, you should not perform
+      multiplication on characters although programmatically it is possible, it
+      just does not make sense. Although, other meanings are possible to
+      multiplication to a character or string i.e. repitition but certainly not
+      multiplication. Thus, the collection of values and operations form an
+      abstract mathematical entity that can be implemented using hardware and
+      software. This is what is known as <d:quote>abstract data type</d:quote>.
+    </d:para>
+    <d:para>
+      When we define an abstract data type we do not worry about efficiency
+      whether time or space. Since it is abstarct those worries come when we
+      implement that. While defining an ADT we are not worried about
+      implementation details. Certain times it may be possible to implement our
+      ADT on a piece of hardware or software system. For example, infinitely
+      big numbers or strings cannot be implemented in hardware or software
+      as said earlier because of memory limitations. But then again for all
+      practical purposes an ADT will be useful as help while implementing our
+      problem provided you are willing to maintain the semantics.
+    </d:para>
+    <d:para>
+      Let us consider an example ADT then we will dissect that after:
+    </d:para>
+    <d:screen><![CDATA[ADT UnsignedInteger
+Object: An ordered subrange of integers starting at zero and ending at a
+maximum value of UINT_MAX on the computer.
+
+/* operations */
+
+for all x, y in N(set of natural numbers) and true, false in booleans
+
+true  ::== 1 (UnsignedInteger)
+false ::== 0 (UnsignedInteger)
+
+Zero(): UnsignedInteger          => 0
+IsZero(x): Boolean               => if(x == 0) IsZero = true else false
+Add(x, y): UnsignedInteger       => if(x + y < UINT_MAX) Add = x + y
+                                    else Add = (x + y)%(UINT_MAX + 1)
+Equal(x, y): Boolean             => if (x == y) Equal = true else false
+Sub(x, y): UnsignedInteger       => if(x > y) Sub = x - y
+                                    else Sub = positive of 2's complement
+                                    with MSB is not sign bit
+Mul(x, y): UnsignedInteger       => if((x * y) < UINT_MAX) Mul = x * y
+                                    else Mul = (x * y)%(UINT_MAX + 1)
+Div(x, y): UnsignedInteger       => Div = Quotient of x/y
+Mod(x, y): UnsignedInteger       => Mod = Remainder of x/y]]></d:screen>
+    <d:para>
+      You, my observant reader, would have noticed that this is not an ADT in
+      its purest
+      sense because we have cared about hardware i.e. assumed that it
+      implements 2's complement. Your observation is correct. It is not an ADT
+      but I have tried to make sure that this ADT works on modern computers
+      which work on 2's complement. Certainly this will not work on systems
+      like UNIVAC which implement 1's complement in hardware.
+    </d:para>
+    <d:para>
+      However, that is not important part. The important part is to learn as
+      how you specify an ADT so that it works. Let us try to learn what has
+      been described in ADT. This ADT describes unsigned integers much like
+      that found in a statically typed language like C or C++. This ADT starts
+      at 0 and ends at a specific value specified by
+      <d:code>UINT_MAX</d:code>. What would be <d:code>UINT_MAX</d:code> is not
+      specified as an optimum value of that depends in internal details of
+      hardware. <d:code>Zero()</d:code> is an operation which always returns
+      zero. <d:code>IsZero()</d:code> is an operation which returns
+      <d:code>true</d:code> if argument is zero else
+      <d:code>false</d:code>. <d:code>true</d:code> and <d:code>false</d:code>
+      have been specified as their typical boolean notations of 1 and 0
+      respectively. <d:code>Add()</d:code> adds two unsigned integers if their
+      sum is less than <d:code>UINT_MAX</d:code>. If it is more than that then
+      it is rotated which is based on the behavior of hardware again. Now I
+      leave it up to you to figure rest of ADT.
+    </d:para>
+    <d:sect2>
+      <d:title>An ADT for rational numbers</d:title>
+      <d:para>
+        To foster the ideas as how to represent an ADT let us consider another
+        example of rational numbers. A rational number is a fraction which
+        either terminates or repeats upon division for example, <math
+        xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mfrac
+        bevelled="true"><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mfrac
+        bevelled="true"><mrow><mo>&#160;</mo><mn>2</mn></mrow><mn>3</mn></mfrac><mo>,</mo><mfrac
+        bevelled="true"><mn>7</mn><mn>9</mn></mfrac></math>. Thus, we see that
+        denominators and numerators are integers. We also have to consider the
+        sign of these rational numbers, which, may be positive or negative
+        which we will represent using character data type for example. For
+        completeness let us define a minimalistic character abstract data type
+        as well. 
+      </d:para>
+      <d:screen><![CDATA[ADT character
+Object: A character on English PC-104 keyboard which can fit in 8 bits
+
+character ::== a-z, A-Z, 0-9,1234567890`~!@#$%^&*()-_=+[{]}\|;:'",<.>/?(space)]]></d:screen>
+      <d:para>
+        I have kept the ADT character minimalistic so as to be enough to serve
+        our typical usage. <d:code>(space)</d:code> specifies the spacebar
+        on your keyboard.
+      </d:para>
+    </d:sect2>
   </d:sect1>
 </d:chapter>

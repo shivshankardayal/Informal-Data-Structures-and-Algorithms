@@ -76,7 +76,7 @@
     </d:para>
   </d:simplesect>
   <d:simplesect>
-    <d:title>Who should read the book?</d:title>
+    <d:title>Who should read this book?</d:title>
     <d:para>
       Anyone casually interested in programming should read this book. This
       book intends to present the subject in a manner so that it can be used
@@ -122,6 +122,46 @@
       in your way. For example, if I use C++ then I would have to give
       overloaded assignment operator and copy constructor for each data
       structure because programs will not behave correctly otherwise.
+    </d:para>
+  </d:simplesect>
+  <d:simplesect>
+    <d:title>Goals for readers</d:title>
+    <d:para>
+      From my experience I have found that most of the people study books on
+      data structures, algorithms or mathematics for two purposes. First, when
+      it is part of some course and seocnd when they have to attend some
+      interview. While not all people do it for the same purpose and that is is
+      the kind of people who read it for knowledge. While it is true that you
+      will probably never implement most of these data structures at
+      professional level but at the same time even to use libraries you have to
+      have the knowledge and make judicous usage of those libraries for the
+      problems you are trying to solve.
+    </d:para>
+    <d:para>
+      It is easy to acquire the knowledge by reading a book like this one or
+      for that matter any other such book. But the judgement as to what to do
+      for a particular problem comes through experience. And experience is not
+      linear for everyone. A person with 2 years work may have more experience
+      than a person with 10 years of experience because experience is a lot
+      about intelligence and wisdom which is different for each
+      individual. However, that is the philosophical part of it. The sad part
+      is if you are looking for a job then no. of years of experience on your
+      resume matters. Please make sure you read excellent examples of code for
+      example, if you are thinking of C then glib (from GNOME project) and
+      glibc (the C library) are excellent examples as how data structures are
+      implemented. If you are a C++ programmer then STL is a very good exmaple
+      for you.
+    </d:para>
+    <d:para>
+      All of us possess a certain level of intelligence. At average any person
+      can read this book. But what is most important is you have to have
+      interest in the subject. Your interest gets multiplied with your
+      intelligence and thus you will be more capable than you think you can
+      be. One more point is focus and effort. It is not somehting new which I
+      am telling but I am saying it again just to emphasize the point. Trust me
+      if you are reading this book for just scoring a nice grade in your course
+      or cracking an interview at a big company then I have failed 
+      in my purpose of explaining my ideas.
     </d:para>
   </d:simplesect>
   <d:simplesect>
