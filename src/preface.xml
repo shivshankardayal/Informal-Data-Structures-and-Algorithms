@@ -6,7 +6,7 @@
   <d:title>Preface</d:title>
   <d:para>
     This book is a natural successor of my C programming book. There is no
-    about that data structures and algorithms is one of the most critical
+    doubt about that data structures and algorithms is one of the most critical
     subjects in computer science. Computer programming has changed a lot in
     last few decades. Programmers typically do not implement basic data
     structures in real-world code but rather they use ready-made libraries
@@ -14,10 +14,10 @@
     importance of the subject. The importance is same even though a lot in
     programming world has changed and there will be times when you would want
     to implement your own version of data structures and algorithms. Another
-    point is that for a programmer this subject allows one to excercise his
+    point is that for a programmer this subject allows one to exercise his
     knowledge of programming language to various problems this subject offers.
     To really appreciate the library code you must know the inner working of
-    the data strutcture and algorithm implemneted by that library.
+    the data structure and algorithm implemented by that library.
   </d:para>
   <d:para>
     One of the critical learnings from this subject which you, the reader, will
@@ -33,12 +33,12 @@
     Programs</d:quote>.
   </d:para>
   <d:simplesect>
-    <d:title>Why I wrote this book?</d:title>
+    <d:title>Why I Wrote This Book?</d:title>
     <d:para>
       I wrote this book for myself! There are a lot of excellent books which
       cover a lot of material but they are all spread and not put together. I
       have attempted to put what I have learned and learning in this book. Any
-      other usage of this book is a side-effect which was not intended.
+      other usage of this book is a side effect which was not intended.
     </d:para>
     <d:para>
       There are two things presented in the book. One is abstract concept while
@@ -49,10 +49,10 @@
     </d:para>
   </d:simplesect>
   <d:simplesect>
-    <d:title>How to read this book?</d:title>
+    <d:title>How to Read This Book?</d:title>
     <d:para>
       As always start form beginning and try not to skip. Even if you know the
-      topic try to read it through as you will learn somehting out of text
+      topic, try to read it through as you will learn something out of text
       written. If there is a mathematical problem then try to solve using pen
       and paper and if it is a programming problem then try to implement
       it. Without solving problems given in the book you will not go
@@ -65,7 +65,7 @@
       Certain chapters in the book will contain specific material dedicated to
       that particular topic. You can read those if you are solely interested in
       that topic and nothing else. This book contains a lot of code and you
-      must read it else you will loose the implementation knowledge. All the
+      must read it else you will lose the implementation knowledge. All the
       concepts are explained with a lot of examples and problems are given at
       the end of chapter for practice. Solutions of selected problems are given
       at the end of book. Please try to solve problems by yourself and once you
@@ -76,12 +76,12 @@
     </d:para>
   </d:simplesect>
   <d:simplesect>
-    <d:title>Who should read this book?</d:title>
+    <d:title>Who Should Read This Book?</d:title>
     <d:para>
       Anyone casually interested in programming should read this book. This
       book intends to present the subject in a manner so that it can be used
       both as a tutorial and reference on the subject matter. If you know any
-      programming language then you should be able to easily follow the
+      programming language, you should be able to easily follow the
       book. If you are already an experienced programmer then you can read
      selected topics as needed.
     </d:para>
@@ -89,21 +89,21 @@
   <d:simplesect>
     <d:title>Prerequisite</d:title>
     <d:para>
-      I have wrote code using C programming language using <d:code>gcc</d:code>
+      I have written code using C programming language using <d:code>gcc</d:code>
       following C11 standards. Thus, you should get fairly modern compiler. I
       would recommend the one which comes with your GNU/Linux distribution. Just
       make sure that your GNU/Linux distribution is a recent one. Although, I
       have used <d:code>gcc</d:code> to compile the code, code is portable to
       any C compiler which supports C99 at least. It is assumed that you are
       familiar with C programming language(later C++ examples will also be
-      provided). Since algorithms involve complexity computation thus some
+      provided). Since algorithms involve complexity computation, thus some
       mathematics is definitely going to be involved. It is assumed that you
       are familiar with high school mathematics at least. However, necessary
       mathematics in last part will be provided with the book so as you, my
       dear reader, won't have to search for another book. I have found that
       people usually lack mathematical skill to study data structures and
       algorithms in depth and they think that data structures and algorithms
-      are a programming course. While it is  true that you need to program but
+      are a programming course. While it is true that you need to program, but
       solid mathematical understanding is required for fully understanding the
       beauty of this subject.
     </d:para>
@@ -116,7 +116,7 @@
       Donald Knuth says that machine language is very important for programmers
       and therefore he designed MIX and later MMIX computers and uses assembly
       to write <d:quote>The Art of Computer Programming</d:quote>, I think C is
-      a portable assembler. If you know your compiler well it is very easy to
+      a portable assembler. If you know your compiler well, it is very easy to
       know equivalent assembly. C as a language is simple enough so as it is
       easy to learn it and is quite powerful. At the same time C does not get
       in your way. For example, if I use C++ then I would have to give
@@ -125,21 +125,21 @@
     </d:para>
   </d:simplesect>
   <d:simplesect>
-    <d:title>Goals for readers</d:title>
+    <d:title>Goals for Readers</d:title>
     <d:para>
       From my experience I have found that most of the people study books on
       data structures, algorithms or mathematics for two purposes. First, when
-      it is part of some course and seocnd when they have to attend some
-      interview. While not all people do it for the same purpose and that is is
+      it is part of some course and second when they have to attend some
+      interview. While not all people do it for the same purpose and that it is
       the kind of people who read it for knowledge. While it is true that you
       will probably never implement most of these data structures at
       professional level but at the same time even to use libraries you have to
-      have the knowledge and make judicous usage of those libraries for the
+      have the knowledge and make judicious usage of those libraries for the
       problems you are trying to solve.
     </d:para>
     <d:para>
       It is easy to acquire the knowledge by reading a book like this one or
-      for that matter any other such book. But the judgement as to what to do
+      for that matter any other such book. But the judgment as to what to do
       for a particular problem comes through experience. And experience is not
       linear for everyone. A person with 2 years work may have more experience
       than a person with 10 years of experience because experience is a lot
@@ -149,7 +149,7 @@
       resume matters. Please make sure you read excellent examples of code for
       example, if you are thinking of C then glib (from GNOME project) and
       glibc (the C library) are excellent examples as how data structures are
-      implemented. If you are a C++ programmer then STL is a very good exmaple
+      implemented. If you are a C++ programmer then STL is a very good example
       for you.
     </d:para>
     <d:para>
@@ -157,7 +157,7 @@
       can read this book. But what is most important is you have to have
       interest in the subject. Your interest gets multiplied with your
       intelligence and thus you will be more capable than you think you can
-      be. One more point is focus and effort. It is not somehting new which I
+      be. One more point is focus and effort. It is not something new which I
       am telling but I am saying it again just to emphasize the point. Trust me
       if you are reading this book for just scoring a nice grade in your course
       or cracking an interview at a big company then I have failed 
@@ -165,7 +165,7 @@
     </d:para>
   </d:simplesect>
   <d:simplesect>
-    <d:title>Acknowledgements</d:title>
+    <d:title>Acknowledgments</d:title>
     <d:para>
       As with any book there are a lot of people involved with this book but
       not in traditional sense of a typical book. I have written this book
@@ -178,7 +178,7 @@
       definitely are heroes of humanity.
     </d:para>
     <d:para>
-      There are a lot of diagrams in this text and those have bene drawn using
+      There are a lot of diagrams in this text and those have been drawn using
       Tikz. Thanks for its developers Till Tantau and Christian Feuersaenger
       along with all the contributors for creating such a wonderful piece of
       vector graphics library for TeX.
@@ -192,8 +192,8 @@
     </d:para>
     <d:para>
       There have been many teachers in my life who have helped me with various
-      lessons in life and otherwise. I will try to remmeber all of them here
-      and seek forgiveness if I miss anyone. My maths teachers Yogendra Yadav,
+      lessons in life and otherwise. I will try to remember all of them here
+      and seek forgiveness if I miss anyone. My math teachers Yogendra Yadav,
       Hriday Nayaran Singh and Satyanand Satyarthi have helped me a lot with
       basics of Mathematics. Anurag Johri, Sirnivasa Kotu, Shreyas Majthia and
       Mufti Mohammed for their technical discussions and insight into
@@ -210,7 +210,7 @@
     <d:para>
       Although I would like to give a pdf version of the book for download but
       the content keep changing and there will be just too many versions of the
-      book. Thus please read html version until a final release can be done.
+      book. Thus, please read html version until a final release can be done.
     </d:para>
   </d:simplesect>
 </d:preface>

@@ -62,7 +62,7 @@
     expanding.
   </d:para>
   <d:sect1>
-    <d:title>Problem to solution</d:title>
+    <d:title>Problem to Solution</d:title>
     <d:para>
       Usually while programming you will face the situation when you have to
       write a program to solve a problem. You will end up using few data
@@ -86,10 +86,10 @@
   <d:sect1>
     <d:title>Abstract Data Types</d:title>
     <d:para>
-      While code is definitely the final goal, to reach their we make models in
+      While code is definitely the final goal, to reach there we make models in
       our mind. For example, when we think of numbers as humans we can think of
       numbers without the restriction of range but in case of computers we are
-      constrained by the amount of memory available. Howvever, that does not
+      constrained by the amount of memory available. However, that does not
       stop us from making abstract models because typically computers have
       enough memory available for storing large enough numbers available for
       all practical purposes. An <d:emphasis role="italic"><d:emphasis
@@ -100,21 +100,39 @@
       performed on those types. For example, you should not perform
       multiplication on characters although programmatically it is possible, it
       just does not make sense. Although, other meanings are possible to
-      multiplication to a character or string i.e. repitition but certainly not
+      multiplication to a character or string i.e. repetition but certainly not
       multiplication. Thus, the collection of values and operations form an
       abstract mathematical entity that can be implemented using hardware and
-      software. This is what is known as <d:quote>abstract data type</d:quote>.
+      software. This is what is known as <d:quote>abstract data
+      type</d:quote>. A formal way to put what an ADT is <d:quote>class of
+      objects whose logical behavior is defined by a set of values and a set of
+      operations</d:quote>. From experience I know that beginners do not really care
+      for ADTs and they simply skip to the implementation part which is not
+      good. Unless you understand the concept at an abstract level you will not
+      be able to appreciate the semantics of the ADT and as a result your
+      implementation may suffer.
     </d:para>
     <d:para>
       When we define an abstract data type we do not worry about efficiency
-      whether time or space. Since it is abstarct those worries come when we
-      implement that. While defining an ADT we are not worried about
+      whether time or space. Since it is abstract therefore those worries come when we
+      implement that. While defining an ADT, we are not worried about
       implementation details. Certain times it may be possible to implement our
       ADT on a piece of hardware or software system. For example, infinitely
       big numbers or strings cannot be implemented in hardware or software
       as said earlier because of memory limitations. But then again for all
       practical purposes an ADT will be useful as help while implementing our
       problem provided you are willing to maintain the semantics.
+    </d:para>
+    <d:para>
+      There are two main ways of defining an ADT, <d:emphasis
+      role="italic">imperative</d:emphasis> and <d:emphasis
+      role="italic">functional</d:emphasis>. Imperative way of defining an ADT
+      is closer to programming languages like C, C++ etc which allow imperative
+      programming techniques while functional style is better suited for
+      functional languages like Erlang, Haskell, OCaml etc. However, I will
+      deviate from the formal style a bit to make it easy for you to understand
+      ADTs without knowledge of a programming language so that you can evaluate
+      it as a mathematical model.
     </d:para>
     <d:para>
       Let us consider an example ADT then we will dissect that after:
@@ -163,9 +181,9 @@ Mod(x, y): UnsignedInteger       => Mod = Remainder of x/y]]></d:screen>
       zero. <d:code>IsZero()</d:code> is an operation which returns
       <d:code>true</d:code> if argument is zero else
       <d:code>false</d:code>. <d:code>true</d:code> and <d:code>false</d:code>
-      have been specified as their typical boolean notations of 1 and 0
+      have been specified as their typical Boolean notations of 1 and 0
       respectively. <d:code>Add()</d:code> adds two unsigned integers if their
-      sum is less than <d:code>UINT_MAX</d:code>. If it is more than that then
+      sum is less than <d:code>UINT_MAX</d:code>, if it is more than that then
       it is rotated which is based on the behavior of hardware again. Now I
       leave it up to you to figure rest of ADT.
     </d:para>
@@ -185,14 +203,181 @@ Mod(x, y): UnsignedInteger       => Mod = Remainder of x/y]]></d:screen>
         completeness let us define a minimalistic character abstract data type
         as well. 
       </d:para>
-      <d:screen><![CDATA[ADT character
+      <d:screen><![CDATA[ADT Character
 Object: A character on English PC-104 keyboard which can fit in 8 bits
 
-character ::== a-z, A-Z, 0-9,1234567890`~!@#$%^&*()-_=+[{]}\|;:'",<.>/?(space)]]></d:screen>
+character ::== a-z,A-Z,0-9,`~!@#$%^&*()-_=+[{]}\|;:'",<.>/?(space)]]>
+c is one of the characters being one of the above.
+
+value(c): UnsignedInteger                  => if(c == a-z)
+                                                return 0-25
+                                              else if(c == A-Z)
+                                                return 26-51
+                                              else if(c == 0-9)
+                                                return 52-61
+                                              else
+                                                sequential value in above list
+                                                from remaining characters
+      </d:screen>
       <d:para>
-        I have kept the ADT character minimalistic so as to be enough to serve
-        our typical usage. <d:code>(space)</d:code> specifies the spacebar
-        on your keyboard.
+        I have kept the ADT character minimalistic to be enough to serve
+        our typical usage. <d:code>(space)</d:code> specifies the space bar
+        on your keyboard. We have defined characters in terms of integral value
+        so that we can store it in memory because memory can contain only
+        sequence of bits. Characters really cannot be stored in memory as it
+        is. This will allow us to apply equality for two characters as well as
+        other operations which can be applied to integers though I have left
+        them for you as an exercise. First three commas are just field
+        separators.
+      </d:para>
+      <d:para>
+        Let us define our rational number ADT now.
+      </d:para>
+      <d:screen><![CDATA[ADT Rational
+Object: A rational number which has a finite denominator and numerator.
+
+/* Operations */
+for all n1, n2, d1 and d2 as UnsignedInteger with d1 != 0 and d2 != 0
+and true and false are our usual Booleans.
+s1 and s2 are signs represented as Character - and +.
+
+rational ::== <numerator, denominator, sign> where numerator and denominator
+are UnsignedInteger, denominator != 0 and sign is a character '+' or '-'
+
+MakeRational(n, d, s): Rational             => return <n, d, s>
+IsEqual(n1, d1, s1, n2, d2, s2): Boolean    => if((n1*d2 == n2*d1) &&
+                                               ((s1 == s2 == '+')||(s1 == s2 == '-')))
+                                               return true
+                                               else return false
+Greater(n1, d1, s1, n2, d2, s2): Rational   => if( s1 == s2)
+                                                 if((n1*d2) >(n2*d1))
+                                                 return <n1, d1, s1>
+                                               else if(s1 == '+')
+                                                 return <n1, d1, s1>
+                                               return <n2, d2, s2>
+Add(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
+                                                 return <(n1*d2 + n2*d1),
+                                                 d1*d2, s1>
+                                               else if(Greater(n1, d1, s1, n2,
+                                                 d2, s2) == <n1, d1, s1>)
+                                                 return <(n1*d2 - n2*d1),
+                                                 d1*d2, s1>
+                                               else
+                                                 return <(n2*d1 - n1*d2),
+                                                 d1*d2, s2>
+Sub(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
+                                                 return <(n1*d2 - n2*d1),
+                                                 d1*d2, s1>
+                                               else if(Greater(n1, d1, s1, n2,
+                                                 d2, s2) == <n1, d1, s1>)
+                                                 return <(n1*d2 + n2*d1),
+                                                 d1*d2, s1>
+                                               else
+                                                 return <(n2*d1 + n1*d2),
+                                                 d1*d2, s2>
+Mul(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
+                                                 return <n1*n2,
+                                                 d1*d2, '+'>
+                                               else 
+                                                 return <n1*n2,
+                                                 d1*d2, '-'>
+Div(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
+                                                 return <n1*d2,
+                                                 d1*n2, '+'>
+                                               else 
+                                                 return <n1*d2,
+                                                 d1*n2, '-'>]]>
+      </d:screen>
+      <d:para>
+        It is not at all hard to understand the rational number ADT and I think
+        that it is self-explanatory. I have used this informal style of ADT
+        description for now but when I will be describing data structures I
+        will stick to a more formal style.
+      </d:para>
+      <d:para>
+        One particular operation I would like to point out is
+        <d:code>IsEqual</d:code> operation. Usually ADTs are equal when they
+        have equal value but in case of rational numbers they can be equal even
+        if absolute fractions are not equal. Rather, the different fractions
+        will have equal value in their reduced form, for example, <math
+        xmlns="http://www.w3.org/1998/Math/MathML"
+        display="inline"><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mfrac><mn>2</mn><mn>4</mn></mfrac><mo>,</mo><mfrac><mn>3</mn><mn>6</mn></mfrac></math>.
+      </d:para>
+      <d:para>
+        Now that we have learned small bits of how to define an ADT let us turn
+        our attention to more important philosophical questions.
+      </d:para>
+    </d:sect2>
+    <d:sect2>
+      <d:title>Advantages of ADTs</d:title>
+      <d:sect3>
+        <d:title>Encapsulation</d:title>
+        <d:para>
+          An ADT guarantees the properties and operations about itself. This
+          allows programmer of ADT that only so much is needed to satisfy the
+          requirements posed by ADT. The implementation may be complex but that
+          is abstracted by a very simple interface definition. Thus, a great
+          deal of abstraction is achieved by specifying the ADT for the user of
+          ADT. As a programmer of ADT we are worried only about satisfying
+          the interface and properties requirements of ADT and nothing more.
+        </d:para>
+      </d:sect3>
+      <d:sect3>
+        <d:title>Localization of Change and Isolation from Implementation</d:title>
+        <d:para>
+          As a user of ADT we are not worried if the implementation changes
+          internally as long as ADTs' interface does not change. Since the
+          implementation must adhere to interfaces defined by the ADT in
+          question we as user of ADT get a guarantee that we are isolated from
+          the implementation. Thus, a change in implementation of ADT does not
+          warrant a change in our code as ADT user. For example, a car's
+          accelerator, break and clutch are always in the same positional order
+          irrespective of change of mechanics inside. As you can see that
+          changes in implementation are localized to the implementation details
+          and users of the ADT are not effected which allows decoupling of ADT
+          implementation and its usage which results in parallel work on both
+          sides. 
+        </d:para>
+      </d:sect3>
+      <d:sect3>
+        <d:title>Flexibility</d:title>
+        <d:para>
+          An ADT can be implemented in different ways as you will see soon when
+          I will present implementation of queues and stacks both using an
+          array and a linked list. However, the users of those queues and
+          stacks are free to switch between the two implementations as they see
+          fit because the interface of ADT remains same. This allows us to use
+          different implementations as per requirement of our problem giving us
+          flexibility and efficiency.
+        </d:para>
+      </d:sect3>
+    </d:sect2>
+    <d:sect2>
+      <d:title>Complexity Considerations for an ADT</d:title>
+      <d:para>
+        As I have said that while defining an ADT we are not worried about
+        performance criterion of implementation. However, there are two schools
+        of thoughts. One faction thinks that these should not be part of ADT
+        while the other thinks that ADT should guarantee a minimum on
+        performance criterion in terms of memory and time. For example, I will
+        quote the author of STL, Alexander Stepanov who puts forth his argument
+        as: <d:blockquote><d:attribution>Alexander
+        Stepanov</d:attribution><d:para>The 
+        reason for introducing the notion of abstract 
+        data types was to allow interchangeable software modules. You cannot
+        have interchangeable modules unless these modules share similar
+        complexity behavior. If I replace one module with another module with
+        the same functional behavior but with different complexity tradeoffs,
+        the user of this code will be unpleasantly surprised. I could tell him
+        anything I like about data abstraction, and he still would not want to
+        use the code. Complexity assertions have to be part of the
+        interface.</d:para></d:blockquote>
+        As far as I think complexity considerations should be part of ADTs
+        because based on these guarantees we can choose what we will use and
+        what we will not. In that sense, you can say that I agree with the
+        opinion of Stepanov. In our trivial ADTs which we have seen I have
+        omitted the complexity considerations but before we can include
+        complexity considerations we have to include those in our analysis.
       </d:para>
     </d:sect2>
   </d:sect1>
