@@ -4,7 +4,7 @@ html:
 	find . -name "*.html" | xargs perl -pi -e "s/<html>/<!DOCTYPE html>/g;"
 	cp -r images build/
 	./domp.py
-	cp -r build/* /var/www/dsa/
+	cp -r build/* /opt/local/share/nginx/html/dsa/
 
 
 pdf: src/*.xml dblatex.xsl Makefile
@@ -28,3 +28,6 @@ fop: src/*.xml fop.xsl Makefile
 #	perl -pi -e "s/<html><body>//g;" src/c.fo
 #	perl -pi -e "s/<\/body><\/html>//g;" src/c.fo
 	cd pdf && fop dsa.fo dsa.pdf 
+
+clean:
+	rm -rf pdf/* build/*

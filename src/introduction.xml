@@ -346,7 +346,7 @@ Div(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
           I will present implementation of queues and stacks both using an
           array and a linked list. However, the users of those queues and
           stacks are free to switch between the two implementations as they see
-          fit because the interface of ADT remains same. This allows us to use
+          fit because the interfaces of ADTs remain same. This allows us to use
           different implementations as per requirement of our problem giving us
           flexibility and efficiency.
         </d:para>
@@ -355,7 +355,7 @@ Div(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
     <d:sect2>
       <d:title>Complexity Considerations for an ADT</d:title>
       <d:para>
-        As I have said that while defining an ADT we are not worried about
+        As I have said that while defining an ADT, we are not worried about
         performance criterion of implementation. However, there are two schools
         of thoughts. One faction thinks that these should not be part of ADT
         while the other thinks that ADT should guarantee a minimum on
@@ -377,8 +377,655 @@ Div(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
         what we will not. In that sense, you can say that I agree with the
         opinion of Stepanov. In our trivial ADTs which we have seen I have
         omitted the complexity considerations but before we can include
-        complexity considerations we have to include those in our analysis.
+        complexity considerations we have to include those in our
+        analysis. However, before we can really introduce complexity
+        considerations in our ADTs we have to learn what is complexity and how
+        do we evaluate that. But before we can learn how to compute complexity
+        of an algorithm let us have a concrete definition for it.
       </d:para>
     </d:sect2>
+  </d:sect1>
+  <d:sect1>
+    <d:title>What is an Algorithm?</d:title>
+    <d:para>
+      The word algorithm comes from the name of the 9th century Persian Muslim
+      mathematician Muḥammad ibn Mūsā al-Khwārizmī. Algorism
+      originally referred only to the rules of performing arithmetic using
+      Hindu-Arabic numerals but evolved via European Latin translation of
+      al-Khwārizmī's name into algorithm by the 18th century. al-Khwārizmī
+      wrote a book titled <d:quote>On the Calculation with Hindu
+      Numerals</d:quote> in about 825 AD, and was principally responsible for
+      spreading the Indian system of numeration throughout the Middle East and
+      Europe. It was translated into Latin as <d:quote>Algoritmi de numero
+      Indorum</d:quote> (in English, <d:quote>Al-Khwarizmi on the Hindu Art of
+      Reckoning</d:quote>). The term <d:quote>Algoritmi</d:quote> in the title
+      of the book led to the term <d:quote>algorithm</d:quote>. Usage of the 
+      word evolved to include all definite procedures for solving problems or
+      performing tasks. The question is a what is an algorithm. An algorithm is
+      a finite sequence of well-defined operations on some input data which
+      produces an output in finite amount of time and requires finite amount of
+      space to hold its data which can be presented in a well-defined
+      formal language for evaluation of a function.
+    </d:para>
+    <d:para>
+      The concept of algorithm has existed for millennia, however a partial
+      formalization of what would become the modern algorithm began with
+      attempts to solve the Entscheidungsproblem (the <d:quote>decision
+      problem</d:quote>) posed by David Hilbert in 1928, who was a great
+      mathematician born in Prussia(modern Russia). Coincidently, John Von
+      Neumann(father of modern computer architecture and inventor of merge
+      sort) was his assistant for some time. The geniuses of Hilbert and
+      Neumann is well 
+      known. Hilbert's problems which is a list of 23 problems have fueled much
+      of mathematical research of 20th century while Neumann contributed to
+      development of computers, nuclear bombs both Uranium and Hydrogen bombs
+      as well as towards development of ICBMs. Subsequent formalizations were
+      framed as attempts to define <d:quote>Effective calculability</d:quote>,
+      those formalizations included the Gödel–Herbrand–Kleene recursive
+      functions, Alonzo Church's lambda calculus, Emil Post's
+      <d:quote>Formulation 1</d:quote>, and Alan Turing's Turing
+      machines. We will study  Lambda Calculus and Turing Machines
+      later in this book.
+    </d:para>
+    <d:para>
+      Let us consider the classic Euclid's algorthim for finding greatest
+      common divisor for two numbers. This algorthm has been described by
+      Euclid in his book Elements (book vii, propositions i and ii). Given two
+      numbers say a and b following steps need to be executed for finding
+      remainder.
+    </d:para>
+    <d:para>
+      <d:emphasis role="bold">Algorithm A</d:emphasis>
+      (<d:emphasis role="italic">Euclid's algorithm</d:emphasis>) Given two
+      positive integers <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math> and <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math> find the
+      greatest common divisor, i.e. the 
+      largest positive integer which evenly divides (remainder after division
+      is 0) both <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math> and <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math>.
+    </d:para>
+    <d:para>
+      <d:emphasis role="bold">A1.</d:emphasis> [Find remainder.] Divide <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math> 
+      by <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math>. Say <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math> is remainder
+      (<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math> will
+      certainly be <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn><mo>&#8804;</mo><mi>r</mi><mo>&lt;</mo><mi>b</mi></math>). 
+    </d:para>
+    <d:para>
+      <d:emphasis role="bold">A2.</d:emphasis> [Is it zero?] If <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi><mo>=</mo><mn>0</mn></math>
+      terminate execution b is the GCD.
+    </d:para>
+    <d:para>
+      <d:emphasis role="bold">A3.</d:emphasis> [Exchange values.] Set <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mo>=</mo><mi>b</mi></math> 
+      and <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi><mo>=</mo><mi>r</mi></math>. Goto
+      step A1. 
+    </d:para>
+    <d:para>
+      I will use the word A for alorithm. This algorithm will have a
+      monotonically increasing suffix which will be a positive integer. When
+      these algorithms are later referenced a hyperlink will be made to
+      refernce back to the algorithm.
+    </d:para>
+    <d:para>
+      Some algorithms will have flowcharts given for them. For example, given
+      below is the flowchart for Euclid's algorithm.
+    </d:para>
+    <d:figure>
+      <d:title>Flowchart for Euclid's GCD Algorithm</d:title>
+      <d:mediaobject>
+        <d:imageobject>
+          <d:imagedata fileref="../images/euclid_fc.png" align="center" />
+        </d:imageobject>
+      </d:mediaobject>
+    </d:figure>
+    <d:para>
+      Given below is a sample C program which implements this algorithm:
+    </d:para>
+    <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+
+int main()
+{
+  int a=0, b=0, r=1;
+
+  printf("Enter two positive integers separated by space:\n");
+  scanf("%d %d", &a, &b);
+
+  while(r != 0) {
+    r = a % b;
+    if(r == 0)
+      break;
+    else {
+      a = b;
+      b = r;
+    }
+  }
+
+  printf("GCD is %d\n", b);
+
+  return 0;
+}]]></d:programlisting>
+    <d:para>
+      Note that terminating condition for our program is that remainder becomes
+      zero. Typically we initialize variables with value 0 in C but in this
+      case it must be non-zero.
+    </d:para>
+  </d:sect1>
+  <d:sect1>
+    <d:title>Complexity of an Algorithm</d:title>
+    <d:para>
+      There can be several algorithms to achieve the same effect on a
+      particular set of data. However, any two methods may have different
+      requirements on time constraint. One may take more or less or equal time
+      than the second one. We definitely always want an algorithm which
+      consumes less time. Time may not be only contraint all the
+      time. Sometimes we may be bound by amount of memory available to
+      use. This may forbade us from using those algorithms which consume more
+      memory even though they run faster.
+    </d:para>
+    <d:sect2>
+      <d:title>Big O Notation</d:title>
+      <d:para>
+        There are two ways by which you can categorize complexity. The
+        first categorization is by resource consumption. We measure these using
+        consumption of memory and CPU. Memory consumption is known as space
+        complexity and CPU consumption is known as time complexity. The second
+        categorization is by the methods by which we measure complexity of an
+        algorithm. One of the popular methods is Big-O notation denoted by <math
+        xmlns="http://www.w3.org/1998/Math/MathML"
+        display="inline"><mi>O</mi></math>. Big-O notation focuses on upper bound
+        of algorithms for huge sets of data(tending to be infinity) and thus is
+        known as asymptotic 
+        complexity. Another method which is less popular is amortized
+        complexity. Amortized complexity is not concerned about worst-case
+        performance but rather average run time for all cases.  In an algorithm
+        an operation may be costly but then its frequency may be less. Amortized
+        complexity takes care of this fact and tries to balance the complexity
+        value. Thus, we can
+        safely say that Big-O notation is a guarantee but amortized notation is a
+        probabilistic way of deducing run-time or rather more practical
+        notion. Since it is much easier to computer Big-O complexity we will
+        focus on it but from time to time I will also introduce amortized
+        complexity for analysis of algorithms where suitable.
+      </d:para>
+      <d:para>
+        Big-O is a member of a larger family of notations that is called Landau
+        notation, Bachmann–Landau notation (after Edmund Landau and Paul
+        Bachmann). Mathematically it tells us that how closely a finite series
+        approximates a given function, especially for a truncated Taylor series
+        or asymptotic expansion.
+      </d:para>
+      <d:para>
+        One more concept is there for classification of algorithms. This
+        classification is based on the fact whether data is available in its
+        entirety to the algorithm or not. If the algorithm requires that data
+        must be available for algorithm to work then it is known as <d:emphasis
+        role="italic">offline</d:emphasis> algorithm. Algorithms which do not
+        require entire data to be available on work on part of data at a point of
+        time are known as <d:emphasis role="italic">online</d:emphasis>
+        algorithms. Clearly as you can fathom, online algorithms will have better
+        performance that offline algorithms. If ratio of performance of an online
+        algorithm and its counterpart offline algorithm is bounded, the
+        online algorithm is called <d:emphasis
+        role="italic">competitive</d:emphasis>. Also, a point worth noticing is
+        that all online algorithms do not have an offline counterpart.
+      </d:para>
+      <d:para>
+        Now let us try to understand what is big-O notation and how to compute
+        it. Consider two functions <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
+        and <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>. Let
+        us assume that these functions operate on a subset of real numbers. Then
+        in big-O notation <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
+        is written in terms of <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
+        as follows:
+      </d:para>
+      <d:informalequation>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&#160;</mo><mi>a</mi><mi>s</mi><mo>&#160;</mo><mi>x</mi><mo>&#8594;</mo><mo>&#8734;</mo></math>
+      </d:informalequation>
+      <d:para>
+        if and only if there is a positive constant <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>K</mi></math> such that
+        for all sufficiently large values of <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>~</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math> is at most <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>K</mi></math> multiplied
+        by <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mo>~</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
+        in absolute value. That is, <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>~=</mo><mo>~</mo><mi>O</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo></math>
+        if and only if there exists a positive real number <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>K</mi></math> and a real
+        number <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>x</mi><mn>0</mn></msub></math>
+        such that
+      </d:para>
+      <d:informalequation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>|</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>|</mo><mo>&#8804;</mo><mi>K</mi><mo>|</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>|</mo><mo>&#160;</mo><mo>&#160;</mo><mo>&#8704;</mo><mo>&#160;</mo><mi>x</mi><mo>&gt;</mo><msub><mi>x</mi><mn>0</mn></msub><mo>&#160;</mo></math>
+      </d:informalequation>
+      <d:para>
+        We typically do not say that we are concerned with growth rate as <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math> goes to
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>&#8734;</mo></math>
+        and we simply write <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo></math>
+        .The notation can also be used to describe the behavior of <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi></math> near some
+        real number <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math> (often,
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mo>=</mo><mn>0</mn></math>
+        ): we say
+      </d:para>
+      <d:informalequation>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&#160;</mo><mo>&#160;</mo><mi>a</mi><mi>s</mi><mo>&#160;</mo><mi>x</mi><mo>&#8594;</mo><mi>a</mi></math>
+      </d:informalequation>
+      <d:para>
+        if and only if there exist positive numbers <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#948;</mi></math> and
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>K</mi></math> such
+        that
+      </d:para>
+      <d:informalequation>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mo>|</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>|</mo><mo>&#8804;</mo><mi>K</mi><mo>|</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>|</mo><mo>&#160;</mo><mo>&#160;</mo><mi>f</mi><mi>o</mi><mi>r</mi><mo>&#160;</mo><mo>|</mo><mi>x</mi><mo>-</mo><mi>a</mi><mo>|</mo><mo>&lt;</mo><mi>&#948;</mi></math>
+      </d:informalequation>
+      <d:para>
+        if <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
+        is non-zero for values of <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math> sufficiently
+        close to <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math> , both of
+        these definitions can be unified using the limit superior:
+      </d:para>
+      <d:informalequation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&#160;</mo><mo>&#160;</mo><mi>a</mi><mi>s</mi><mo>&#160;</mo><mi>x</mi><mo>&#8594;</mo><mi>a</mi></math>
+      </d:informalequation>
+      <d:para>
+        if and only if:
+      </d:para>
+      <d:informalequation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+	          <mstyle displaystyle="true">
+		          <munder>
+			          <mi>lim</mi>
+			          <mrow>
+				          <mi>x</mi>
+				          <mo>&#x02192;</mo>
+				          <mi>a</mi>
+			          </mrow>
+		          </munder>
+	          </mstyle>
+	          <mrow>
+		          <mo rspace="0.3em" lspace="0em" stretchy="true" fence="true" form="prefix">&#x0007C;</mo>
+		          <mfrac linethickness="1">
+			          <mrow>
+				          <mi>f</mi>
+				          <mrow>
+					          <mo form="prefix">(</mo>
+					          <mi>x</mi>
+					          <mo form="postfix">)</mo>
+				          </mrow>
+			          </mrow>
+			          <mrow>
+				          <mi>g</mi>
+				          <mrow>
+					          <mo form="prefix">(</mo>
+					          <mi>x</mi>
+					          <mo form="postfix">)</mo>
+				          </mrow>
+			          </mrow>
+		          </mfrac>
+		          <mo rspace="0em" lspace="0.3em" stretchy="true" fence="true" form="postfix">&#x0007C;</mo>
+	          </mrow>
+	          <mo>&#x0003C;</mo>
+	          <mo>&#x0221E;</mo>
+          </mrow>
+        </math>
+      </d:informalequation>
+      <d:para>
+        To explain how we compute <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></math>
+        let us see an example. Consider a polynomial function with all positive
+        coefficients. Say our polynomial is something like <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msub><mi>a</mi><mn>0</mn></msub><msup><mi>x</mi><mi>n</mi></msup><mo>+</mo><msub><mi>a</mi><mn>1</mn></msub><msup><mi>x</mi><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msup><mo>+</mo><msub><mi>a</mi><mn>2</mn></msub><msup><mi>x</mi><mrow><mi>n</mi><mo>-</mo><mn>2</mn></mrow></msup><mo>+</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>+</mo><msub><mi>a</mi><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msub><mi>x</mi><mo>+</mo><msub><mi>a</mi><mi>n</mi></msub></math>. We
+        can very safely say
+      </d:para>
+      <d:informalequation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>|</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>|</mo><mo>&#8804;</mo><mo>(</mo><msub><mi>a</mi><mn>0</mn></msub><mo>+</mo><msub><mi>a</mi><mn>1</mn></msub><mo>+</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>+</mo><msub><mi>a</mi><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>a</mi><mi>n</mi></msub><mo>)</mo><msup><mi>x</mi><mi>n</mi></msup><mo>&#160;</mo><mo>&#160;</mo><mo>&#8704;</mo><mo>&#160;</mo><mi>x</mi><mo>&#8805;</mo><mn>1</mn></math>
+      </d:informalequation>
+      <d:para>
+        Therefore we can say <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mi>n</mi></msup><mo>)</mo></math>.
+      </d:para>
+      <d:para>
+        Complexity of algorithms form into various functions. I am presenting
+        graphs of some common functions below for quick understanding. By looking
+        at these graphs you can quickly deduce that which complexity fares well
+        and which does not.
+      </d:para>
+      <d:figure>
+        <d:title>Graphs of some common functions</d:title>
+        <d:mediaobject>
+          <d:imageobject>
+            <d:imagedata fileref="../images/function_plot_cropped.png" align="center"/>
+          </d:imageobject>
+        </d:mediaobject>
+      </d:figure>
+      <d:figure>
+        <d:title>Graphs of some more common functions</d:title>
+        <d:mediaobject>
+          <d:imageobject>
+            <d:imagedata fileref="../images/function_plot1_cropped.png" align="center" />
+          </d:imageobject>
+        </d:mediaobject>
+      </d:figure>
+      <d:figure>
+        <d:title>Graphs of O(n!)</d:title>
+        <d:mediaobject>
+          <d:imageobject>
+            <d:imagedata fileref="../images/factorial_cropped.png" align="center" />
+          </d:imageobject>
+        </d:mediaobject>
+      </d:figure>
+      <d:para>
+        As you can clearly see
+        <d:inlineequation>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>)</mo><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><mi>x</mi><mo>*</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>3</mn></msup><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><msup><mn>2</mn><mi>n</mi></msup><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><mi>n</mi><mo>!</mo><mo>)</mo></math>
+        </d:inlineequation>
+      </d:para>
+      <d:para>
+        As <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi></math>-notation
+        gives upper bound similarly <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#937;</mi></math>-notation
+        gives lower bound. <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>
+        means there exists two constants <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>L</mi></math> and <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>n</mi><mn>0</mn></msub></math>
+        such that
+      </d:para>
+      <d:informalequation>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>&#8805;</mo><mi>L</mi><mo>|</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>|</mo><mo>&#160;</mo><mo>&#160;</mo><mo>&#8704;</mo><mo>&#160;</mo><mi>n</mi><mo>&gt;</mo><msub><mi>n</mi><mn>0</mn></msub></math>
+      </d:informalequation>
+      <d:para>
+        Note that this is Knuth's definition
+        for <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#937;</mi></math> not
+        the Hardy-Littlewood definition. Knuth has commented on why he has
+        changed this definition:
+      </d:para>
+      <d:blockquote>
+        <d:attribution>D. E. Knuth</d:attribution>
+        <d:para>
+          Although I
+          have changed Hardy and Littlewood's definition of <math
+          xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#937;</mi></math>, I
+          feel justified
+          in doing so because their definition is by no means in wide use, and
+          because there are other ways to say what they want to say in the
+          comparatively rare cases when their definition
+          applies.
+        </d:para>
+      </d:blockquote>
+      <d:para>
+        Hardy-Littlewood's version of <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#937;</mi></math> is
+        given below:
+      </d:para>
+      <d:informalequation>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&#160;</mo><mo>(</mo><mi>x</mi><mo>&#8594;</mo><mo>&#8734;</mo><mo>)</mo><mo>&#160;</mo><mo>&#8660;</mo><mo>&#160;</mo><munder><mi>limsup</mi><mrow><mi>x</mi><mo>&#8594;</mo><mo>&#8734;</mo></mrow></munder><mfenced
+            open="|"
+            close="|"><mfrac><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></mfrac></mfenced><mo>&gt;</mo><mn>0</mn></math>
+      </d:informalequation>
+      <d:para>
+        If we want to write exact order of growth without being accurate about
+        constant factors <math 
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>L</mi></math> and <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>K</mi></math> then we use
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#920;</mi></math>-notation.
+      </d:para>
+      <d:para>
+        <d:inlineequation><math
+                              xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo><mo>&#8660;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math></d:inlineequation>
+        and <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>
+        implying <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#920;</mi></math>-notation
+        gives both upper and lower bounds.
+      </d:para>
+      <d:para>
+        Note that for an algorithm performing at a complexity of <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></math>
+        we can say that <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></math>
+        is its complexity as an approximation. It is allowed to represent a
+        complexity at a worse notation but not a better notation. Just that
+        the statement will be slightly inaccurate. The reason for this is that
+        the function which has worse complexity is still and upper bound of the
+        better function and thus our assumption of giving an upper bound holds
+        true.
+      </d:para>
+      <d:para>
+        If you know calculus and coordinate geometry then you would notice that a
+        worse function has a higher rate of growth i.e. slope of the curve
+        i.e. <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></math>
+        or <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mi>d</mi><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></math>
+        where <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>. For
+        any higher value of <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math> the slope or
+        rate of growth will eventually be higher for worse performing
+        function. For example, for <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></math>
+        that value of <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math> is 1 when
+        compared with <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></math>. This
+        value can be obtained by solving <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></math>
+        for the two functions.
+      </d:para>
+      <d:para>
+        In computer science for algorithm analysis we are almost always worried
+        about big-<math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi></math> complexity
+        because it gives upper bound i.e. for large set of input how the
+        algorithm will behave. The problem with big-<math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi></math> notation is that even though it talks about two constants <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>x</mi><mn>0</mn></msub></math>
+        and <math 
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>K</mi></math> it does not
+        give any hints about there values or how to compute them. It also does
+        not put any restriction on the values of these constants not gives any
+        guidelines when there are many such values.
+      </d:para>
+      <d:para>
+        There is also space efficiency or memory efficiency. There are times when
+        the devices we use do not have a lot of memory then we need to find
+        algorithms which are efficient memory-wise. For example, there are two
+        very good algorithms for sorting an array of values (or string) quick
+        sort and merge sort. However, consider the case when we have less memory
+        than the array then neither of these algorithms can be used. One of the
+        sorting algorithms among many is external sort. This technique is old
+        because in earlier devices memory was less and usually data to be sorted
+        was more. Algorithms which were very important a few decades ago are now
+        important merely for academic importance.
+      </d:para>
+    </d:sect2>
+    <d:sect2>
+      <d:title>An Example of Complexity Computation</d:title>
+      <d:para>
+        In an algorithm analysis we have to consider all operations although
+        many times if the code is simple you can just see and guess the
+        complexity. However, in case of complex code you will find it difficult
+        to do that. For example consider the following code which computes sum
+        of n numbers stored in an array.
+      </d:para>
+      <d:programlisting role="CLexer"><![CDATA[for(i=sum=0; i<n; ++i)
+  sum += a[i];]]></d:programlisting>
+      <d:para>
+        First we have two initializations for <d:code>i</d:code> and
+        <d:code>sum</d:code>. Let cost of assignment be <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mn>1</mn></msub></math>.
+        Then <d:code>i</d:code> is incremented from <d:code>0</d:code> to
+        <d:code>n-1</d:code>. Let cost of increment be <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mn>2</mn></msub></math>. Now
+        There are <d:code>n</d:code> additions and <d:code>n</d:code> assignments
+        for sum. Let cost of addition is <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mn>3</mn></msub></math>. So
+        total cost is <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>*</mo><mo>(</mo><msub><mi>C</mi><mn>1</mn></msub><mo>+</mo><msub><mi>C</mi><mn>3</mn></msub><mo>)</mo></math>. Thus
+        total cost is <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><mo>*</mo><msub><mi>C</mi><mn>1</mn></msub><mo>+</mo><mi>n</mi><mo>*</mo><msub><mi>C</mi><mn>2</mn></msub><mo>+</mo><mi>n</mi><mo>*</mo><mo>(</mo><msub><mi>C</mi><mn>1</mn></msub><mo>+</mo><mi>C</mi><mo>+</mo><mn>3</mn><mo>)</mo></math>
+        i.e. <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mo>(</mo><mn>2</mn><mo>+</mo><mi>n</mi><mo>)</mo><msub><mi>C</mi><mn>1</mn></msub><mo>+</mo><mi>n</mi><mo>*</mo><msub><mi>C</mi><mn>2</mn></msub><mo>+</mo><mi>n</mi><mo>*</mo><msub><mi>C</mi><mn>3</mn></msub></math>.
+        These constants <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mn>1</mn></msub></math>, <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mn>2</mn></msub></math> and <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>C</mi><mn>3</mn></msub></math>
+        can be measured in terms of clock cycles. Thus complexity is <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></math>.
+      </d:para>
+      <d:para>
+        As you can guess if we have nested loops complexity wil increase in
+        terms of power of n. However, the complexity may not increase exactly
+        by integral power.
+      </d:para>
+    </d:sect2>
+    <d:sect2>
+      <d:title>Simplicity</d:title>
+      <d:para>
+        It is not enough for an algorithm to be efficient from the perspective
+        of memory and time but it should also be simple enough to
+        implement. For example, splay-trees are very good for maintaining fast
+        search time. But the implementation is complex compared to a Red-Black
+        tree or AVL-tree therefore they are usually not preferred. However,
+        this is not the only reason. I will let you know more detail when we
+        discuss trees in their own chapter. Thus, even <d:code>gcc</d:code>
+        uses Red-Black trees as back-end storage medium for maps in STL.
+      </d:para>
+      <d:para>
+        Similarly, dynamic perfect sorting is very good for large set of data
+        but again it is rarely implemented because of complexity.
+      </d:para>
+    </d:sect2>
+    <d:sect2>
+      <d:title>More on Asymptotic Notations</d:title>
+      <d:sect3>
+        <d:title>Little o Notation</d:title>
+      </d:sect3>
+    </d:sect2>
+  </d:sect1>
+  <d:sect1>
+    <d:title>Problems on Complexity</d:title>
+    <d:para>
+      For each of the following pairs of functions <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo></math>
+      and <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo></math>,
+      either <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>
+      or <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>,
+      but not both. Determine the case.
+    </d:para>
+    <d:orderedlist>
+      <d:listitem>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>-</mo><mi>n</mi><mo>+</mo><mn>7</mn><mo>)</mo><mo>/</mo><mn>2</mn><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mn>6</mn><mi>n</mi><mo>+</mo><mn>9</mn></math>.
+      </d:listitem>
+      <d:listitem>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><mo>+</mo><mn>2</mn><msqrt><mi>n</mi></msqrt><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><msup><mi>n</mi><mn>2</mn></msup></math>.
+      </d:listitem>
+      <d:listitem>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><mo>+</mo><mi>log</mi><mi>n</mi><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><msqrt><mi>n</mi></msqrt></math>.
+      </d:listitem>
+      <d:listitem>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><mi>log</mi><mi>n</mi><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><msqrt><mi>n</mi></msqrt><mo>/</mo><mn>2</mn></math>.
+      </d:listitem>
+      <d:listitem>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><mo>+</mo><mi>log</mi><mi>n</mi><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><msqrt><mi>n</mi></msqrt></math>.
+      </d:listitem>
+      <d:listitem>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mn>2</mn><mo>(</mo><mi>log</mi><mi>n</mi><msup><mo>)</mo><mn>2</mn></msup><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>log</mi><mi>n</mi><mo>+</mo><mn>1</mn></math>.
+      </d:listitem>
+      <d:listitem>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mn>2</mn><mo>(</mo><mi>log</mi><mi>n</mi><msup><mo>)</mo><mn>2</mn></msup><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>log</mi><mi>n</mi><mo>+</mo><mn>1</mn></math>.
+      </d:listitem>
+      <d:listitem>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mn>4</mn><mi>n</mi><mi>log</mi><mi>n</mi><mo>+</mo><mi>n</mi><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>-</mo><mi>n</mi><mo>)</mo><mo>/</mo><mn>2</mn></math>.
+      </d:listitem>
+    </d:orderedlist>
+    <d:para>
+      Which of the following cases are true and which are false?
+    </d:para>
+    <d:orderedlist continuation="continues">
+      <d:listitem>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><msup><mi>n</mi><mn>2</mn></msup><mo>=</mo><mi>O</mi><mo>(</mo><mn>1</mn><mo>.</mo><mn>4</mn><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></math>.
+      </d:listitem>
+      <d:listitem>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>3</mn></msup><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></math>.
+      </d:listitem>
+      <d:listitem>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mi>log</mi><mi>n</mi><mo>=</mo><mi>O</mi><mo>(</mo><mi>n</mi><msqrt><mi>n</mi></msqrt><mo>)</mo></math>.
+      </d:listitem>
+      <d:listitem>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mi>n</mi></msqrt><mo>=</mo><mi>O</mi><mo>(</mo><mi>log</mi><mi>n</mi><mo>)</mo></math>
+      </d:listitem>
+      <d:listitem>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>log</mi><mi>n</mi><mo>=</mo><mi>O</mi><mo>(</mo><msqrt><mi>n</mi></msqrt><mo>)</mo></math>.
+      </d:listitem>
+      <d:listitem>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>3</mn></msup><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>+</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo><mo>)</mo></math>.
+      </d:listitem>
+      <d:listitem>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn><mo>/</mo><mi>n</mi><mo>=</mo><mi>O</mi><mo>(</mo><mi>log</mi><mi>n</mi><mo>)</mo></math>.
+      </d:listitem>
+      <d:listitem>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>log</mi><mi>n</mi><mo>=</mo><mi>O</mi><mo>(</mo><mn>1</mn><mo>/</mo><mi>n</mi><mo>)</mo></math>.
+      </d:listitem>
+      <d:listitem>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>log</mi><mi>n</mi><mo>=</mo><mi>O</mi><mo>(</mo><mfrac><mn>1</mn><msqrt><mi>n</mi></msqrt></mfrac><mo>)</mo></math>.
+      </d:listitem>
+      <d:listitem>
+        If <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>~</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo></math>,
+        then <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>.
+      </d:listitem>
+      <d:listitem>
+        If <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>,
+        then <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>.
+      </d:listitem>
+    </d:orderedlist>
   </d:sect1>
 </d:chapter>

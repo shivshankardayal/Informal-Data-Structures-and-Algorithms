@@ -13,8 +13,10 @@
   <xsl:param name="doc.collab.show">0</xsl:param>
 
   <!-- List *everything* in the table of contents -->
-  <xsl:param name="doc.lot.show"></xsl:param>
+  <xsl:param name="doc.lot.show">figure,table</xsl:param>
 
+  <xsl:param name="toc.section.depth">1</xsl:param>
+  
   <!-- Fix the blank note image -->
   <xsl:param name="figure.note">note</xsl:param>
   <xsl:param name="filename.as.url">1</xsl:param>
@@ -24,7 +26,7 @@
   <xsl:param name="xref.with.number.and.title" select="1"/>
 
   <!-- Blue - EVERYWHERE! -->
-  <xsl:param name="latex.hyperparam">colorlinks,linkcolor=blue,anchorcolor=blue,urlcolor=blue</xsl:param>
+  <xsl:param name="latex.hyperparam">colorlinks</xsl:param>
   <!-- Black - Test print version -->
   <!--xsl:param name="latex.hyperparam">colorlinks,linkcolor=black,anchorcolor=black,urlcolor=black</xsl:param-->
 
@@ -43,19 +45,19 @@
   <xsl:param name="xref.hypermarkup" select="1"/>
   <xsl:param name="refentry.numbered">1</xsl:param>
 
-  <xsl:param name="page.margin.top">.5in</xsl:param>
-  <xsl:param name="page.margin.bottom">.5in</xsl:param>
-  <xsl:param name="body.master.font">9pt</xsl:param>
+  <xsl:param name="page.margin.top">1in</xsl:param>
+  <xsl:param name="page.margin.bottom">1in</xsl:param>
+  <xsl:param name="body.master.font">10pt</xsl:param>
   
   <!-- Font's available at: -->
   <!-- http://iweb.dl.sourceforge.net/project/sourcesans.adobe/SourceSansPro_FontsOnly-1.050.zip -->
   <!-- http://iweb.dl.sourceforge.net/project/sourcecodepro.adobe/SourceCodePro_FontsOnly-1.017.zip -->
-  <!--xsl:param name="xetex.font">
-    <xsl:text>\setmainfont[Ligatures=TeX,Scale=1]{Nimbus Roman No9}
+  <xsl:param name="xetex.font">
+    <xsl:text>\setmainfont[Ligatures=TeX,Scale=1]{Times}
     </xsl:text>
-    <xsl:text>\setsansfont[Ligatures=TeX,Scale=.95]{Latin Modern Sans}
+    <xsl:text>\setsansfont[Ligatures=TeX,Scale=.95]{Helvetica}
     </xsl:text>
-    <xsl:text>\setmonofont{Nimbus Mono}
+    <xsl:text>\setmonofont[Scale=0.9]{Courier}
     </xsl:text>
-  </xsl:param-->
+  </xsl:param>
 </xsl:stylesheet>
