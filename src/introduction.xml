@@ -487,93 +487,6 @@ Div(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
       </d:mediaobject>
     </d:figure>
     <d:para>
-      I am presenting a table for runtime of various complexities, looking at
-      which you can appreciate the algorithms with better runtime.
-    </d:para>
-    <d:informaltable frame="border" border="1" class="centered">
-      <d:caption>
-        Time for <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
-        instructions on a <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>10</mn><mn>9</mn></msup></math>
-        instructions/second computer.
-      </d:caption>
-      <d:thead>
-        <d:tr>
-          <d:th><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math></d:th>
-          <d:th><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><msub><mi>log</mi><mn>2</mn></msub><mi>x</mi></math></d:th>
-          <d:th><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>x</mi><mn>2</mn></msup></math></d:th>
-          <d:th><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>x</mi><mn>3</mn></msup></math></d:th>
-          <d:th><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>2</mn><mi>x</mi></msup></math></d:th>
-        </d:tr>
-      </d:thead>
-      <d:tbody>
-        <d:tr>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-        </d:tr>
-        <d:tr>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-        </d:tr>
-        <d:tr>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-        </d:tr>
-        <d:tr>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-        </d:tr>
-        <d:tr>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-        </d:tr>
-        <d:tr>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-        </d:tr>
-        <d:tr>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-        </d:tr>
-        <d:tr>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-        </d:tr>
-        <d:tr>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-          <d:td></d:td>
-        </d:tr>
-      </d:tbody>
-    </d:informaltable>
-    <d:para>
       Given below is a sample C program which implements this algorithm:
     </d:para>
     <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
@@ -844,6 +757,118 @@ int main()
         </d:mediaobject>
       </d:figure>
       <d:para>
+        I am presenting a table for runtime of various complexities, looking at
+        which you can appreciate the algorithms with better runtime.
+      </d:para>
+      <d:table frame="border" border="1" class="centered">
+        <d:caption>
+          Time for <math
+          xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
+          instructions on a <math
+          xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>10</mn><mn>9</mn></msup></math>
+          instructions/second computer.
+        </d:caption>
+        <d:thead>
+          <d:tr>
+            <d:th><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math></d:th>
+            <d:th><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>x</mi></math></d:th>
+            <d:th><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>x</mi><msub><mi>log</mi><mn>2</mn></msub><mi>x</mi></math></d:th>
+            <d:th><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></math></d:th>
+            <d:th><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup></math></d:th>
+            <d:th><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mn>2</mn><mi>x</mi></msup></math></d:th>
+          </d:tr>
+        </d:thead>
+        <d:tbody>
+          <d:tr>
+            <d:td>10</d:td>
+            <d:td>.01 &#956;s</d:td>
+            <d:td>.03 &#956;s</d:td>
+            <d:td>.1 &#956;s</d:td>
+            <d:td>1 &#956;s</d:td>
+            <d:td>1 &#956;s</d:td>
+          </d:tr>
+          <d:tr>
+            <d:td>20</d:td>
+            <d:td>.02 &#956;s</d:td>
+            <d:td>.09 &#956;s</d:td>
+            <d:td>.4 &#956;s</d:td>
+            <d:td>8 &#956;s</d:td>
+            <d:td>1 ms</d:td>
+          </d:tr>
+          <d:tr>
+            <d:td>30</d:td>
+            <d:td>.03 &#956;s</d:td>
+            <d:td>.15 &#956;s</d:td>
+            <d:td>.9 &#956;s</d:td>
+            <d:td>27 &#956;s</d:td>
+            <d:td>1 s</d:td>
+          </d:tr>
+          <d:tr>
+            <d:td>40</d:td>
+            <d:td>.04 &#956;s</d:td>
+            <d:td>.21 &#956;s</d:td>
+            <d:td>1.6 &#956;s</d:td>
+            <d:td>64 &#956;s</d:td>
+            <d:td>18.3 min</d:td>
+          </d:tr>
+          <d:tr>
+            <d:td>50</d:td>
+            <d:td>.05 &#956;s</d:td>
+            <d:td>.28 &#956;s</d:td>
+            <d:td>2.5 &#956;s</d:td>
+            <d:td>125 &#956;s</d:td>
+            <d:td>13 d</d:td>
+          </d:tr>
+          <d:tr>
+            <d:td>100</d:td>
+            <d:td>.1 &#956;s</d:td>
+            <d:td>.66 &#956;s</d:td>
+            <d:td>10 &#956;s</d:td>
+            <d:td>1 ms</d:td>
+            <d:td>4*10<d:superscript>13</d:superscript> yrs</d:td>
+          </d:tr>
+          <d:tr>
+            <d:td>1000</d:td>
+            <d:td>1 &#956;s</d:td>
+            <d:td>9.96 &#956;s</d:td>
+            <d:td>1 ms</d:td>
+            <d:td>1 s</d:td>
+            <d:td>32*10<d:superscript>283</d:superscript> yrs</d:td>
+          </d:tr>
+          <d:tr>
+            <d:td>10,000</d:td>
+            <d:td>10 &#956;s</d:td>
+            <d:td>130 &#956;s</d:td>
+            <d:td>100 ms</d:td>
+            <d:td>16.67 min</d:td>
+            <d:td></d:td>
+          </d:tr>
+          <d:tr>
+            <d:td>100,000</d:td>
+            <d:td>100 &#956;s</d:td>
+            <d:td>1.66 ms</d:td>
+            <d:td>10 s</d:td>
+            <d:td>11.57 days</d:td>
+            <d:td></d:td>
+          </d:tr>
+          <d:tr>
+            <d:td>1,000,000</d:td>
+            <d:td>1 ms</d:td>
+            <d:td>19.92 ms</d:td>
+            <d:td>16.67 min</d:td>
+            <d:td>31.71 yrs</d:td>
+            <d:td></d:td>
+          </d:tr>
+        </d:tbody>
+      </d:table>
+      <d:para>
+        The complexity of function <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>2</mn><mi>x</mi></msup></math>
+        rises so 
+        fast that it is already beyond the number of years sun is going to
+        survive.
+      </d:para>
+      <d:para>
         As you can clearly see
         <d:inlineequation>
           <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>)</mo><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><mi>x</mi><mo>*</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>3</mn></msup><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><msup><mn>2</mn><mi>x</mi></msup><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><mi>x</mi><mo>!</mo><mo>)</mo></math>
@@ -1098,47 +1123,47 @@ int main()
     <d:title>Problems on Complexity</d:title>
     <d:para>
       For each of the following pairs of functions <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo></math>
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
       and <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo></math>,
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>,
       either <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo></math>
       or <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>,
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo></math>,
       but not both. Determine the case.
     </d:para>
     <d:orderedlist>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>-</mo><mi>n</mi><mo>+</mo><mn>7</mn><mo>)</mo><mo>/</mo><mn>2</mn><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mn>6</mn><mi>n</mi><mo>+</mo><mn>9</mn></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mi>x</mi><mo>+</mo><mn>7</mn><mo>)</mo><mo>/</mo><mn>2</mn><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>6</mn><mi>x</mi><mo>+</mo><mn>9</mn></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><mo>+</mo><mn>2</mn><msqrt><mi>n</mi></msqrt><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><msup><mi>n</mi><mn>2</mn></msup></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>x</mi><mo>+</mo><mn>2</mn><msqrt><mi>x</mi></msqrt><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><mo>+</mo><mi>log</mi><mi>n</mi><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><msqrt><mi>n</mi></msqrt></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>x</mi><mo>+</mo><mi>log</mi><mi>x</mi><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>x</mi><msqrt><mi>x</mi></msqrt></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><mi>log</mi><mi>n</mi><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><msqrt><mi>n</mi></msqrt><mo>/</mo><mn>2</mn></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>x</mi><mi>log</mi><mi>x</mi><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>x</mi><msqrt><mi>x</mi></msqrt><mo>/</mo><mn>2</mn></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><mo>+</mo><mi>log</mi><mi>n</mi><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><msqrt><mi>n</mi></msqrt></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>x</mi><mo>+</mo><mi>log</mi><mi>x</mi><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msqrt><mi>x</mi></msqrt></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mn>2</mn><mo>(</mo><mi>log</mi><mi>n</mi><msup><mo>)</mo><mn>2</mn></msup><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>log</mi><mi>n</mi><mo>+</mo><mn>1</mn></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>2</mn><mo>(</mo><mi>log</mi><mi>x</mi><msup><mo>)</mo><mn>2</mn></msup><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>log</mi><mi>x</mi><mo>+</mo><mn>1</mn></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mn>2</mn><mo>(</mo><mi>log</mi><mi>n</mi><msup><mo>)</mo><mn>2</mn></msup><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>log</mi><mi>n</mi><mo>+</mo><mn>1</mn></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>2</mn><mo>(</mo><mi>log</mi><mi>x</mi><msup><mo>)</mo><mn>2</mn></msup><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>log</mi><mi>x</mi><mo>+</mo><mn>1</mn></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mn>4</mn><mi>n</mi><mi>log</mi><mi>n</mi><mo>+</mo><mi>n</mi><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>-</mo><mi>n</mi><mo>)</mo><mo>/</mo><mn>2</mn></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>4</mn><mi>x</mi><mi>log</mi><mi>x</mi><mo>+</mo><mi>x</mi><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mi>x</mi><mo>)</mo><mo>/</mo><mn>2</mn></math>.
       </d:listitem>
     </d:orderedlist>
     <d:para>
@@ -1146,86 +1171,86 @@ int main()
     </d:para>
     <d:orderedlist continuation="continues">
       <d:listitem>
-        <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><msup><mi>n</mi><mn>2</mn></msup><mo>=</mo><mi>O</mi><mo>(</mo><mn>1</mn><mo>.</mo><mn>4</mn><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></math>.
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mi>O</mi><mo>(</mo><mn>1</mn><mo>.</mo><mn>4</mn><msup><mi>x</mi><mn>3</mn></msup><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
-        <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>3</mn></msup><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></math>.
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>x</mi><mn>3</mn></msup><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
-        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mi>log</mi><mi>n</mi><mo>=</mo><mi>O</mi><mo>(</mo><mi>n</mi><msqrt><mi>n</mi></msqrt><mo>)</mo></math>.
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mi>log</mi><mi>x</mi><mo>=</mo><mi>O</mi><mo>(</mo><mi>x</mi><msqrt><mi>x</mi></msqrt><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
-        <math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mi>n</mi></msqrt><mo>=</mo><mi>O</mi><mo>(</mo><mi>log</mi><mi>n</mi><mo>)</mo></math>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mi>x</mi></msqrt><mo>=</mo><mi>O</mi><mo>(</mo><mi>log</mi><mi>x</mi><mo>)</mo></math>
       </d:listitem>
       <d:listitem>
-        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>log</mi><mi>n</mi><mo>=</mo><mi>O</mi><mo>(</mo><msqrt><mi>n</mi></msqrt><mo>)</mo></math>.
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>log</mi><mi>x</mi><mo>=</mo><mi>O</mi><mo>(</mo><msqrt><mi>x</mi></msqrt><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
-        <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>3</mn></msup><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>+</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo><mo>)</mo></math>.
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>x</mi><mn>3</mn></msup><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
-        <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn><mo>/</mo><mi>n</mi><mo>=</mo><mi>O</mi><mo>(</mo><mi>log</mi><mi>n</mi><mo>)</mo></math>.
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn><mo>/</mo><mi>x</mi><mo>=</mo><mi>O</mi><mo>(</mo><mi>log</mi><mi>x</mi><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
-        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>log</mi><mi>n</mi><mo>=</mo><mi>O</mi><mo>(</mo><mn>1</mn><mo>/</mo><mi>n</mi><mo>)</mo></math>.
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>log</mi><mi>x</mi><mo>=</mo><mi>O</mi><mo>(</mo><mn>1</mn><mo>/</mo><mi>x</mi><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
-        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>log</mi><mi>n</mi><mo>=</mo><mi>O</mi><mo>(</mo><mfrac><mn>1</mn><msqrt><mi>n</mi></msqrt></mfrac><mo>)</mo></math>.
-      </d:listitem>
-      <d:listitem>
-        If <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>~</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo></math>,
-        then <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>.
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>log</mi><mi>x</mi><mo>=</mo><mi>O</mi><mo>(</mo><mfrac><mn>1</mn><msqrt><mi>x</mi></msqrt></mfrac><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
         If <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>,
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>~</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>,
         then <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>.
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo></math>.
+      </d:listitem>
+      <d:listitem>
+        If <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo></math>,
+        then <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>+</mo><msqrt><mi>n</mi></msqrt><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>x</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>+</mo><msqrt><mi>x</mi></msqrt><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>+</mo><msqrt><mi>n</mi></msqrt><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mi>log</mi><mi>n</mi><mo>)</mo></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>x</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>+</mo><msqrt><mi>x</mi></msqrt><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mi>log</mi><mi>x</mi><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>+</mo><msqrt><mi>n</mi></msqrt><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>n</mi><mo>+</mo><mi>n</mi><msqrt><mi>n</mi></msqrt><mo>+</mo><msqrt><mi>n</mi></msqrt><mo>)</mo></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>x</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>+</mo><msqrt><mi>x</mi></msqrt><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>x</mi><mo>+</mo><mi>x</mi><msqrt><mi>x</mi></msqrt><mo>+</mo><msqrt><mi>x</mi></msqrt><mo>)</mo></math>.
       </d:listitem>
     </d:orderedlist>
     <d:para>
       For following functions, find out whether <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo><mo>,</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>,</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>n</mi><mo>)</mo></math>
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>,</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>,</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
       or none of these.
     </d:para>
     <d:orderedlist continuation="continues">
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mn>3</mn><mi>n</mi><mo>+</mo><mn>4</mn></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>4</mn></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mn>3</mn><mo>.</mo><mn>5</mn><msqrt><mi>n</mi></msqrt><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>log</mi><mi>n</mi><mo>+</mo><mn>7</mn></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>3</mn><mo>.</mo><mn>5</mn><msqrt><mi>x</mi></msqrt><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>log</mi><mi>x</mi><mo>+</mo><mn>7</mn></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><msup><mi>n</mi><mn>2</mn></msup><mroot><mi>n</mi><mn>3</mn></mroot><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><msup><mi>n</mi><mn>2</mn></msup><mo>-</mo><mn>7</mn><mi>n</mi></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mroot><mi>x</mi><mn>3</mn></mroot><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>7</mn><mi>x</mi></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><msup><mi>n</mi><mn>2</mn></msup><mroot><mi>n</mi><mn>3</mn></mroot><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><mi>log</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><mo>)</mo></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mroot><mi>x</mi><mn>3</mn></mroot><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>x</mi><mi>log</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mfrac><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>-</mo><mn>3</mn></mrow><mrow><mn>3</mn><mo>+</mo><msup><mn>2</mn><mrow><mo>-</mo><mi>n</mi></mrow></msup></mrow></mfrac><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><mo>+</mo><mn>5</mn></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>3</mn></mrow><mrow><mn>3</mn><mo>+</mo><msup><mn>2</mn><mrow><mo>-</mo><mi>x</mi></mrow></msup></mrow></mfrac><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>x</mi><mo>+</mo><mn>5</mn></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><msup><mn>3</mn><mi>n</mi></msup><mo>-</mo><msup><mi>n</mi><mn>3</mn></msup><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><msup><mi>n</mi><mn>5</mn></msup><mo>+</mo><msup><mi>n</mi><mn>3</mn></msup><mo>+</mo><mi>n</mi></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mn>3</mn><mi>x</mi></msup><mo>-</mo><msup><mi>x</mi><mn>3</mn></msup><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mi>x</mi><mn>5</mn></msup><mo>+</mo><msup><mi>x</mi><mn>3</mn></msup><mo>+</mo><mi>x</mi></math>.
       </d:listitem>
     </d:orderedlist>
     <d:para>
@@ -1234,64 +1259,64 @@ int main()
     <d:orderedlist continuation="continues">
       <d:listitem>
         <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mo>(</mo><mi>n</mi><mo>+</mo><mn>3</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></math>.
+        xmlns="http://www.w3.org/1998/Math/MathML"><mo>(</mo><mi>x</mi><mo>+</mo><mn>3</mn><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
         For all <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>&#8805;</mo><mn>1</mn></math>
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>&#8805;</mo><mn>1</mn></math>
         and all <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>a</mi><mn>0</mn></msub><mo>,</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>a</mi><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>a</mi><mi>n</mi></msub><mo>&#8712;</mo><mi
+        xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>a</mi><mn>0</mn></msub><mo>,</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>a</mi><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>a</mi><mi>x</mi></msub><mo>&#8712;</mo><mi
         mathvariant="normal">&#8477;</mi></math>,
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>a</mi><mi>n</mi></msub><msup><mi>x</mi><mi>n</mi></msup><mo>+</mo><msub><mi>a</mi><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msub><msup><mi>k</mi><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msup><mo>+</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>+</mo><msub><mi>a</mi><mn>1</mn></msub><mi>x</mi><mo>+</mo><msub><mi>a</mi><mn>0</mn></msub><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mi>n</mi></msup><mo>)</mo></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>a</mi><mi>x</mi></msub><msup><mi>x</mi><mi>x</mi></msup><mo>+</mo><msub><mi>a</mi><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow></msub><msup><mi>k</mi><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow></msup><mo>+</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>+</mo><msub><mi>a</mi><mn>1</mn></msub><mi>x</mi><mo>+</mo><msub><mi>a</mi><mn>0</mn></msub><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mi>x</mi></msup><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
         <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mo>&#8968;</mo><mi>log</mi><mi>n</mi><mo>&#8969;</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></math>.
+        xmlns="http://www.w3.org/1998/Math/MathML"><mo>&#8968;</mo><mi>log</mi><mi>x</mi><mo>&#8969;</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mn>6</mn><mi>n</mi><mo>&#8970;</mo><mi>log</mi><mi>n</mi><mo>&#8971;</mo><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mn>6</mn><mi>x</mi><mo>&#8970;</mo><mi>log</mi><mi>x</mi><mo>&#8971;</mo><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>2</mn></msup><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>n</mi><mo>)</mo></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>3</mn></msup><mo>-</mo><msup><mi>n</mi><mn>2</mn></msup><mo>=</mo><mi>&#920;</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>x</mi><mn>3</mn></msup><mo>-</mo><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mi>&#920;</mi><mo>(</mo><msup><mi>x</mi><mn>3</mn></msup><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mn>7</mn><mi>n</mi><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><mn>7</mn><mi>x</mi><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>3</mn></msup><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>2</mn><mi>n</mi></msup><mo>=</mo><mi>O</mi><mo>(</mo><mi>n</mi><mo>!</mo><mo>)</mo></math>.
+            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>2</mn><mi>x</mi></msup><mo>=</mo><mi>O</mi><mo>(</mo><mi>x</mi><mo>!</mo><mo>)</mo></math>.
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mi>log</mi></msup><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><msup><mrow><mi>log</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><mi>n</mi></msup><mo>)</mo><mo>?</mo></math>
+            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>x</mi><mi>log</mi></msup><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><msup><mrow><mi>log</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mi>x</mi></msup><mo>)</mo><mo>?</mo></math>
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mi>log</mi></msup><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#937;</mi><mo>(</mo><msup><mrow><mi>log</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><mi>n</mi></msup><mo>)</mo><mo>?</mo></math>
+            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>x</mi><mi>log</mi></msup><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>&#937;</mi><mo>(</mo><msup><mrow><mi>log</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mi>x</mi></msup><mo>)</mo><mo>?</mo></math>
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mrow><mi>log</mi><mi>log</mi><mi>log</mi><mi>n</mi></mrow></msup><mo>=</mo><mi>O</mi><mo>(</mo><mi>log</mi><mi>n</mi><mo>!</mo><mo>)</mo></math>
+            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>x</mi><mrow><mi>log</mi><mi>log</mi><mi>log</mi><mi>x</mi></mrow></msup><mo>=</mo><mi>O</mi><mo>(</mo><mi>log</mi><mi>x</mi><mo>!</mo><mo>)</mo></math>
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mrow><mi>log</mi><mi>log</mi><mi>log</mi><mi>n</mi></mrow></msup><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>log</mi><mi>n</mi><mo>!</mo><mo>)</mo><mo>)</mo></math>
+            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>x</mi><mrow><mi>log</mi><mi>log</mi><mi>log</mi><mi>x</mi></mrow></msup><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>log</mi><mi>x</mi><mo>!</mo><mo>)</mo><mo>)</mo></math>
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mfenced><msup><mfenced><mfrac><mi>n</mi><mrow><mi>log</mi><mi>log</mi><mi>n</mi></mrow></mfrac></mfenced><mfrac><mn>1</mn><mn>2</mn></mfrac></msup></mfenced><mo>=</mo><mi>O</mi><mo>(</mo><mo>&#8970;</mo><msqrt><mi>n</mi></msqrt><mo>)</mo><mo>?</mo></math>
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mfenced><msup><mfenced><mfrac><mi>x</mi><mrow><mi>log</mi><mi>log</mi><mi>x</mi></mrow></mfrac></mfenced><mfrac><mn>1</mn><mn>2</mn></mfrac></msup></mfenced><mo>=</mo><mi>O</mi><mo>(</mo><mo>&#8970;</mo><msqrt><mi>x</mi></msqrt><mo>)</mo><mo>?</mo></math>
       </d:listitem>
       <d:listitem>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><msup><msup><mn>2</mn><mfenced><mrow><mn>1</mn><mo>+</mo><mi>O</mi><mfenced><mfrac><mn>1</mn><mi>n</mi></mfrac></mfenced></mrow></mfenced></msup><mn>2</mn></msup><mo>=</mo><mn>2</mn><mo>+</mo><mi>O</mi><mfenced><mfrac><mn>1</mn><mi>n</mi></mfrac></mfenced><mo>?</mo></math>
+            xmlns="http://www.w3.org/1998/Math/MathML"><msup><msup><mn>2</mn><mfenced><mrow><mn>1</mn><mo>+</mo><mi>O</mi><mfenced><mfrac><mn>1</mn><mi>x</mi></mfrac></mfenced></mrow></mfenced></msup><mn>2</mn></msup><mo>=</mo><mn>2</mn><mo>+</mo><mi>O</mi><mfenced><mfrac><mn>1</mn><mi>x</mi></mfrac></mfenced><mo>?</mo></math>
       </d:listitem>
     </d:orderedlist>
     <d:para>
@@ -1329,7 +1354,7 @@ int main()
         and <math
         xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>f</mi><mn>2</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>&#937;</mi><mo>(</mo><msub><mi>g</mi><mn>2</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo></math>,
         <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>f</mi><mn>1</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>+</mo><msub><mi>f</mi><mn>2</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><msub><mi>g</mi><mn>1</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>,</mo><msub><mi>g</mi><mn>2</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>)</mo></math>.
+        xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>f</mi><mn>1</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>+</mo><msub><mi>f</mi><mn>2</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>m</mi><mi>i</mi><mi>x</mi><mo>(</mo><msub><mi>g</mi><mn>1</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>,</mo><msub><mi>g</mi><mn>2</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>)</mo></math>.
       </d:listitem>
             <d:listitem>
         If <math
