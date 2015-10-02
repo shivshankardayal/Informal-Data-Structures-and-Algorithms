@@ -744,7 +744,7 @@ int main()
       <d:para>
         As you can clearly see
         <d:inlineequation>
-          <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>)</mo><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><mi>x</mi><mo>*</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>3</mn></msup><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><msup><mn>2</mn><mi>n</mi></msup><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><mi>n</mi><mo>!</mo><mo>)</mo></math>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>)</mo><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><mi>x</mi><mo>*</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>3</mn></msup><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><msup><mn>2</mn><mi>x</mi></msup><mo>)</mo><mo>&lt;</mo><mi>O</mi><mo>(</mo><mi>x</mi><mo>!</mo><mo>)</mo></math>
         </d:inlineequation>
       </d:para>
       <d:para>
@@ -753,7 +753,7 @@ int main()
         gives upper bound similarly <math
         xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#937;</mi></math>-notation
         gives lower bound. <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>
         means there exists two constants <math
         xmlns="http://www.w3.org/1998/Math/MathML"><mi>L</mi></math> and <math
         xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>n</mi><mn>0</mn></msub></math>
@@ -761,7 +761,7 @@ int main()
       </d:para>
       <d:informalequation>
         <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>&#8805;</mo><mi>L</mi><mo>|</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>|</mo><mo>&#160;</mo><mo>&#160;</mo><mo>&#8704;</mo><mo>&#160;</mo><mi>n</mi><mo>&gt;</mo><msub><mi>n</mi><mn>0</mn></msub></math>
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>&#8805;</mo><mi>L</mi><mo>|</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>|</mo><mo>&#160;</mo><mo>&#160;</mo><mo>&#8704;</mo><mo>&#160;</mo><mi>x</mi><mo>&gt;</mo><msub><mi>x</mi><mn>0</mn></msub></math>
       </d:informalequation>
       <d:para>
         Note that this is Knuth's definition
@@ -804,18 +804,18 @@ int main()
       </d:para>
       <d:para>
         <d:inlineequation><math
-                              xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo><mo>&#8660;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math></d:inlineequation>
+                              xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&#8660;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo></math></d:inlineequation>
         and <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo></math>
         implying <math
         xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#920;</mi></math>-notation
         gives both upper and lower bounds.
       </d:para>
       <d:para>
         Note that for an algorithm performing at a complexity of <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></math>
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo></math>
         we can say that <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></math>
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>3</mn></msup><mo>)</mo></math>
         is its complexity as an approximation. It is allowed to represent a
         complexity at a worse notation but not a better notation. Just that
         the statement will be slightly inaccurate. The reason for this is that
@@ -836,11 +836,11 @@ int main()
         xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math> the slope or
         rate of growth will eventually be higher for worse performing
         function. For example, for <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></math>
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo></math>
         that value of <math
         xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math> is 1 when
         compared with <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></math>. This
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo></math>. This
         value can be obtained by solving <math
         xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac></math>
         for the two functions.
@@ -933,6 +933,57 @@ int main()
       <d:title>More on Asymptotic Notations</d:title>
       <d:sect3>
         <d:title>Little o Notation</d:title>
+        <d:para>
+          The notation is written as <math
+          xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>f</mi><mrow><mo
+          form="prefix">(</mo><mi>x</mi><mo
+          form="postfix">)</mo></mrow><mo>=</mo><mi>o</mi><mrow><mo
+          form="prefix">(</mo><mi>g</mi><mo form="prefix">(</mo><mi>x</mi><mo
+          form="postfix">)</mo><mo
+          form="postfix">)</mo></mrow></mrow></math>. And in set notation it is
+          <math
+              xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>&#8712;</mo><mi>o</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo></math>. It
+          means that <math
+          xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
+          grows faster than <math
+          xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>. As <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>&#8594;</mo><mo>&#8734;</mo></math> for every positive constant <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#949;</mi></math> there exists a constant <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math> such that
+        </d:para>
+        <d:informalequation>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>|</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>|</mo><mo>&#8804;</mo><mi>&#1013;</mi><mo>|</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>|</mo><mo>&#160;</mo><mo>&#8704;</mo><mo>&#160;</mo><mi>x</mi><mo>&#8805;</mo><mi>N</mi></math>.
+        </d:informalequation>
+        <d:para>
+          Note the difference between big-O and little-o. While for big-O we
+          need at least one constant but for little-o it must hold true for all
+          constants, however small. Thus, the constraints for little-o is
+          stronger than big-O. This also implies a function which is big-O will
+          be little-o but may not be other way around.
+        </d:para>
+        <d:para>
+          If <math
+          xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
+          is nonzero, or at least becomes nonzero beyond a certain value of its
+          variable, the relation <math
+          xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>o</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo></math>
+          is equivalent to
+        </d:para>
+        <d:informalequation>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><munder><mi>lim</mi><mrow><mi>x</mi><mo>&#8594;</mo><mo>&#8734;</mo></mrow></munder><mfrac><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow></mfrac><mo>=</mo><mn>0</mn></math>.
+        </d:informalequation>
+      </d:sect3>
+      <d:sect3>
+        <d:title>Little <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#969;</mi></math>
+        Notation</d:title>
+        <d:para>
+          Little-<math
+          xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#969;</mi></math>
+          notation is the inverse of the <math 
+          xmlns="http://www.w3.org/1998/Math/MathML"><mi>o</mi></math>-notation
+          i.e.,
+          <d:informalequation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>&#8712;</mo><mi>o</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&#8660;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>&#969;</mi><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
+          </d:informalequation>
+        </d:para>
       </d:sect3>
     </d:sect2>
   </d:sect1>
@@ -1025,6 +1076,44 @@ int main()
         xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>,
         then <math
         xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math>.
+      </d:listitem>
+      <d:listitem>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>+</mo><msqrt><mi>n</mi></msqrt><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></math>.
+      </d:listitem>
+      <d:listitem>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>+</mo><msqrt><mi>n</mi></msqrt><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mi>log</mi><mi>n</mi><mo>)</mo></math>.
+      </d:listitem>
+      <d:listitem>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>+</mo><msqrt><mi>n</mi></msqrt><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>n</mi><mo>+</mo><mi>n</mi><msqrt><mi>n</mi></msqrt><mo>+</mo><msqrt><mi>n</mi></msqrt><mo>)</mo></math>.
+      </d:listitem>
+    </d:orderedlist>
+    <d:para>
+      For following functions, find out whether <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo><mo>,</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#937;</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>,</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>&#920;</mi><mo>(</mo><mi>n</mi><mo>)</mo></math>
+      or none of these.
+    </d:para>
+    <d:orderedlist continuation="continues">
+      <d:listitem>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mn>3</mn><mi>n</mi><mo>+</mo><mn>4</mn></math>.
+      </d:listitem>
+      <d:listitem>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mn>3</mn><mo>.</mo><mn>5</mn><msqrt><mi>n</mi></msqrt><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>log</mi><mi>n</mi><mo>+</mo><mn>7</mn></math>.
+      </d:listitem>
+      <d:listitem>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><msup><mi>n</mi><mn>2</mn></msup><mroot><mi>n</mi><mn>3</mn></mroot><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><msup><mi>n</mi><mn>2</mn></msup><mo>-</mo><mn>7</mn><mi>n</mi></math>.
+      </d:listitem>
+      <d:listitem>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><msup><mi>n</mi><mn>2</mn></msup><mroot><mi>n</mi><mn>3</mn></mroot><mo>,</mo><mo>&#160;</mo><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>n</mi><mi>log</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><mo>)</mo></math>.
+      </d:listitem>
+      <d:listitem>
+        
       </d:listitem>
     </d:orderedlist>
   </d:sect1>
