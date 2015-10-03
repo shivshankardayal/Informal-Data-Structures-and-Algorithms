@@ -1,0 +1,24 @@
+<d:chapter version="5.0" xmlns:d="http://docbook.org/ns/docbook"
+           xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+           xmlns:mml="http://www.w3.org/1998/Math/MathML">
+  <?xml-stylesheet href="../css/style.css" type="text/css"?>
+  <?dbhtml filename="recursion/index.html" ?>
+  <d:title>Recursion</d:title>
+  <d:para>
+    In this chapter we will study recursion. Recursion is such a powerful
+    concept that it requires its own chapter. Usually, beginners find it hard
+    to understand recursion. We will study several problems and their solutions
+    to foster the concept of recursion. We will also study advantages and
+    disadvantages of recursion. I have already discussed recursion in small
+    detail <d:link xlink:href="/c/func/#idp51865936">here</d:link>. Usually,
+    beginners do not understand recursion because they do not understand how
+    the stack(not the data structure but the stack of a process in memory)
+    works. Once you understand how it works it is very easy to understand
+    recursion. I will tread recursion in much greater depth here than what was
+    presented in C programming book.
+  </d:para>
+  <d:para>
+    Formally, we can say that a definition, which defines an object in terms of
+    simpler case of itself is recursive definition.
+  </d:para>
+</d:chapter>

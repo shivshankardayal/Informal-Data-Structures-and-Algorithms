@@ -1647,16 +1647,7 @@ int main()
       </d:listitem>
     </d:orderedlist>
     <d:para>
-      Remaining problems are left as an exercise. Now that we understand
-      complexity a bit let us turn our focus back on ADTs. I believe this
-      change in topic will save you from boredom. I will present few
-      more important ADTs.
+      Remaining problems are left as an exercise.
     </d:para>
-  </d:sect1>
-  <d:sect1>
-    <d:title>More ADTs</d:title>
-    <d:sect2>
-      <d:title>An ADT for Sequence Type</d:title>
-    </d:sect2>
   </d:sect1>
 </d:chapter>

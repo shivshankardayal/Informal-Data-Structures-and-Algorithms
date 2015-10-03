@@ -3,7 +3,7 @@
   <!-- See:
        http://fossies.org/linux/privat/dblatex-0.3.4.tar.gz:a/dblatex-0.3.4/docs/xhtml/manual/sec-pagination-params.html
        for more information on how to use the following parameters -->
-  <xsl:param name="geometry.options">asymmetric</xsl:param>
+  <xsl:param name="geometry.options"></xsl:param>
   <xsl:param name="paper.type">a4paper</xsl:param>
 
   <!-- Include the colophon in the Table of Contents -->
@@ -53,11 +53,11 @@
   <!-- http://iweb.dl.sourceforge.net/project/sourcesans.adobe/SourceSansPro_FontsOnly-1.050.zip -->
   <!-- http://iweb.dl.sourceforge.net/project/sourcecodepro.adobe/SourceCodePro_FontsOnly-1.017.zip -->
   <xsl:param name="xetex.font">
-    <xsl:text>\setmainfont[Ligatures=TeX,Scale=1]{Times}
+    <xsl:text>\setmainfont{Latin Modern Roman}
     </xsl:text>
-    <xsl:text>\setsansfont[Ligatures=TeX,Scale=.95]{Helvetica}
+    <xsl:text>\setsansfont{Latin Modern Sans}
     </xsl:text>
-    <xsl:text>\setmonofont[Scale=0.9]{Courier}
+    <xsl:text>\setmonofont{Latin Modern Mono}
     </xsl:text>
   </xsl:param>
 </xsl:stylesheet>
