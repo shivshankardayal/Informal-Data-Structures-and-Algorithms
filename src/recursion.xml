@@ -14,11 +14,77 @@
     beginners do not understand recursion because they do not understand how
     the stack(not the data structure but the stack of a process in memory)
     works. Once you understand how it works it is very easy to understand
-    recursion. I will tread recursion in much greater depth here than what was
+    recursion. I will treat recursion in much greater depth here than what was
     presented in C programming book.
   </d:para>
   <d:para>
     Formally, we can say that a definition, which defines an object in terms of
-    simpler case of itself is recursive definition.
+    simpler case of itself is recursive definition. n C recusion is the concept
+    of a function calling itself. When a repeated operation has to be preformed
+    over a variable, recursion can be used. Recursion simplifies the code a
+    lot. Typically there is always a more effective iterative solutions are
+    available but there are certain cases where recursion is always better than
+    iteration. For example, traversal of trees where iteration is not so
+    effective as compared to recursion. For beginners it is hard to understand
+    recursion but once you understand it then it is not that hard to
+    understand. A classic example is that of factorial calculation which would
+    serve as base of the entire concept. The formula for factorial is given by
+    <math xmlns="http://www.w3.org/1998/Math/MathML"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>!</mo><mo>=</mo><munderover><mo>&#x220F;</mo><mrow
+          class="MJX-TeXAtom-ORD"><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>k</mi></math>
+    and recursive definition of factorial is given by:
+    <d:inlineequation>
+      <mml:math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mml:mtable columnalign="right left" rowspacing="3pt" columnspacing="0.278em">
+          <mml:mtr>
+            <mml:mtd>
+              <mml:mi>n</mml:mi>
+              <mml:mo>!</mml:mo>
+              <mml:mo>=</mml:mo>
+              <mml:mfenced open="{" close="">
+                <mml:mtable columnalign="left left" rowspacing="4pt" columnspacing="1em">
+                  <mml:mtr>
+                    <mml:mtd>
+                      <mml:mn>1</mml:mn>
+                    </mml:mtd>
+                    <mml:mtd>
+                      <mml:mspace width="1em" />
+                      <mml:mtext>if n=0</mml:mtext>
+                    </mml:mtd>
+                  </mml:mtr>
+                  <mml:mtr>
+                    <mml:mtd>
+                      <mml:mo stretchy="false">(</mml:mo>
+                      <mml:mi>n</mml:mi>
+                      <mml:mo>&#x2212;<!-- − --></mml:mo>
+                      <mml:mn>1</mml:mn>
+                      <mml:mo stretchy="false">)</mml:mo>
+                      <mml:mo>!</mml:mo>
+                      <mml:mo>&#x2217;<!-- ∗ --></mml:mo>
+                      <mml:mi>n</mml:mi>
+                    </mml:mtd>
+                    <mml:mtd>
+                      <mml:mspace width="1em" />
+                      <mml:mtext>if n&gt;0</mml:mtext>
+                    </mml:mtd>
+                  </mml:mtr>
+                </mml:mtable>
+              </mml:mfenced>
+            </mml:mtd>
+          </mml:mtr>
+        </mml:mtable>
+      </mml:math>
+    </d:inlineequation>
   </d:para>
+  <d:para>
+        In case you do not understand the formula given below is expansion:
+  </d:para>
+  <d:informalequation>
+    <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn><mo>!</mo><mo>=</mo><mn>1</mn><mo>!</mo><mo>=</mo><mn>1</mn></math>
+  </d:informalequation>
+  <d:informalequation>
+    <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>!</mo><mo>=</mo><msubsup><mo>&#8719;</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mo>=</mo><mi>n</mi><mo>&#215;</mo><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>&#215;</mo><mo>(</mo><mi>n</mi><mo>-</mo><mn>2</mn><mo>)</mo><mo>.</mo><mo>.</mo><mo>.</mo><mn>3</mn><mo>&#215;</mo><mn>2</mn><mo>&#215;</mo><mn>1</mn></math> 
+  </d:informalequation>
 </d:chapter>
