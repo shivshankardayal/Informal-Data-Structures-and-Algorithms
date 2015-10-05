@@ -18,8 +18,23 @@
     presented in C programming book.
   </d:para>
   <d:para>
+    The power of recursion can be understood by following quote:
+    <d:blockquote>
+      <d:attribution>
+          NK
+      </d:attribution>
+      <d:para>
+        The power of recursion evidently lies in the possibility of defining an
+        infinite set of objects by a finite statement. In the same manner, an
+        infinite number of computations can be described by a finite recursive
+        program, even if this program contains no explicit repetitions.
+      </d:para>
+    </d:blockquote>
+  </d:para>
+  <d:para>
     Formally, we can say that a definition, which defines an object in terms of
-    simpler case of itself is recursive definition. n C recusion is the concept
+    simpler case of itself is recursive definition. In C or any other
+    programming language for that matter, recursion is the concept
     of a function calling itself. When a repeated operation has to be preformed
     over a variable, recursion can be used. Recursion simplifies the code a
     lot. Typically there is always a more effective iterative solutions are
@@ -60,7 +75,7 @@
                       <mml:mn>1</mml:mn>
                       <mml:mo stretchy="false">)</mml:mo>
                       <mml:mo>!</mml:mo>
-                      <mml:mo>&#x2217;<!-- ∗ --></mml:mo>
+                      <mml:mo>&#215;<!-- ∗ --></mml:mo>
                       <mml:mi>n</mml:mi>
                     </mml:mtd>
                     <mml:mtd>
@@ -87,4 +102,382 @@
     <math
         xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>!</mo><mo>=</mo><msubsup><mo>&#8719;</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mo>=</mo><mi>n</mi><mo>&#215;</mo><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>&#215;</mo><mo>(</mo><mi>n</mi><mo>-</mo><mn>2</mn><mo>)</mo><mo>.</mo><mo>.</mo><mo>.</mo><mn>3</mn><mo>&#215;</mo><mn>2</mn><mo>&#215;</mo><mn>1</mn></math> 
   </d:informalequation>
+  <d:para>
+    However, note that last two equations are not recursive. Rather the one
+    given in terms of <math
+    xmlns="http://www.w3.org/1998/Math/MathML"><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>!</mo></math>
+    is recursive because it defines factorial in terms of a factorial in a
+    simplified form.
+  </d:para>
+  <d:para>
+    A recursive definition usually have one or more <d:emphasis
+    role="italic">base cases</d:emphasis>, which produce result without causing
+    recurrence for one or more set of inputs in a trivial fashion. Obviously,
+    recursive algorithm also have <d:emphasis role="italic">recursive
+    cases</d:emphasis>, where the algorithm recurs i.e. calls itself. For
+    example, for factorial definition the base case would be
+    <d:inlineequation>
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mrow>
+          <mn>0</mn>
+          <mo>!</mo>
+          <mo>=</mo>
+          <mn>1</mn>
+        </mrow>
+      </math>
+    </d:inlineequation>.
+    The recursive case for factorial is
+    <d:inlineequation>
+      <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>!</mo></math>
+    </d:inlineequation>
+     Note that you have to be very careful when writing
+    recursive algorithms in any structured language because the stack is
+    limited and deep recursion will cause stack overflow. However, there are
+    techniques like tail recursion described below which allows you to do deep
+    recursion. Usually, base cases are when the recursive algorithm terminates
+    and thus, these are called <d:emphasis role="italic">terminating
+    cases.</d:emphasis>
+  </d:para>
+  <d:para>
+    Sometimes you may not really have a terminating or base case. For example,
+    evaluation of
+    <d:inlineequation>
+      <math
+          xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>e</mi><mi>x</mi></msup><mo>=</mo><mn>1</mn><mo>+</mo><mi>x</mi><mo>+</mo><mfrac><msup><mi>x</mi><mn>2</mn></msup><mrow><mn>2</mn><mo>!</mo></mrow></mfrac><mo>+</mo><mfrac><msup><mi>x</mi><mn>3</mn></msup><mrow><mn>3</mn><mo>!</mo></mrow></mfrac><mo>+</mo><mo>&#8230;</mo></math>
+    </d:inlineequation>
+    or 
+    <d:inlineequation>
+      <math
+          xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi><mi>o</mi><mi>s</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>1</mn><mo>-</mo><mi>x</mi><mo>+</mo><mfrac><msup><mi>x</mi><mn>2</mn></msup><mrow><mn>2</mn><mo>!</mo></mrow></mfrac><mo>-</mo><mfrac><msup><mi>x</mi><mn>3</mn></msup><mrow><mn>3</mn><mo>!</mo></mrow></mfrac><mo>+</mo><mo>&#8230;</mo><mo>(</mo><mo>-</mo><mn>1</mn><msup><mo>)</mo><mi>n</mi></msup><mfrac><msup><mi>x</mi><mi>n</mi></msup><mrow><mi>n</mi><mo>!</mo></mrow></mfrac><mo>&#8230;</mo></math>
+    </d:inlineequation>
+    does not really have a base case. For evaluation of such infinite series
+    you have to settle on an error constant usually denoted by
+    <d:inlineequation><math
+                          xmlns="http://www.w3.org/1998/Math/MathML"><mo>&#8712;</mo></math></d:inlineequation>
+    up to which you compute the series and then you stop. Usually if the
+    constant <d:inlineequation><math
+    xmlns="http://www.w3.org/1998/Math/MathML"><mo>&#949;</mo></math></d:inlineequation>
+    is below six significant digits for <d:code>float</d:code> and twelve for
+    <d:code>double</d:code> then you should stop calculation as that is the
+    maximum resolution you will get. The constant factor <d:inlineequation><math
+    xmlns="http://www.w3.org/1998/Math/MathML"><mo>&#949;</mo></math></d:inlineequation>
+    will determine the terminating case for such a series.
+  </d:para>
+  <d:sect1>
+    <d:title>Types of Recursion</d:title>
+    <d:sect2>
+      <d:title>Single and Multiple Recursions</d:title>
+      <d:para>
+        Recursions involving single references are known as <d:emphasis
+        role="italic">single recursion</d:emphasis> and those involving
+        multiple references are known as <d:emphasis role="italic">multiple
+        recursion.</d:emphasis> For example, the factorial definition which we
+        have seen is a case of single recursion. An example of multiple
+        recursion is Fibonacci sequence. Mathematically an nth Fibonacci number
+        in sequence is given by <d:inlineequation><math
+        xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>F</mi><mi>n</mi></msub><mo>=</mo><msub><mi>F</mi><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>F</mi><mrow><mi>n</mi><mo>-</mo><mn>2</mn></mrow></msub></math></d:inlineequation>
+        while the first two numbers are given by <d:inlineequation><math
+        xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>F</mi><mn>1</mn></msub><mo>=</mo><msub><mi>F</mi><mn>2</mn></msub><mo>=</mo><mn>1</mn></math></d:inlineequation>. Since
+        the recursion involves two simpler references that is why we call it
+        multiple reference. Another such example would be Ackermann's
+        function. Ackermann's function is given by 
+        <d:informalequation>
+          <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <mi>A</mi>
+            <mo stretchy="false">(</mo>
+            <mi>m</mi>
+            <mo>,</mo>
+            <mi>n</mi>
+            <mo stretchy="false">)</mo>
+            <mo>=</mo>
+            <mrow>
+              <mfenced open="{" close="">
+              <mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
+                <mtr>
+                  <mtd>
+                    <mi>n</mi>
+                    <mo>+</mo>
+                    <mn>1</mn>
+                  </mtd>
+                  <mtd>
+                    <mstyle displaystyle="false" scriptlevel="0">
+                      <mtext>if&#xA0;</mtext>
+                    </mstyle>
+                    <mi>m</mi>
+                    <mo>=</mo>
+                    <mn>0</mn>
+                  </mtd>
+                </mtr>
+                <mtr>
+                  <mtd>
+                    <mi>A</mi>
+                    <mo stretchy="false">(</mo>
+                    <mi>m</mi>
+                    <mo>&#x2212;<!-- − --></mo>
+                    <mn>1</mn>
+                    <mo>,</mo>
+                    <mn>1</mn>
+                    <mo stretchy="false">)</mo>
+                  </mtd>
+                  <mtd>
+                    <mstyle displaystyle="false" scriptlevel="0">
+                      <mtext>if&#xA0;</mtext>
+                    </mstyle>
+                    <mi>m</mi>
+                    <mo>&gt;</mo>
+                    <mn>0</mn>
+                    <mstyle displaystyle="false" scriptlevel="0">
+                      <mtext>&#xA0;and&#xA0;</mtext>
+                    </mstyle>
+                    <mi>n</mi>
+                    <mo>=</mo>
+                    <mn>0</mn>
+                  </mtd>
+                </mtr>
+                <mtr>
+                  <mtd>
+                    <mi>A</mi>
+                    <mo stretchy="false">(</mo>
+                    <mi>m</mi>
+                    <mo>&#x2212;<!-- − --></mo>
+                    <mn>1</mn>
+                    <mo>,</mo>
+                    <mi>A</mi>
+                    <mo stretchy="false">(</mo>
+                    <mi>m</mi>
+                    <mo>,</mo>
+                    <mi>n</mi>
+                    <mo>&#x2212;<!-- − --></mo>
+                    <mn>1</mn>
+                    <mo stretchy="false">)</mo>
+                    <mo stretchy="false">)</mo>
+                  </mtd>
+                  <mtd>
+                    <mstyle displaystyle="false" scriptlevel="0">
+                      <mtext>if&#xA0;</mtext>
+                    </mstyle>
+                    <mi>m</mi>
+                    <mo>&gt;</mo>
+                    <mn>0</mn>
+                    <mstyle displaystyle="false" scriptlevel="0">
+                      <mtext>&#xA0;and&#xA0;</mtext>
+                    </mstyle>
+                    <mi>n</mi>
+                    <mo>&gt;</mo>
+                    <mn>0.</mn>
+                  </mtd>
+                </mtr>
+              </mtable>
+              </mfenced>
+              <mo fence="true" stretchy="true"></mo>
+            </mrow>
+          </math>
+        </d:informalequation>
+        Clearly, second and third cases of Ackermann's function show that it is
+        a function having multiple recursion. One more important example of
+        multiple recursion is traversal of binary tree in all three ways
+        i.e. in-order, pre-order and post-order. Similarly, depth-first
+        traversal of a graph is also a classic example of recursion. We will
+        not see these last two here but rather in their own respective chapters
+        of trees and graphs.
+      </d:para>
+      <d:para>
+        Sometimes, it is possible to convert a multiple recursion algorithm to
+        single recursion version. For example, a naive implementation of
+        Fibonacci sequence shown above will be a case of multiple recursion but
+        we can save two numbers and generate next Fibonacci number and pass
+        it along with the previous number to the next iteration which will
+        cause multiple recursion to become single recursion and will also allow
+        us to do tail recursion. When we do this it becomes a case of
+        corecursion. Similarly, binary tree can be traversed using extra
+        storage iteratively or you can use threaded binary tree to eliminate
+        the need of that extra storage.
+      </d:para>
+    </d:sect2>
+    <d:sect2>
+      <d:title>Indirect Recursion</d:title>
+      <d:para>
+        The examples which we have seen are cases of <d:emphasis
+        role="italic">direct recursion</d:emphasis>. In direct recursion a
+        function calls itself. However, if is quite possible for two functions
+        to call each other. When such calls happen then the functions are
+        known as demonstrating <d:emphasis role="italic">indirect
+        recursion</d:emphasis> or <d:emphasis role="italic">mutual
+        recursion</d:emphasis>. It is quite possible that a function
+        <d:code>f</d:code> calls another function <d:code>g</d:code> and then
+        <d:code>g</d:code> calls <d:code>f</d:code> again. Chains of more than
+        2 functions is also possible. For example, a function
+        <d:code>f1</d:code> calls functions <d:code>f2</d:code> which in turn
+        calls <d:code>f3</d:code> and then it calls <d:code>f1</d:code>.
+      </d:para>
+      <d:para>
+        Two very good examples of indirect or mutual recursion are recursive
+        descent parsers and finite state machine implementation. For a
+        recursive descent parser each rule of the grammar can be implemented as
+        a function and these functions can call each other. A finite state
+        machine's individual states can be implemented by a separate function
+        and while the states keep changing these functions can call each other
+        forming a case of indirect recursion i.e. mutual recursion.
+      </d:para>
+    </d:sect2>
+    <d:sect2>
+      <d:title>Anonymous Recursion</d:title>
+      <d:para>
+        Our programming language is C and in ISO C11(as of this writing. It may
+        be part of a future specification with something like block of Obj-C.)
+        this does not happen but I am giving this for the sake of completeness
+        of discussion of recursion. Usually functions recurse by calling
+        themselves by name. But in certain languages there are functions known
+        as anonymous functions or lambdas which do not have a name. When such
+        functions recurse then it is known as <d:emphasis
+        role="italic">anonymous recursion</d:emphasis>. However, untill I give
+        C++ examples you will not see this in action in this book.
+      </d:para>
+    </d:sect2>
+    <d:sect3>
+      <d:title>Structured and Generative Recursion</d:title>
+      <d:para>
+        A classification has been made by authors on how a piece of data is
+        generated and used by certain authors. There are two types of such
+        categorization. First is structured and second is generative.
+      </d:para>
+      <d:blockquote>
+        <d:attribution>
+            MFRBFMFSK
+        </d:attribution>
+        <d:para>
+          [Functions that consume structured data] typically decompose their
+          arguments into their immediate structural components and then process
+          those components. If one of the immediate components belongs to the
+          same class of data as the input, the function is recursive. For that
+          reason, we refer to these functions as (STRUCTURALLY) RECURSIVE
+          FUNCTIONS.
+        </d:para>
+      </d:blockquote>
+      <d:para>
+        Thus a critical observation which we can have from this definition is
+        that the type of argument is a simpler form of original input following
+        our original definition of recursion. For example, parsing an XML
+        document or a JSON document, any kind of tree traversal will fall in
+        this category. Even factorial or single recursive version of Fibonacci
+        sequence generation will fall in this category.
+      </d:para>
+      <d:para>
+        The second category is defined as:
+      </d:para>
+      <d:blockquote>
+        <d:attribution>
+            MF
+        </d:attribution>
+        <d:para>
+          Many well-known recursive algorithms generate an entirely new piece
+          of data from the given data and recur on it. HtDP (<d:link
+          xlink:href="http://www.htdp.org">How To Design 
+          Programs</d:link>) refers to this kind as generative recursion. Examples of
+          generative recursion include: gcd, quicksort, binary search,
+          mergesort, Newton's method, fractals, and adaptive integration.
+        </d:para>
+      </d:blockquote>
+      <d:para>
+        
+      </d:para>
+    </d:sect3>
+  </d:sect1>
+  <d:bibliolist>
+    <d:title>Bibliography</d:title>
+    <d:biblioentry>
+      <d:abbrev>NK</d:abbrev>
+      <d:authorgroup>
+        <d:author>
+          <d:personname>
+            <d:firstname>
+              Niklaus
+            </d:firstname>
+            <d:surname>
+              Wirth
+            </d:surname>
+          </d:personname>
+        </d:author>
+      </d:authorgroup>
+      <d:copyright>
+        <d:year>1976</d:year>
+        <d:holder>Prentice Hall</d:holder>
+      </d:copyright>
+      <d:citetitle>Algorithms + Data Structures = Programs</d:citetitle>
+      <d:biblioid class="isbn">978-0-13-022418-7</d:biblioid>
+    </d:biblioentry>
+    <d:biblioentry>
+      <d:abbrev>MFRBFMFSK</d:abbrev>
+      <d:authorgroup>
+        <d:author>
+          <d:personname>
+            <d:firstname>
+              Matthais
+            </d:firstname>
+            <d:surname>
+              Felleisen
+            </d:surname>
+          </d:personname>
+        </d:author>
+        <d:author>
+          <d:personname>
+            <d:firstname>
+              Robert
+            </d:firstname>
+            <d:surname>
+              Findler
+            </d:surname>
+          </d:personname>
+        </d:author>
+        <d:author>
+          <d:personname>
+            <d:firstname>
+              Matthias
+            </d:firstname>
+            <d:surname>
+              Flatt
+            </d:surname>
+          </d:personname>
+        </d:author>
+        <d:author>
+          <d:personname>
+            <d:firstname>
+              Shriram
+            </d:firstname>
+            <d:surname>
+              Krishnamurthy
+            </d:surname>
+          </d:personname>
+        </d:author>      
+      </d:authorgroup>
+      <d:copyright>
+        <d:year>2001</d:year>
+        <d:holder>MIT Press</d:holder>
+      </d:copyright>
+      <d:citetitle>How to Design Programs: An Introduction to Computing and Programming</d:citetitle>
+      <d:biblioid class="isbn">978-0-26-206218-3</d:biblioid>
+    </d:biblioentry>
+    <d:biblioentry>
+      <d:abbrev>MF</d:abbrev>
+      <d:authorgroup>
+        <d:author>
+          <d:personname>
+            <d:firstname>
+              Matthais
+            </d:firstname>
+            <d:surname>
+              Felleisen
+            </d:surname>
+          </d:personname>
+        </d:author>
+      </d:authorgroup>
+      <d:copyright>
+        <d:year>2002</d:year>
+        <d:holder>Springer, UK</d:holder>
+      </d:copyright>
+      <d:citetitle>Developing Interactive Web Programs. In <d:quote>Advanced
+      Functional Programming: 4th International School</d:quote></d:citetitle>
+      <d:biblioid class="isbn">978-3-540-44833-4_4</d:biblioid>
+    </d:biblioentry>
+  </d:bibliolist>
 </d:chapter>

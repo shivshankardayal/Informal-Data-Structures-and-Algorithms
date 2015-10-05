@@ -1004,6 +1004,35 @@ int main()
         was more. Algorithms which were very important a few decades ago are now
         important merely for academic importance.
       </d:para>
+      <d:para>
+        In case you prefer graphs to mathematical functions to understand, below
+        I present all three big notations.
+        <d:figure>
+          <d:title>Graphical representation of big-<math
+          xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi></math> notation</d:title>
+          <d:mediaobject>
+            <d:imageobject>
+              <d:imagedata fileref="../images/big-o.png" align="center" />
+            </d:imageobject>
+          </d:mediaobject>
+        </d:figure>
+        <d:figure>
+          <d:title>Graphical representation of big-<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#937;</mi></math> notation</d:title>
+          <d:mediaobject>
+            <d:imageobject>
+              <d:imagedata fileref="../images/big-omega.png" align="center" />
+            </d:imageobject>
+          </d:mediaobject>
+        </d:figure>
+        <d:figure>
+          <d:title>Graphical representation of big-<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#920;</mi></math> notation</d:title>
+          <d:mediaobject>
+            <d:imageobject>
+              <d:imagedata fileref="../images/big-theta.png" align="center" />
+            </d:imageobject>
+          </d:mediaobject>
+        </d:figure>
+      </d:para>
     </d:sect2>
     <d:sect2>
       <d:title>An Example of Complexity Computation</d:title>
