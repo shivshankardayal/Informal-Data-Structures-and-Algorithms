@@ -123,6 +123,14 @@
       overloaded assignment operator and copy constructor for each data
       structure because programs will not behave correctly otherwise.
     </d:para>
+    <d:para>
+      Also, note that some sections have requirement of knowledge of assembly
+      for x86-64 architecture. You can refer to manual of your CPU which will
+      detail the instruction set. Although, I have tried to minimize the
+      dependency for such code sometimes it is inevitable to look at machine
+      code. You can skip that as it is not really critical but yes it does
+      contain the gory details.
+    </d:para>
   </d:simplesect>
   <d:simplesect>
     <d:title>Goals for Readers</d:title>

@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\setlength\PreviewBorder{5pt}%
+
+\begin{comment}
+:Title:  Merge sort recursion tree
+
+\end{comment}
+\usepackage{fancybox}
+\usepackage{tikz}
+
+\begin{document}
+\begin{preview}
+\begin{tikzpicture}[level/.style={sibling distance=80mm/#1}]
+\node [circle,draw] (1){7}
+  child {node [circle, draw, xshift=0mm] (2){6}
+    child {node [circle,draw] (4){5}
+      child {node [circle,draw] (5){4}
+        child {node [circle,draw] (7){3}
+          child {node [circle,draw] (9){2}
+          }
+          child {node [circle,draw] (10){1}
+          }
+        }
+        child {node [circle,draw] (8){2}
+        }
+      }
+      child {node [circle,draw] (6){3}
+        child {node [circle,draw] (9){2}
+        }
+        child {node [circle,draw] (10){1}
+        }
+      }
+    }
+    child {node [circle,draw] (3){4}
+      child {node [circle,draw] (11){2}
+      }
+      child {node [circle,draw] (12){3}
+        child {node [circle,draw] (13){2}
+        }
+        child {node [circle,draw] (14){1}
+        }
+      }
+    }
+  }
+  child {node [circle, draw, xshift=0mm] (3){5}
+  child {node [circle, draw] (15){3}
+    child {node [circle, draw] (16){2}
+    }
+    child {node [circle, draw] (17){1}
+    }
+  }
+  child {node [circle, draw] (14){4}
+    child {node [circle, draw] (18){2}
+    }
+    child {node [circle, draw] (19){3}
+      child {node [circle, draw] (20){1}
+      }
+      child {node [circle, draw] (21){2}
+      }
+    }
+  }
+};
+\node [below=8cm, align=flush center,text width=8cm] at (1)
+        {Function Calls for 7th Fiboncci Number};
+\end{tikzpicture}
+\end{preview}
+\end{document}

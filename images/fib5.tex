@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\setlength\PreviewBorder{5pt}%
+
+\begin{comment}
+:Title:  Merge sort recursion tree
+
+\end{comment}
+\usepackage{fancybox}
+\usepackage{tikz}
+
+\begin{document}
+\begin{preview}
+\begin{tikzpicture}[level/.style={sibling distance=60mm/#1}]
+\node [circle,draw] (1){5}
+  child {node [circle, draw] (2){4}
+    child {node [circle, draw] (3){3}
+      child {node [circle, draw] (5){1}}
+      child {node [circle, draw] (6){2}}}
+      child {node [circle, draw] (4){2}}}
+child {node [circle, draw] (7){3}
+  child {node [circle, draw] (8){1}}
+  child {node [circle, draw] (9){2}}};
+\node [below=5cm, align=flush center,text width=8cm] at (1)
+        {Function Calls for 5th Fiboncci Number};
+\end{tikzpicture}
+\end{preview}
+\end{document}

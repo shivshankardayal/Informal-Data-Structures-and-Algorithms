@@ -334,7 +334,7 @@
         C++ examples you will not see this in action in this book.
       </d:para>
     </d:sect2>
-    <d:sect3>
+    <d:sect2>
       <d:title>Structured and Generative Recursion</d:title>
       <d:para>
         A classification has been made by authors on how a piece of data is
@@ -379,11 +379,412 @@
         </d:para>
       </d:blockquote>
       <d:para>
-        
+        The critical difference between these two types of recursion is how
+        they terminate. Where it is very easy to prove the termination of
+        structurally recursive functions, it is much harder to do so for
+        generative recursions. The guarantees of simplification of data in
+        generative recursion is harder to guess. When you want to give a
+        mathematical proof for structurally recursive function the proof is
+        easier to give because the complexity decreases uniformly, usually but
+        it may be non-uniform for generative recursion and thus, making it
+        harder to give a proof.
       </d:para>
-    </d:sect3>
+    </d:sect2>
   </d:sect1>
-  <d:bibliolist>
+  <d:sect1>
+    <d:title>Tail Recursion</d:title>
+    <d:para>
+      Functional languages usually do not have loops. In such languages a
+      loop is written using recursion. For example, consider the following
+      loop which prints all positing integers for data type <d:code>unsigned
+      long</d:code>.
+    </d:para>
+    <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+#include <limits.h>
+
+int main()
+{
+  for(unsigned long i=0; i<=ULONG_MAX; ++i)
+    printf("%lu\n", i);
+
+  return 0;
+}]]></d:programlisting>
+    <d:para>
+      If you observe this simple program then it start printing the sequence
+      0,1 ,2 till <d:code>UINT_MAX</d:code> is reached and then it will wrap
+      around and <d:code>i</d:code> will become zero and loop will
+      terminate. This simple loop can be implemented using recursion as shown
+      below:
+    </d:para>
+    <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+#include <limits.h>
+
+void f(unsigned long i)
+{
+  if(i == ULONG_MAX) {
+    printf("%lu\n", i);
+    return;
+  }
+
+  printf("%lu\n", i);
+  f(i + 1);
+}
+
+int main()
+{
+  f(0);
+
+  return 0;
+}]]></d:programlisting>
+    <d:para>
+      If I compiler this program using the command <d:code>gcc -Wall -std=c99
+      -pedantic test.c</d:code> then it causes stack overflow and terminates at
+      a value of 261938 for <d:code>i</d:code>. The reason is simple is and
+      that is it creates a lot of stack frames which is limited by
+      <d:code>ulimit</d:code>. I can make my stack size more than its current
+      valeu of 8MB but that is not the solution because even with all the RAM
+      i.e. 8GB on my computer that willl be exhausted by this code. Now, the
+      question is how do we overcome this problem. The short answer is that you
+      add <d:code>-O2</d:code> to compiler for compilation making the command
+      <d:code>gcc -Wall -std=c99 -pedantic test.c</d:code>. This will make code
+      work. The long answer is that when you pass <d:code>-O2</d:code> flag to
+      compiler then it does tail recursion optimization. Before we go in detail
+      about tail recursion optimization let us look at assembly produced by the
+      steps <d:code>gcc -Wall -std=c99 -pedantic -c test.c</d:code> and
+      <d:code>objdump -d test.o</d:code> respectively:
+    </d:para>
+    <d:programlisting role="ALexer"><![CDATA[test.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <f>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	48 83 ec 10          	sub    $0x10,%rsp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 83 7d f8 ff       	cmpq   $0xffffffffffffffff,-0x8(%rbp)
+  11:	75 18                	jne    2b <f+0x2b>
+  13:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  17:	48 89 c6             	mov    %rax,%rsi
+  1a:	bf 00 00 00 00       	mov    $0x0,%edi
+  1f:	b8 00 00 00 00       	mov    $0x0,%eax
+  24:	e8 00 00 00 00       	callq  29 <f+0x29>
+  29:	eb 26                	jmp    51 <f+0x51>
+  2b:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  2f:	48 89 c6             	mov    %rax,%rsi
+  32:	bf 00 00 00 00       	mov    $0x0,%edi
+  37:	b8 00 00 00 00       	mov    $0x0,%eax
+  3c:	e8 00 00 00 00       	callq  41 <f+0x41>
+  41:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  45:	48 83 c0 01          	add    $0x1,%rax
+  49:	48 89 c7             	mov    %rax,%rdi
+  4c:	e8 00 00 00 00       	callq  51 <f+0x51>
+  51:	c9                   	leaveq 
+  52:	c3                   	retq   
+
+0000000000000053 <main>:
+  53:	55                   	push   %rbp
+  54:	48 89 e5             	mov    %rsp,%rbp
+  57:	bf 00 00 00 00       	mov    $0x0,%edi
+  5c:	e8 00 00 00 00       	callq  61 <main+0xe>
+  61:	b8 00 00 00 00       	mov    $0x0,%eax
+  66:	5d                   	pop    %rbp
+  67:	c3                   	retq]]></d:programlisting>
+    <d:para>
+      and the counterpart produced by <d:code>gcc -Wall -std=c99 -pedantic -O2
+      -c test.c</d:code> and <d:code>objdump -d -M=Intel test.o</d:code> is
+      given below:
+    </d:para>
+    <d:programlisting role="ALexer"><![CDATA[test.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <f>:
+   0:	48 83 ff ff          	cmp    $0xffffffffffffffff,%rdi
+   4:	53                   	push   %rbx
+   5:	48 89 fb             	mov    %rdi,%rbx
+   8:	74 24                	je     2e <f+0x2e>
+   a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+  10:	48 89 da             	mov    %rbx,%rdx
+  13:	31 c0                	xor    %eax,%eax
+  15:	be 00 00 00 00       	mov    $0x0,%esi
+  1a:	bf 01 00 00 00       	mov    $0x1,%edi
+  1f:	48 83 c3 01          	add    $0x1,%rbx
+  23:	e8 00 00 00 00       	callq  28 <f+0x28>
+  28:	48 83 fb ff          	cmp    $0xffffffffffffffff,%rbx
+  2c:	75 e2                	jne    10 <f+0x10>
+  2e:	5b                   	pop    %rbx
+  2f:	48 c7 c2 ff ff ff ff 	mov    $0xffffffffffffffff,%rdx
+  36:	be 00 00 00 00       	mov    $0x0,%esi
+  3b:	bf 01 00 00 00       	mov    $0x1,%edi
+  40:	31 c0                	xor    %eax,%eax
+  42:	e9 00 00 00 00       	jmpq   47 <f+0x47>
+
+Disassembly of section .text.startup:
+
+0000000000000000 <main>:
+   0:	48 83 ec 08          	sub    $0x8,%rsp
+   4:	31 ff                	xor    %edi,%edi
+   6:	e8 00 00 00 00       	callq  b <main+0xb>
+   b:	31 c0                	xor    %eax,%eax
+   d:	48 83 c4 08          	add    $0x8,%rsp
+  11:	c3                   	retq]]></d:programlisting>
+    <d:para>
+      The key is the bottom of functions at locations <d:code>4c</d:code> and
+      <d:code>42</d:code> respectively. As you can see in the first version
+      <d:code>callq</d:code> instruction is called to call the function which
+      is our recursive call but it is simply not their in optimized
+      version. The question is how compiler can deduce. If you look at
+      carefully call of function <d:code>f(0)</d:code> has no dependency on the
+      values computed by <d:code>f(1)</d:code>, which has no further dependency
+      on <d:code>f(2)</d:code> and so on. Thus the compiler can optimize in
+      such a way that no new stack frames need to be created for further
+      calls. But even before we tail recursion in more detail, let us try to
+      capture what how recursive code is executed in terms of stack. I am
+      giving an indicative diagram for that below:
+    </d:para>
+    <d:figure>
+      <d:title>Sample Stack Diagram for Function Calls</d:title>
+      <d:mediaobject>
+        <d:imageobject>
+          <d:imagedata fileref="../images/stack-exec.png" align="center" />
+        </d:imageobject>
+      </d:mediaobject>
+    </d:figure>
+    <d:para>
+      As you can see when <d:code>main</d:code> calls <d:code>f(0)</d:code> a
+      stack frame is created and again for <d:code>f(1)</d:code> and again for
+      <d:code>f(2)</d:code> and it will continue untill all of stack is
+      exhausted or <d:code>i</d:code> becomes equal to
+      <d:code>ULONG_MAX</d:code>. Let us say we had infinite stack memory
+      available to us then when <d:code>i</d:code> reaches the base case of
+      <d:code>ULONG_MAX</d:code> then <d:code>f(ULONG_MAX)</d:code> will return
+      and successively <d:code>f(ULONG_MAX -1 )</d:code> and others will follow
+      in reverse order. This is known as stack unwinding.
+    </d:para>
+    <d:para>
+      However, since we do not have infinite space available to us we need to
+      use tail recursion. The fundamental principal behind tail recursion is
+      that we should write in code in such a way that later calls of our
+      function are not a dependency for earlier calls i.e. caller does not have
+      a dependency on callee. If we can ensure that then compiler will be able
+      to optimize that for us. This example was a trivial example. More
+      involving recursive examples will have more complicated versions of tail
+      recursive functions. Note that functional languages deploy tail recursion
+      heavily to optimize their code execution. Tail recursion not only makes
+      deep recursion possible but causes less consumption of memory. For
+      example, you can increase your stack size to 1GB if you have enough RAM
+      available by using the command <d:code>ulimit -s 1048576</d:code>. Then
+      run the unoptimized version of binary and examine the memory usage which
+      will go on increasing till the stack space is violated. There is no
+      computer in this world which can run the unoptimized version of the
+      program. The benefit is not only of memory. Even execution of a tail
+      recursive version will be faster because it takes time to set up stack
+      frames however small that is. It will matter for large stack sizes and
+      deep recursion. Even the instruction <d:code>call</d:code> to call a
+      function is expensive, relatively.
+    </d:para>
+    <d:para>
+      Now I will present several recursive algorithms, evaluate their
+      complexity, give implementations for both naive version and tail
+      recursive version.
+    </d:para>
+  </d:sect1>
+  <d:sect1>
+    <d:title>Recursive Algorithms</d:title>
+    <d:sect2>
+      <d:title>Factorial Computation</d:title>
+      <d:para>
+        I straightaway present recursive implementation of factorial
+        computation. First a naive version.
+      </d:para>
+      <d:programlisting role="CLexer"><![CDATA[//Description: Recursive factorial.
+
+#include <stdio.h>
+
+long long fact(unsigned int input);
+
+int main()
+{
+  unsigned int input=0;
+
+  printf("Enter a number whose factorial has to be computed:\n");
+  scanf("%u", &input);
+
+  printf("Factorial of %u is %lld.\n", input, fact(input));
+
+  return 0;
+}
+
+long long fact(unsigned int input)
+{
+  if(input==0)
+    return 1;
+  else
+    return fact(input-1)*input;
+}]]></d:programlisting>
+      <d:para>
+        The problem with this implementation can be seen from the fact that
+        compiler cannot optimize it for tail recursion. This can be seen from
+        the assembly given below:
+        <d:programlisting role="ALexer"><![CDATA[test.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <fact>:
+   0:	53                   	push   rbx
+   1:	89 fb                	mov    ebx,edi
+   3:	b8 01 00 00 00       	mov    eax,0x1
+   8:	85 db                	test   ebx,ebx
+   a:	75 04                	jne    10 <fact+0x10>
+   c:	5b                   	pop    rbx
+   d:	c3                   	ret    
+   e:	66 90                	xchg   ax,ax
+  10:	8d 7b ff             	lea    edi,[rbx-0x1]
+  13:	e8 00 00 00 00       	call   18 <fact+0x18>
+  18:	48 0f af c3          	imul   rax,rbx
+  1c:	5b                   	pop    rbx
+  1d:	c3                   	ret]]></d:programlisting>
+        Thus we will have to modify our code in the way we have discussed so
+        that compiler can do necessary optimization. The improved version is
+        given below:
+      </d:para>
+      <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+
+void factorial(unsigned int *index, unsigned int *input, unsigned long long *fact);
+
+int main()
+{
+  unsigned int input = 0;
+  unsigned int index = 1;
+  unsigned long long fact = 1;
+
+  printf("Enter a number whose factorial has to be computed:\n");
+  scanf("%u", &input);
+
+  factorial(&index, &input, &fact);
+
+  printf("Factorial of %u is %llu.\n", input, fact);
+
+  return 0;
+}
+
+void factorial(unsigned int *index, unsigned int *input, unsigned long long *fact)
+{
+  if(*index == *input) {
+    return ;
+  }
+  else {
+    *index += 1;
+    *fact *= *index;
+  }
+  factorial(index, input, fact);
+}]]></d:programlisting>
+      and the equivalent assembly of our function is:
+      <d:programlisting role="ALexer"><![CDATA[test.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <factorial>:
+   0:	8b 07                	mov    (%rdi),%eax
+   2:	3b 06                	cmp    (%rsi),%eax
+   4:	74 1d                	je     23 <factorial+0x23>
+   6:	48 8b 0a             	mov    (%rdx),%rcx
+   9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+  10:	83 c0 01             	add    $0x1,%eax
+  13:	41 89 c0             	mov    %eax,%r8d
+  16:	89 07                	mov    %eax,(%rdi)
+  18:	49 0f af c8          	imul   %r8,%rcx
+  1c:	39 06                	cmp    %eax,(%rsi)
+  1e:	75 f0                	jne    10 <factorial+0x10>
+  20:	48 89 0a             	mov    %rcx,(%rdx)
+  23:	f3 c3                	repz retq]]></d:programlisting>
+      <d:para>
+        As you can see that <d:code>factrial</d:code> has been optimized for
+        tail recursion. It may appear from above code that I have bypassed base
+        case but it is not so. That is hidden in the way variables are
+        initialized. <d:code>fact</d:code> is initialized with 1 which
+        guaranteed that even for <d:code>input</d:code> having a value 0 our
+        result is 1 and same for <d:code>input</d:code> having a value 1. Thus
+        base cases are implicit in code.
+      </d:para>
+    </d:sect2>
+    <d:sect2>
+      <d:title>Fibinacci Series</d:title>
+      <d:para>
+        First I present the most naive version using multiple recursion which
+        then I will convert quickly to single recursion and then present a tail
+        recursive version.
+      </d:para>
+      <d:sect3>
+        <d:title>Naive Version</d:title>
+        <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+
+long long fibonacci(int input);
+
+int main()
+{
+  int input=0;
+
+  printf("Which Fibonacci number you want?\n");
+  scanf("%d", &input);
+
+  printf("%lld\n", fibonacci(input));
+
+  return 0;
+}
+
+long long fibonacci(int input)
+{
+  long long fib1=1, fib2=1;
+
+  if(input==1)
+  {
+    return fib1;
+  }
+  else if(input==2)
+  {
+    return fib2;
+  }
+  else
+  {
+    long long fib = fibonacci(input-1)+fibonacci(input-2);
+    return fib;
+  }
+}]]></d:programlisting>
+        <d:para>
+          What is wrong? Well, it is terribly wrong. Consider following
+          diagrams for function calls for different Fibonacci numbers(number
+          inside circles indicate the position of that number in sequence and
+          corresponding fib call):
+        </d:para>
+        <d:figure>
+          <d:title>Function calls for 5th Fibonacci number</d:title>
+          <d:mediaobject>
+            <d:imageobject>
+              <d:imagedata fileref="../images/fib5.png" align="center" />
+            </d:imageobject>
+          </d:mediaobject>
+        </d:figure>
+        <d:figure>
+          <d:title>Function calls for 7th Fibonacci number</d:title>
+          <d:mediaobject>
+            <d:imageobject>
+              <d:imagedata fileref="../images/fib7.png" align="center" />
+            </d:imageobject>
+          </d:mediaobject>
+        </d:figure>
+        <d:para>
+          
+        </d:para>
+      </d:sect3>
+    </d:sect2>
+  </d:sect1>
+  <d:bibliography>
     <d:title>Bibliography</d:title>
     <d:biblioentry>
       <d:abbrev>NK</d:abbrev>
@@ -477,7 +878,7 @@
       </d:copyright>
       <d:citetitle>Developing Interactive Web Programs. In <d:quote>Advanced
       Functional Programming: 4th International School</d:quote></d:citetitle>
-      <d:biblioid class="isbn">978-3-540-44833-4_4</d:biblioid>
+      <d:biblioid class="isbn">978-3-540-44833-4-4</d:biblioid>
     </d:biblioentry>
-  </d:bibliolist>
+  </d:bibliography>
 </d:chapter>

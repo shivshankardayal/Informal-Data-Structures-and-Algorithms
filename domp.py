@@ -17,7 +17,6 @@ def findReplace(directory, find, replace, filePattern):
                                 name = ''
                                 if(l[len(l) -2]) == 'build':
                                         name = l[len(l) - 1]
-                                        print name
                                 s = f.read()
                                 s = s.replace(find, replace)
                                 s = s.replace("index.html", "")
@@ -68,6 +67,10 @@ def findReplace(directory, find, replace, filePattern):
                                 soup = BeautifulSoup(soup.renderContents(), "lxml")
                                 for i in soup.find_all("pre", "CLexer"):
                                         code = BeautifulSoup(highlight(i.string, CLexer(), HtmlFormatter()), "lxml")
+                                        i.string.replace_with(code)
+                                soup = BeautifulSoup(soup.renderContents(), "lxml")
+                                for i in soup.find_all("pre", "ALexer"):
+                                        code = BeautifulSoup(highlight(i.string, CObjdumpLexer(), HtmlFormatter()), "lxml")
                                         i.string.replace_with(code)
                                 soup = BeautifulSoup(soup.renderContents(), "lxml")
                                 for i in soup.find_all("pre", "MakefileLexer"):
