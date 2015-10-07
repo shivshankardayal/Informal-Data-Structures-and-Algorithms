@@ -816,13 +816,134 @@ long long fibonacci(int input)
           <math
               xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>F</mi><mi>n</mi></msub><mo>=</mo><mfrac><mrow><msup><mi>&#981;</mi><mi>n</mi></msup><mo>-</mo><mo>(</mo><mo>-</mo><mi>&#981;</mi><msup><mo>)</mo><mrow><mo>-</mo><mi>n</mi></mrow></msup></mrow><msqrt><mn>5</mn></msqrt></mfrac></math>
         </d:informalequation>
+      </d:sect3>
+      <d:sect3>
+        <d:title>Tail Recursive Version</d:title>
         <d:para>
           Thus, we see that complexity of computation of Fibonacci numbers is
           as given above. I would love to talk more about mathematical
           poperties of Fibonacci numbers in more details but I will leave that
-          for mathematical part. Let us continue with the recursion and
-          efficiency of above algorithm
+          for mathematical part. Let us continue with recursion and
+          efficiency of the above algorithm. We have seen that the tree form
+          complexity will have very bad effect on runtime of the program. The
+          simplification of multiple recursion form of Fibonacci sequence to
+          single recursion form will allow us to do tail recursion. The code is
+          given below:
         </d:para>
+        <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+
+void fib(unsigned int *input, unsigned long long *fib1, unsigned long long *fib2, unsigned long long *fibn)
+{
+  if(*input == 0) {
+    return;
+  } else if(*input == 1) {
+    *fibn = 1;
+    return;
+  } else if(*input == 2) {
+    *fibn = 1;
+    return;
+  } else if (*input == 3){
+    *fibn = *fib1 + *fib2;
+    *fib1 = *fib2;
+    *fib2 = *fibn;
+    return;
+  } else {
+    *fibn = *fib1 + *fib2;
+    *fib1 = *fib2;
+    *fib2 = *fibn;
+  }
+  (*input)--;
+  
+  fib(input, fib1, fib2, fibn);
+}
+
+int main()
+{
+  unsigned int input = 0;
+  unsigned long long fib1 = 1;
+  unsigned long long fib2 = 1;
+  unsigned long long fibn = 0;
+  
+  printf("Enter the fibonacci number you want(positive integer please):\n");
+  scanf("%u", &input);
+
+  fib(&input, &fib1, &fib2, &fibn);
+  
+  printf("%llu is the Fibonacci number\n", fibn);
+}
+]]></d:programlisting>
+        <d:para>
+          The implementation is slighly convoluted because of usage of pointers
+          but it is still simple enough.
+        </d:para>
+        <d:para>
+          If you want to see if the code is really performing well then given
+          below is output timed for 45th Fibonacci number. The version which
+          took more time is the naive version.
+        </d:para>
+        <d:screen><![CDATA[computer:~ shivdayal$ time ./a.out 
+Which Fibonacci number you want?
+45
+1134903170
+
+real	0m7.535s
+user	0m6.796s
+sys	0m0.008s
+computer:~ shivdayal$ time ./a.out 
+Enter the fibonacci number you want(positive integer please):
+45
+1134903170 is the Fibonacci number
+
+real	0m0.864s
+user	0m0.001s
+sys	0m0.002s]]></d:screen>
+        <d:para>
+          If I try to compute 50th number then it breaks my patience. But the
+          tail recursive version blows away even the 80th number easily. As you
+          will learn or would have noticed early such is power of tail
+          recursion or better algorithms. Implementation does matter which you
+          will see in next algorithm.
+        </d:para>
+        <d:para>
+          One more point I would here like to make is compilers are pretty good
+          at optimization. For example, if we apply <d:code>-O2</d:code> switch
+          to the naive version of Fibnacci program then we see some
+          improvement:
+        </d:para>
+        <d:screen><![CDATA[Which Fibonacci number you want?
+45
+1134903170
+
+real	0m3.841s
+user	0m2.640s
+sys	0m0.003s]]></d:screen>
+        <d:para>
+          but it still is no match for our optimized tail recursive
+          version. Thus, we can conslude that even through compilers are very
+          smart we have to give them smart code as well. Compiler optimizes
+          code and it can optimize better implementations even better.
+        </d:para>
+      </d:sect3>
+    </d:sect2>
+    <d:sect2>
+      <d:title>Ackermann's Function</d:title>
+      <d:para>
+        By the way, Ackermann was also David Hilbert's student for those who
+        care. More of this will follow in mathematics part. Ackermann's
+        function is a very nasty function because even for small value of input
+        it grows very fast. C does not have that kind of data type which can
+        represent the values even for small inputs. It is a very good benchmark
+        for the systems which can optimize recursion. To see how it grows so
+        fast let us see how it expands:
+      </d:para>
+      <d:informalequation>
+        <!-- begin MathToWeb --><!-- (your LaTeX) \begin{align}A(1,2) & = A(0, A(1, 1)) \\& = A(0, A(0, A(1, 0))) \\& = A(0, A(0, A(0, 1))) \\& = A(0, A(0, 2)) \\& = A(0, 3) \\& = 4.\end{align} --><math xmlns="http://www.w3.org/1998/Math/MathML"><mtable class="m-align" displaystyle="true"><mtr><mtd rowspan="6"></mtd><mtd columnalign="right"><mi>A</mi><mrow><mo form="prefix">(</mo><mn>1,2</mn><mo form="postfix">)</mo></mrow></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,0</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,2</mn><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>0,3</mn><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mn>4.</mn></mtd></mtr></mtable></math><!-- end MathToWeb -->
+      </d:informalequation>
+      <d:informalequation>
+        <!-- begin MathToWeb --><!-- (your LaTeX) \begin{align}A(4, 3) & = A(3, A(4, 2)) \\& = A(3, A(3, A(4, 1))) \\& = A(3, A(3, A(3, A(4, 0)))) \\& = A(3, A(3, A(3, A(3, 1)))) \\& = A(3, A(3, A(3, A(2, A(3, 0))))) \\& = A(3, A(3, A(3, A(2, A(2, 1))))) \\& = A(3, A(3, A(3, A(2, A(1, A(2, 0)))))) \\& = A(3, A(3, A(3, A(2, A(1, A(1, 1)))))) \\& = A(3, A(3, A(3, A(2, A(1, A(0, A(1, 0))))))) \\& = A(3, A(3, A(3, A(2, A(1, A(0, A(0, 1))))))) \\& = A(3, A(3, A(3, A(2, A(1, A(0, 2)))))) \\& = A(3, A(3, A(3, A(2, A(1, 3))))) \\& = A(3, A(3, A(3, A(2, A(0, A(1, 2)))))) \\& = A(3, A(3, A(3, A(2, A(0, A(0, A(1, 1))))))) \\& = A(3, A(3, A(3, A(2, A(0, A(0, A(0, A(1, 0)))))))) \\& = A(3, A(3, A(3, A(2, A(0, A(0, A(0, A(0, 1)))))))) \\& = A(3, A(3, A(3, A(2, A(0, A(0, A(0, 2)) )) )) ) \\& = A(3, A(3, A(3, A(2, A(0, A(0, 3)))))) \\& = A(3, A(3, A(3, A(2, A(0, 4)))))  \\& = A(3, A(3, A(3, A(2, 5)))) \\& = \ldots \\& = A(3, A(3, A(3, 13))) \\& = \ldots \\& = A(3, A(3, 65533)) \\& = \ldots \\& = A(3, 2^{65536} - 3) \\& = \ldots \\& = 2^{2^{65536}} - 3. \\\end{align} --><math xmlns="http://www.w3.org/1998/Math/MathML"><mtable class="m-align" displaystyle="true" style="display: block;"><mtr><mtd rowspan="28"></mtd><mtd columnalign="right"><mi>A</mi><mrow><mo form="prefix">(</mo><mn>4,3</mn><mo form="postfix">)</mo></mrow></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>4,2</mn><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>4,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>4,0</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3,0</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2,0</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,0</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,2</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,3</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,2</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,0</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,2</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,3</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,4</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2,5</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mo>&#8230;</mo></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3,13</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mo>&#8230;</mo></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3,65533</mn><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mo>&#8230;</mo></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3,</mn><msup><mn>2</mn><mn>65536</mn></msup><mo>-</mo><mn>3</mn><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mo>&#8230;</mo></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><msup><mn>2</mn><mrow><msup><mn>2</mn><mn>65536</mn></msup></mrow></msup><mo>-</mo><mn>3.</mn></mtd></mtr></mtable></math><!-- end MathToWeb -->
+      </d:informalequation>
+      <d:sect3>
+        <d:title>Naive Implementation</d:title>
       </d:sect3>
     </d:sect2>
   </d:sect1>
