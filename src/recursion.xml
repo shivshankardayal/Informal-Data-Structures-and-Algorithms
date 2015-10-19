@@ -13,7 +13,7 @@
     detail <d:link xlink:href="/c/func/#idp51865936">here</d:link>. Usually,
     beginners do not understand recursion because they do not understand how
     the stack(not the data structure but the stack of a process in memory)
-    works. Once you understand how it works it is very easy to understand
+    works. Once you understand how it works, it is very easy to understand
     recursion. I will treat recursion in much greater depth here than what was
     presented in C programming book.
   </d:para>
@@ -37,7 +37,7 @@
     programming language for that matter, recursion is the concept
     of a function calling itself. When a repeated operation has to be preformed
     over a variable, recursion can be used. Recursion simplifies the code a
-    lot. Typically there is always a more effective iterative solutions are
+    lot. Typically, there is always a more effective iterative solutions are
     available but there are certain cases where recursion is always better than
     iteration. For example, traversal of trees where iteration is not so
     effective as compared to recursion. For beginners it is hard to understand
@@ -103,7 +103,7 @@
         xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>!</mo><mo>=</mo><msubsup><mo>&#8719;</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mo>=</mo><mi>n</mi><mo>&#215;</mo><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>&#215;</mo><mo>(</mo><mi>n</mi><mo>-</mo><mn>2</mn><mo>)</mo><mo>.</mo><mo>.</mo><mo>.</mo><mn>3</mn><mo>&#215;</mo><mn>2</mn><mo>&#215;</mo><mn>1</mn></math> 
   </d:informalequation>
   <d:para>
-    However, note that last two equations are not recursive. Rather the one
+    However, note that last two equations are not recursive. Rather, the one
     given in terms of <math
     xmlns="http://www.w3.org/1998/Math/MathML"><mo>(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>)</mo><mo>!</mo></math>
     is recursive because it defines factorial in terms of a factorial in a
@@ -714,7 +714,7 @@ Disassembly of section .text:
       </d:para>
     </d:sect2>
     <d:sect2>
-      <d:title>Fibinacci Series</d:title>
+      <d:title>Fibonacci Series</d:title>
       <d:para>
         First I present the most naive version using multiple recursion which
         then I will convert quickly to single recursion and then present a tail
@@ -797,25 +797,21 @@ long long fibonacci(int input)
               xmlns="http://www.w3.org/1998/Math/MathML"><mfenced><mtable><mtr><mtd><msub><mi>F</mi><mi>n</mi></msub></mtd></mtr><mtr><mtd><msub><mi>F</mi><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msub></mtd></mtr></mtable></mfenced><mo>=</mo><mfenced><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr></mtable></mfenced><mfenced><mtable><mtr><mtd><msub><mi>F</mi><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd><msub><mi>F</mi><mrow><mi>n</mi><mo>-</mo><mn>2</mn></mrow></msub></mtd></mtr></mtable></mfenced></math>
         </d:informalequation>
         <d:informalequation>
-          <math
-              xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover
-                                                                   accent="true"><mi>F</mi><mo>&#8407;</mo></mover><msub><mi></mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mi
-                                                                   mathvariant="bold">A</mi><mover
-                                                                   accent="true"><mi>F</mi><mo>&#8407;</mo></mover><msub><mi></mi><mi>k</mi></msub></mrow></math>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mover><mi>F</mi><mo>&#8594;</mo></mover><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msup><mi>A</mi><mi>n</mi></msup><msub><mover><mi>F</mi><mo>&#8594;</mo></mover><mn>0</mn></msub></math>
         </d:informalequation>
         <d:para>
           which gives,
         </d:para>
         <d:informalequation>
-          <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent="true"><mi>F</mi><mo>&#8407;</mo></mover><msub><mi></mi><mi>n</mi></msub><mo>=</mo><msup><mrow><mi mathvariant="bold">A</mi></mrow><mi>n</mi></msup><mover accent="true"><mi>F</mi><mo>&#8407;</mo></mover><msub><mi></mi><mn>0</mn></msub></mrow></math>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mover><mi>F</mi><mo>&#8594;</mo></mover><mi>n</mi></msub><mo>=</mo><msup><mi>A</mi><mi>n</mi></msup><msub><mover><mi>F</mi><mo>&#8594;</mo></mover><mn>0</mn></msub></math>
         </d:informalequation>
         <d:para>
-          solving for nth Fibinacci number we get,
+          solving for nth Fibonacci number we get,
         </d:para>
         <d:informalequation>
           <math
               xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>F</mi><mi>n</mi></msub><mo>=</mo><mfrac><mrow><msup><mi>&#981;</mi><mi>n</mi></msup><mo>-</mo><mo>(</mo><mo>-</mo><mi>&#981;</mi><msup><mo>)</mo><mrow><mo>-</mo><mi>n</mi></mrow></msup></mrow><msqrt><mn>5</mn></msqrt></mfrac></math>
-        </d:informalequation>
+        </d:informalequation>        
       </d:sect3>
       <d:sect3>
         <d:title>Tail Recursive Version</d:title>
@@ -936,16 +932,405 @@ sys	0m0.003s]]></d:screen>
         for the systems which can optimize recursion. To see how it grows so
         fast let us see how it expands:
       </d:para>
-      <d:informalequation>
-        <!-- begin MathToWeb --><!-- (your LaTeX) \begin{align}A(1,2) & = A(0, A(1, 1)) \\& = A(0, A(0, A(1, 0))) \\& = A(0, A(0, A(0, 1))) \\& = A(0, A(0, 2)) \\& = A(0, 3) \\& = 4.\end{align} --><math xmlns="http://www.w3.org/1998/Math/MathML"><mtable class="m-align" displaystyle="true"><mtr><mtd rowspan="6"></mtd><mtd columnalign="right"><mi>A</mi><mrow><mo form="prefix">(</mo><mn>1,2</mn><mo form="postfix">)</mo></mrow></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,0</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,2</mn><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>0,3</mn><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mn>4.</mn></mtd></mtr></mtable></math><!-- end MathToWeb -->
-      </d:informalequation>
-      <d:informalequation>
-        <!-- begin MathToWeb --><!-- (your LaTeX) \begin{align}A(4, 3) & = A(3, A(4, 2)) \\& = A(3, A(3, A(4, 1))) \\& = A(3, A(3, A(3, A(4, 0)))) \\& = A(3, A(3, A(3, A(3, 1)))) \\& = A(3, A(3, A(3, A(2, A(3, 0))))) \\& = A(3, A(3, A(3, A(2, A(2, 1))))) \\& = A(3, A(3, A(3, A(2, A(1, A(2, 0)))))) \\& = A(3, A(3, A(3, A(2, A(1, A(1, 1)))))) \\& = A(3, A(3, A(3, A(2, A(1, A(0, A(1, 0))))))) \\& = A(3, A(3, A(3, A(2, A(1, A(0, A(0, 1))))))) \\& = A(3, A(3, A(3, A(2, A(1, A(0, 2)))))) \\& = A(3, A(3, A(3, A(2, A(1, 3))))) \\& = A(3, A(3, A(3, A(2, A(0, A(1, 2)))))) \\& = A(3, A(3, A(3, A(2, A(0, A(0, A(1, 1))))))) \\& = A(3, A(3, A(3, A(2, A(0, A(0, A(0, A(1, 0)))))))) \\& = A(3, A(3, A(3, A(2, A(0, A(0, A(0, A(0, 1)))))))) \\& = A(3, A(3, A(3, A(2, A(0, A(0, A(0, 2)) )) )) ) \\& = A(3, A(3, A(3, A(2, A(0, A(0, 3)))))) \\& = A(3, A(3, A(3, A(2, A(0, 4)))))  \\& = A(3, A(3, A(3, A(2, 5)))) \\& = \ldots \\& = A(3, A(3, A(3, 13))) \\& = \ldots \\& = A(3, A(3, 65533)) \\& = \ldots \\& = A(3, 2^{65536} - 3) \\& = \ldots \\& = 2^{2^{65536}} - 3. \\\end{align} --><math xmlns="http://www.w3.org/1998/Math/MathML"><mtable class="m-align" displaystyle="true" style="display: block;"><mtr><mtd rowspan="28"></mtd><mtd columnalign="right"><mi>A</mi><mrow><mo form="prefix">(</mo><mn>4,3</mn><mo form="postfix">)</mo></mrow></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>4,2</mn><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>4,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>4,0</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3,0</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2,0</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,0</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,2</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,3</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,2</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>1,0</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,1</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,2</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,3</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>0,4</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>2,5</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mo>&#8230;</mo></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3,13</mn><mo form="postfix">)</mo><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mo>&#8230;</mo></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo form="prefix">(</mo><mn>3,65533</mn><mo form="postfix">)</mo><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mo>&#8230;</mo></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mi>A</mi><mrow><mo form="prefix">(</mo><mn>3,</mn><msup><mn>2</mn><mn>65536</mn></msup><mo>-</mo><mn>3</mn><mo form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><mo>&#8230;</mo></mtd></mtr><mtr><mtd columnalign="right"></mtd><mtd columnalign="left"><mo>=</mo><msup><mn>2</mn><mrow><msup><mn>2</mn><mn>65536</mn></msup></mrow></msup><mo>-</mo><mn>3.</mn></mtd></mtr></mtable></math><!-- end MathToWeb -->
-      </d:informalequation>
+      <d:inlineequation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi><mo>(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>)</mo><mo>=</mo><mi>A</mi><mo>(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>)</mo><mo>)</mo></math>
+      </d:inlineequation>
+      <d:para></d:para>
+      <d:inlineequation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>=</mo><mi>A</mi><mo>(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>)</mo><mo>)</mo><mo>)</mo></math>
+      </d:inlineequation>
+      <d:para></d:para>
+      <d:inlineequation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>=</mo><mi>A</mi><mo>(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>)</mo><mo>)</mo><mo>)</mo></math>
+      </d:inlineequation>
+      <d:para></d:para>
+      <d:inlineequation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>=</mo><mi>A</mi><mo>(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo>)</mo><mo>)</mo></math>
+      </d:inlineequation>
+      <d:para></d:para>
+      <d:inlineequation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>=</mo><mi>A</mi><mo>(</mo><mn>0</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>0</mn><mo>,</mo><mn>3</mn><mo>)</mo><mo>)</mo></math>
+      </d:inlineequation>
+      <d:para></d:para>
+      <d:inlineequation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>=</mo><mn>4</mn></math>
+      </d:inlineequation>
+        <d:para></d:para>
+        <d:inlineequation>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi><mo>(</mo><mn>4</mn><mo>,</mo><mn>3</mn><mo>)</mo><mo>=</mo><mi>A</mi><mo>(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>4</mn><mo>,</mo><mn>2</mn><mo>)</mo><mo>)</mo></math>
+        </d:inlineequation>
+        <d:para></d:para>
+        <d:inlineequation>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi><mo>(</mo><mn>4</mn><mo>,</mo><mn>3</mn><mo>)</mo><mo>=</mo><mi>A</mi><mo>(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>4</mn><mo>,</mo><mn>1</mn><mo>)</mo><mo>)</mo><mo>)</mo></math>
+        </d:inlineequation>
+        <d:para></d:para>
+        <d:inlineequation>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi><mo>(</mo><mn>4</mn><mo>,</mo><mn>3</mn><mo>)</mo><mo>=</mo><mi>A</mi><mo>(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>4</mn><mo>,</mo><mn>0</mn><mo>)</mo><mo>)</mo><mo>)</mo><mo>)</mo></math>
+        </d:inlineequation>
+        <d:para></d:para>
+        <d:inlineequation>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi><mo>(</mo><mn>4</mn><mo>,</mo><mn>3</mn><mo>)</mo><mo>=</mo><mi>A</mi><mo>(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>3</mn><mo>,</mo><mi>A</mi><mo>(</mo><mn>3</mn><mo>,</mo><mn>1</mn><mo>)</mo><mo>)</mo><mo>)</mo><mo>)</mo></math>
+        </d:inlineequation>
+        <d:para></d:para>
+        <d:inlineequation>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>.</mo><mo>.</mo><mo>.</mo></math>
+        </d:inlineequation>
+        <d:para></d:para>
+        <d:inlineequation>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>=</mo><msup><msup><mn>2</mn><mn>2</mn></msup><mn>65536</mn></msup><mo>-</mo><mn>3</mn></math>
+        </d:inlineequation>
       <d:sect3>
         <d:title>Naive Implementation</d:title>
+        <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+ 
+int ackermann(int m, int n)
+{
+  if (!m) return n + 1;
+  if (!n) return ackermann(m - 1, 1);
+  
+  return ackermann(m - 1, ackermann(m, n - 1));
+}
+ 
+int main()
+{
+  int m, n;
+  for (m = 0; m <= 4; m++)
+    for (n = 0; n < 6 - m; n++)
+      printf("A(%d, %d) = %d\n", m, n, ackermann(m, n));
+ 
+  return 0;
+}]]></d:programlisting>
+        <d:para>
+          and the output is:
+        </d:para>
+        <d:screen><![CDATA[A(0, 0) = 1
+A(0, 1) = 2
+A(0, 2) = 3
+A(0, 3) = 4
+A(0, 4) = 5
+A(0, 5) = 6
+A(1, 0) = 2
+A(1, 1) = 3
+A(1, 2) = 4
+A(1, 3) = 5
+A(1, 4) = 6
+A(2, 0) = 3
+A(2, 1) = 5
+A(2, 2) = 7
+A(2, 3) = 9
+A(3, 0) = 5
+A(3, 1) = 13
+A(3, 2) = 29
+A(4, 0) = 13
+A(4, 1) = 65533]]></d:screen>
+        <d:para>
+          <d:code>gcc</d:code> does quite good optimization. For example, if I
+          time the above code without optimization then I get following:
+        </d:para>
+        <d:screen><![CDATA[$ time ./a.out
+A(0, 0) = 1
+A(0, 1) = 2
+A(0, 2) = 3
+A(0, 3) = 4
+A(0, 4) = 5
+A(0, 5) = 6
+A(1, 0) = 2
+A(1, 1) = 3
+A(1, 2) = 4
+A(1, 3) = 5
+A(1, 4) = 6
+A(2, 0) = 3
+A(2, 1) = 5
+A(2, 2) = 7
+A(2, 3) = 9
+A(3, 0) = 5
+A(3, 1) = 13
+A(3, 2) = 29
+A(4, 0) = 13
+A(4, 1) = 65533
+
+real	0m18.102s
+user	0m18.080s
+sys	0m0.018s]]></d:screen>
+        <d:para>
+          But if I compile it using <d:code>-O3</d:code> flag then for the same
+          code I have following:
+        </d:para>
+        <d:screen><![CDATA[$ time ./a.out
+A(0, 0) = 1
+A(0, 1) = 2
+A(0, 2) = 3
+A(0, 3) = 4
+A(0, 4) = 5
+A(0, 5) = 6
+A(1, 0) = 2
+A(1, 1) = 3
+A(1, 2) = 4
+A(1, 3) = 5
+A(1, 4) = 6
+A(2, 0) = 3
+A(2, 1) = 5
+A(2, 2) = 7
+A(2, 3) = 9
+A(3, 0) = 5
+A(3, 1) = 13
+A(3, 2) = 29
+A(4, 0) = 13
+A(4, 1) = 65533
+
+real	0m1.748s
+user	0m1.742s
+sys	0m0.005s]]></d:screen>
+        <d:para>
+          The problem with converting Ackermann function to tail recursive
+          version is storing the values of intermediate values of
+          <d:inlineequation><math
+                                xmlns="http://www.w3.org/1998/Math/MathML"><mi>m</mi></math></d:inlineequation>
+          for which we need data structure like a linked list. Although, an
+          array can be used as well. However, to really show the complexity of
+          Ackermann function you need data types much bigger than
+          <d:code>unsigned long long</d:code>.
+        </d:para>
+        <d:para>
+          Another version of Ackermann function which is a tail-recursive
+          version.
+        </d:para>
+        <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+
+int ackermann(unsigned int *m, unsigned int *n, unsigned int* a, int* len)
+{
+  if(!*m && *len == -1) {
+    return ++*n;
+  }
+  else if(!*m && *len >= 0) {
+    ++*n;
+    *m = a[(*len)--];
+  }
+  else if(*n == 0) {
+    --*m;
+    *n = 1;
+  } else {
+    ++*len;
+    a[*len] = *m - 1;
+    --*n;
+  }
+  return ackermann(m, n, a, len);
+}
+
+int main()
+{
+  unsigned int m=4, n=1;
+  unsigned int a[66000];
+  int len = -1;
+
+  for (m = 0; m <= 4; m++)
+    for (n = 0; n < 6 - m; n++) {
+      unsigned int i = m;
+      unsigned int j = n;
+      printf("A(%d, %d) = %d\n", m, n, ackermann(&i, &j, a, &len));
+    }
+
+  return 0;
+}]]></d:programlisting>
+        <d:para>
+          But we have not improved the complexity of the algorithm. i.e. our
+          computation effort has not decreased thus even with optimization it
+          performs worse than our naive version. The timings are given below:
+        </d:para>
+        <d:screen><![CDATA[$ time ./a.out
+A(0, 0) = 1
+A(0, 1) = 2
+A(0, 2) = 3
+A(0, 3) = 4
+A(0, 4) = 5
+A(0, 5) = 6
+A(1, 0) = 2
+A(1, 1) = 3
+A(1, 2) = 4
+A(1, 3) = 5
+A(1, 4) = 6
+A(2, 0) = 3
+A(2, 1) = 5
+A(2, 2) = 7
+A(2, 3) = 9
+A(3, 0) = 5
+A(3, 1) = 13
+A(3, 2) = 29
+A(4, 0) = 13
+A(4, 1) = 65533
+
+real	0m2.934s
+user	0m2.926s
+sys	0m0.006s]]></d:screen>
+        <d:para>
+          However, we can improve this by doing caching previous results which
+          is shown in the following piece of code:
+        </d:para>
+        <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int m_bits, n_bits;
+int *cache;
+
+int ackermann(int m, int n)
+{
+        int idx, res;
+        if (!m) return n + 1;
+
+        if (n >= 1<<n_bits) {
+                printf("%d, %d\n", m, n);
+                idx = 0;
+        } else {
+                idx = (m << n_bits) + n;
+                if (cache[idx]) return cache[idx];
+        }
+
+        if (!n) res = ackermann(m - 1, 1);
+        else    res = ackermann(m - 1, ackermann(m, n - 1));
+
+        if (idx) cache[idx] = res;
+        return res;
+}
+int main()
+{
+        int m, n;
+
+        m_bits = 3;
+        n_bits = 20;  /* can save n values up to 2**20 - 1, that's 1 meg */
+        cache = malloc(sizeof(int) * (1 << (m_bits + n_bits)));
+        memset(cache, 0, sizeof(int) * (1 << (m_bits + n_bits)));
+
+        for (m = 0; m <= 4; m++)
+                for (n = 0; n < 6 - m; n++)
+                        printf("A(%d, %d) = %d\n", m, n, ackermann(m, n));
+
+        return 0;
+}]]></d:programlisting>
+        <d:para>
+          and the timing is given below:
+        </d:para>
+        <d:programlisting role="CLexer"><![CDATA[A(0, 0) = 1
+A(0, 1) = 2
+A(0, 2) = 3
+A(0, 3) = 4
+A(0, 4) = 5
+A(0, 5) = 6
+A(1, 0) = 2
+A(1, 1) = 3
+A(1, 2) = 4
+A(1, 3) = 5
+A(1, 4) = 6
+A(2, 0) = 3
+A(2, 1) = 5
+A(2, 2) = 7
+A(2, 3) = 9
+A(3, 0) = 5
+A(3, 1) = 13
+A(3, 2) = 29
+A(4, 0) = 13
+A(4, 1) = 65533
+
+real	0m0.005s
+user	0m0.002s
+sys	0m0.002s]]></d:programlisting>
       </d:sect3>
     </d:sect2>
+  </d:sect1>
+  <d:sect1>
+    <d:title>Binary Search</d:title>
+    <d:para>
+      Binary search is a classic divide and conquer algorithm which tells if a
+      value is present in a set of values in <d:inlineequation><math
+      xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>log</mi><mn>2</mn></msub><mfenced><mi>n</mi></mfenced></math></d:inlineequation>. The
+      prerequisite of applying binary search is that input set is sorted.
+    </d:para>
+    <d:para>
+      In binary search we find the mid element of our set. Let us say that our
+      set or array is sorted in increasing order. If key is equal to
+      the value of mid element we want to search then we return the value. If
+      key is less than value of mid element then we consider the left half of
+      array repeat the process. If key is greater than value of mid element
+      then we consider the right half of array and repeat the process. Once we
+      exhaust the resulting array to last one value by repeatedly dividing in
+      half and still we have not found the value then the key is not found.
+    </d:para>
+    <d:para>
+      First let us see an iterative version of the algorithm:
+    </d:para>
+    <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+#include <stddef.h>
+    
+int main()
+{
+  size_t first, last, middle, search;
+  size_t array[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8 ,9};
+
+  printf("Enter value to find\n");
+  scanf("%zu", &search);
+
+  first = 0;
+  last = 9;
+  middle = (first+last)/2;
+
+  while (first <= last) {
+    if (array[middle] < search)
+      first = middle + 1;
+    else if (array[middle] == search) {
+      printf("%zu found at location %zu.\n", search, middle);
+      break;
+    }
+    else
+      last = middle - 1;
+
+    middle = (first + last)/2;
+  }
+  if (first > last)
+    printf("Not found! %zu is not present in the list.\n", search);
+
+  return 0;
+}]]></d:programlisting>
+    <d:para>
+      Now let us see recursive version:
+    </d:para>
+    <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+#include <stddef.h>
+
+void binary_search(size_t *a, size_t first, size_t last, size_t search)
+{
+  size_t middle = (first+last)/2;
+
+  if (first > last) {
+    printf("Not found! %zu is not present in the list.\n", search);
+    return;
+  } else {
+    if (a[middle] < search)
+      first = middle + 1;
+    else if (a[middle] == search) {
+      printf("%zu found at location %zu.\n", search, middle);
+      return;
+    }
+    else
+      last = middle - 1;
+  }
+
+  binary_search(a, first, last, search);
+}
+
+int main()
+{
+  size_t first, last, search;
+  size_t a[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8 ,9};
+
+  printf("Enter value to find\n");
+  scanf("%zu", &search);
+
+  first = 0;
+  last = 9;
+
+  binary_search(a, first, last, search);
+  return 0;
+}]]></d:programlisting>
   </d:sect1>
   <d:bibliography>
     <d:title>Bibliography</d:title>

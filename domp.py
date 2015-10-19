@@ -66,6 +66,7 @@ def findReplace(directory, find, replace, filePattern):
 #                                        i.string.replace_with(code)
                                 soup = BeautifulSoup(soup.renderContents(), "lxml")
                                 for i in soup.find_all("pre", "CLexer"):
+					#print i.string
                                         code = BeautifulSoup(highlight(i.string, CLexer(), HtmlFormatter()), "lxml")
                                         i.string.replace_with(code)
                                 soup = BeautifulSoup(soup.renderContents(), "lxml")
