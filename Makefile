@@ -4,8 +4,8 @@ html:
 	find . -name "*.html" | xargs perl -pi -e "s/<html>/<!DOCTYPE html>/g;"
 	cp -r images build/
 	./domp.py
-	cp -r build/* /var/www/dsa/
-
+#	cp -r build/* /var/www/dsa/
+	cp -r build/* /opt/local/share/nginx/html/dsa/
 
 p: src/*.xml dblatex.xsl Makefile
 	rm -rf pdf
@@ -14,8 +14,10 @@ p: src/*.xml dblatex.xsl Makefile
 	dblatex -bxetex -T db2latex -p dblatex.xsl -P preface.tocdepth="1" pdf/dsa.xml
 
 latex:
-	dblatex -bxetex -T db2latex -p dblatex.xsl -P preface.tocdepth="1" -t tex src/dsa.xml
-	cd src && perl -pi -e "s/\.png/\.pdf/g;" dsa.tex
+	dblatex -bxetex -T db2latex -p dblatex.xsl -P preface.tocdepth="1" -t tex src/dsa.xml -o pdf/dsa.tex
+	perl -pi -e "s/\.png/\.pdf/g;" pdf/dsa.tex
+	./lstlisting_to_minted.sh
+	cd pdf && xelatex -shell-escape dsa.tex && xelatex -shell-escape dsa.tex
 
 fop: src/*.xml fop.xsl Makefile
 #	cd src && xmllint --xinclude c.xml>resolvedc.xml

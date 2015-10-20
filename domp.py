@@ -18,7 +18,7 @@ def findReplace(directory, find, replace, filePattern):
                                 if(l[len(l) -2]) == 'build':
                                         name = l[len(l) - 1]
                                 s = f.read()
-                                s = s.replace(find, replace)
+                                #s = s.replace(find, replace)
                                 s = s.replace("index.html", "")
                                 soup = BeautifulSoup(s, "lxml")
 

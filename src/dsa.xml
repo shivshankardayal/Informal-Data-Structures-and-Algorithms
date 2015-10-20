@@ -37,6 +37,7 @@ the section entitled &#8220;GNU Free Documentation License&#8221;.
     <d:title>Basic Data Structures</d:title>
   <xi:include href="introduction.xml"/>
   <xi:include href="recursion.xml"/>
+  <xi:include href="bibliography.xml"/>
   </d:part>
   <!--d:part>
     <d:title>Sorting</d:title>

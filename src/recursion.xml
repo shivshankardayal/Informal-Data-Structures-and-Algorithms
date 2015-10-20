@@ -399,7 +399,7 @@
       loop which prints all positing integers for data type <d:code>unsigned
       long</d:code>.
     </d:para>
-    <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+    <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
 #include <limits.h>
 
 int main()
@@ -416,7 +416,7 @@ int main()
       terminate. This simple loop can be implemented using recursion as shown
       below:
     </d:para>
-    <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+    <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
 #include <limits.h>
 
 void f(unsigned long i)
@@ -453,84 +453,84 @@ int main()
       steps <d:code>gcc -Wall -std=c99 -pedantic -c test.c</d:code> and
       <d:code>objdump -d test.o</d:code> respectively:
     </d:para>
-    <d:programlisting role="ALexer"><![CDATA[test.o:     file format elf64-x86-64
+    <d:programlisting role="ALexer" language="cobjdump"><![CDATA[test.o:     file format elf64-x86-64
 
 
 Disassembly of section .text:
 
 0000000000000000 <f>:
-   0:	55                   	push   %rbp
-   1:	48 89 e5             	mov    %rsp,%rbp
-   4:	48 83 ec 10          	sub    $0x10,%rsp
-   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
-   c:	48 83 7d f8 ff       	cmpq   $0xffffffffffffffff,-0x8(%rbp)
-  11:	75 18                	jne    2b <f+0x2b>
-  13:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
-  17:	48 89 c6             	mov    %rax,%rsi
-  1a:	bf 00 00 00 00       	mov    $0x0,%edi
-  1f:	b8 00 00 00 00       	mov    $0x0,%eax
-  24:	e8 00 00 00 00       	callq  29 <f+0x29>
-  29:	eb 26                	jmp    51 <f+0x51>
-  2b:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
-  2f:	48 89 c6             	mov    %rax,%rsi
-  32:	bf 00 00 00 00       	mov    $0x0,%edi
-  37:	b8 00 00 00 00       	mov    $0x0,%eax
-  3c:	e8 00 00 00 00       	callq  41 <f+0x41>
-  41:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
-  45:	48 83 c0 01          	add    $0x1,%rax
-  49:	48 89 c7             	mov    %rax,%rdi
-  4c:	e8 00 00 00 00       	callq  51 <f+0x51>
-  51:	c9                   	leaveq 
-  52:	c3                   	retq   
+   0: 55                    push   %rbp
+   1: 48 89 e5              mov    %rsp,%rbp
+   4: 48 83 ec 10           sub    $0x10,%rsp
+   8: 48 89 7d f8           mov    %rdi,-0x8(%rbp)
+   c: 48 83 7d f8 ff        cmpq   $0xffffffffffffffff,-0x8(%rbp)
+  11: 75 18                 jne    2b <f+0x2b>
+  13: 48 8b 45 f8           mov    -0x8(%rbp),%rax
+  17: 48 89 c6              mov    %rax,%rsi
+  1a: bf 00 00 00 00        mov    $0x0,%edi
+  1f: b8 00 00 00 00        mov    $0x0,%eax
+  24: e8 00 00 00 00        callq  29 <f+0x29>
+  29: eb 26                 jmp    51 <f+0x51>
+  2b: 48 8b 45 f8           mov    -0x8(%rbp),%rax
+  2f: 48 89 c6              mov    %rax,%rsi
+  32: bf 00 00 00 00        mov    $0x0,%edi
+  37: b8 00 00 00 00        mov    $0x0,%eax
+  3c: e8 00 00 00 00        callq  41 <f+0x41>
+  41: 48 8b 45 f8           mov    -0x8(%rbp),%rax
+  45: 48 83 c0 01           add    $0x1,%rax
+  49: 48 89 c7              mov    %rax,%rdi
+  4c: e8 00 00 00 00        callq  51 <f+0x51>
+  51: c9                    leaveq 
+  52: c3                    retq   
 
 0000000000000053 <main>:
-  53:	55                   	push   %rbp
-  54:	48 89 e5             	mov    %rsp,%rbp
-  57:	bf 00 00 00 00       	mov    $0x0,%edi
-  5c:	e8 00 00 00 00       	callq  61 <main+0xe>
-  61:	b8 00 00 00 00       	mov    $0x0,%eax
-  66:	5d                   	pop    %rbp
-  67:	c3                   	retq]]></d:programlisting>
+  53: 55                    push   %rbp
+  54: 48 89 e5              mov    %rsp,%rbp
+  57: bf 00 00 00 00        mov    $0x0,%edi
+  5c: e8 00 00 00 00        callq  61 <main+0xe>
+  61: b8 00 00 00 00        mov    $0x0,%eax
+  66: 5d                    pop    %rbp
+  67: c3                    retq]]></d:programlisting>
     <d:para>
       and the counterpart produced by <d:code>gcc -Wall -std=c99 -pedantic -O2
       -c test.c</d:code> and <d:code>objdump -d -M=Intel test.o</d:code> is
       given below:
     </d:para>
-    <d:programlisting role="ALexer"><![CDATA[test.o:     file format elf64-x86-64
+    <d:programlisting role="ALexer" language="cobjdump"><![CDATA[test.o:     file format elf64-x86-64
 
 
 Disassembly of section .text:
 
 0000000000000000 <f>:
-   0:	48 83 ff ff          	cmp    $0xffffffffffffffff,%rdi
-   4:	53                   	push   %rbx
-   5:	48 89 fb             	mov    %rdi,%rbx
-   8:	74 24                	je     2e <f+0x2e>
-   a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
-  10:	48 89 da             	mov    %rbx,%rdx
-  13:	31 c0                	xor    %eax,%eax
-  15:	be 00 00 00 00       	mov    $0x0,%esi
-  1a:	bf 01 00 00 00       	mov    $0x1,%edi
-  1f:	48 83 c3 01          	add    $0x1,%rbx
-  23:	e8 00 00 00 00       	callq  28 <f+0x28>
-  28:	48 83 fb ff          	cmp    $0xffffffffffffffff,%rbx
-  2c:	75 e2                	jne    10 <f+0x10>
-  2e:	5b                   	pop    %rbx
-  2f:	48 c7 c2 ff ff ff ff 	mov    $0xffffffffffffffff,%rdx
-  36:	be 00 00 00 00       	mov    $0x0,%esi
-  3b:	bf 01 00 00 00       	mov    $0x1,%edi
-  40:	31 c0                	xor    %eax,%eax
-  42:	e9 00 00 00 00       	jmpq   47 <f+0x47>
+   0: 48 83 ff ff           cmp    $0xffffffffffffffff,%rdi
+   4: 53                    push   %rbx
+   5: 48 89 fb              mov    %rdi,%rbx
+   8: 74 24                 je     2e <f+0x2e>
+   a: 66 0f 1f 44 00 00     nopw   0x0(%rax,%rax,1)
+  10: 48 89 da              mov    %rbx,%rdx
+  13: 31 c0                 xor    %eax,%eax
+  15: be 00 00 00 00        mov    $0x0,%esi
+  1a: bf 01 00 00 00        mov    $0x1,%edi
+  1f: 48 83 c3 01           add    $0x1,%rbx
+  23: e8 00 00 00 00        callq  28 <f+0x28>
+  28: 48 83 fb ff           cmp    $0xffffffffffffffff,%rbx
+  2c: 75 e2                 jne    10 <f+0x10>
+  2e: 5b                    pop    %rbx
+  2f: 48 c7 c2 ff ff ff ff  mov    $0xffffffffffffffff,%rdx
+  36: be 00 00 00 00        mov    $0x0,%esi
+  3b: bf 01 00 00 00        mov    $0x1,%edi
+  40: 31 c0                 xor    %eax,%eax
+  42: e9 00 00 00 00        jmpq   47 <f+0x47>
 
 Disassembly of section .text.startup:
 
 0000000000000000 <main>:
-   0:	48 83 ec 08          	sub    $0x8,%rsp
-   4:	31 ff                	xor    %edi,%edi
-   6:	e8 00 00 00 00       	callq  b <main+0xb>
-   b:	31 c0                	xor    %eax,%eax
-   d:	48 83 c4 08          	add    $0x8,%rsp
-  11:	c3                   	retq]]></d:programlisting>
+   0: 48 83 ec 08           sub    $0x8,%rsp
+   4: 31 ff                 xor    %edi,%edi
+   6: e8 00 00 00 00        callq  b <main+0xb>
+   b: 31 c0                 xor    %eax,%eax
+   d: 48 83 c4 08           add    $0x8,%rsp
+  11: c3                    retq]]></d:programlisting>
     <d:para>
       The key is the bottom of functions at locations <d:code>4c</d:code> and
       <d:code>42</d:code> respectively. As you can see in the first version
@@ -546,12 +546,12 @@ Disassembly of section .text.startup:
       giving an indicative diagram for that below:
     </d:para>
     <d:figure>
-      <d:title>Sample Stack Diagram for Function Calls</d:title>
       <d:mediaobject>
         <d:imageobject>
           <d:imagedata fileref="../images/stack-exec.png" align="center" />
         </d:imageobject>
       </d:mediaobject>
+      <d:title>Sample Stack Diagram for Function Calls</d:title>
     </d:figure>
     <d:para>
       As you can see when <d:code>main</d:code> calls <d:code>f(0)</d:code> a
@@ -600,7 +600,7 @@ Disassembly of section .text.startup:
         I straightaway present recursive implementation of factorial
         computation. First a naive version.
       </d:para>
-      <d:programlisting role="CLexer"><![CDATA[//Description: Recursive factorial.
+      <d:programlisting role="CLexer" language="c"><![CDATA[//Description: Recursive factorial.
 
 #include <stdio.h>
 
@@ -629,30 +629,30 @@ long long fact(unsigned int input)
         The problem with this implementation can be seen from the fact that
         compiler cannot optimize it for tail recursion. This can be seen from
         the assembly given below:
-        <d:programlisting role="ALexer"><![CDATA[test.o:     file format elf64-x86-64
+        <d:programlisting role="ALexer" language="cobjdump"><![CDATA[test.o:     file format elf64-x86-64
 
 
 Disassembly of section .text:
 
 0000000000000000 <fact>:
-   0:	53                   	push   rbx
-   1:	89 fb                	mov    ebx,edi
-   3:	b8 01 00 00 00       	mov    eax,0x1
-   8:	85 db                	test   ebx,ebx
-   a:	75 04                	jne    10 <fact+0x10>
-   c:	5b                   	pop    rbx
-   d:	c3                   	ret    
-   e:	66 90                	xchg   ax,ax
-  10:	8d 7b ff             	lea    edi,[rbx-0x1]
-  13:	e8 00 00 00 00       	call   18 <fact+0x18>
-  18:	48 0f af c3          	imul   rax,rbx
-  1c:	5b                   	pop    rbx
-  1d:	c3                   	ret]]></d:programlisting>
+   0: 53                    push   rbx
+   1: 89 fb                 mov    ebx,edi
+   3: b8 01 00 00 00        mov    eax,0x1
+   8: 85 db                 test   ebx,ebx
+   a: 75 04                 jne    10 <fact+0x10>
+   c: 5b                    pop    rbx
+   d: c3                    ret    
+   e: 66 90                 xchg   ax,ax
+  10: 8d 7b ff              lea    edi,[rbx-0x1]
+  13: e8 00 00 00 00        call   18 <fact+0x18>
+  18: 48 0f af c3           imul   rax,rbx
+  1c: 5b                    pop    rbx
+  1d: c3                    ret]]></d:programlisting>
         Thus we will have to modify our code in the way we have discussed so
         that compiler can do necessary optimization. The improved version is
         given below:
       </d:para>
-      <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+      <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
 
 void factorial(unsigned int *index, unsigned int *input, unsigned long long *fact);
 
@@ -684,25 +684,25 @@ void factorial(unsigned int *index, unsigned int *input, unsigned long long *fac
   factorial(index, input, fact);
 }]]></d:programlisting>
       and the equivalent assembly of our function is:
-      <d:programlisting role="ALexer"><![CDATA[test.o:     file format elf64-x86-64
+      <d:programlisting role="ALexer" language="cobjdump"><![CDATA[test.o:     file format elf64-x86-64
 
 
 Disassembly of section .text:
 
 0000000000000000 <factorial>:
-   0:	8b 07                	mov    (%rdi),%eax
-   2:	3b 06                	cmp    (%rsi),%eax
-   4:	74 1d                	je     23 <factorial+0x23>
-   6:	48 8b 0a             	mov    (%rdx),%rcx
-   9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
-  10:	83 c0 01             	add    $0x1,%eax
-  13:	41 89 c0             	mov    %eax,%r8d
-  16:	89 07                	mov    %eax,(%rdi)
-  18:	49 0f af c8          	imul   %r8,%rcx
-  1c:	39 06                	cmp    %eax,(%rsi)
-  1e:	75 f0                	jne    10 <factorial+0x10>
-  20:	48 89 0a             	mov    %rcx,(%rdx)
-  23:	f3 c3                	repz retq]]></d:programlisting>
+   0: 8b 07                 mov    (%rdi),%eax
+   2: 3b 06                 cmp    (%rsi),%eax
+   4: 74 1d                 je     23 <factorial+0x23>
+   6: 48 8b 0a              mov    (%rdx),%rcx
+   9: 0f 1f 80 00 00 00 00  nopl   0x0(%rax)
+  10: 83 c0 01              add    $0x1,%eax
+  13: 41 89 c0              mov    %eax,%r8d
+  16: 89 07                 mov    %eax,(%rdi)
+  18: 49 0f af c8           imul   %r8,%rcx
+  1c: 39 06                 cmp    %eax,(%rsi)
+  1e: 75 f0                 jne    10 <factorial+0x10>
+  20: 48 89 0a              mov    %rcx,(%rdx)
+  23: f3 c3                 repz retq]]></d:programlisting>
       <d:para>
         As you can see that <d:code>factrial</d:code> has been optimized for
         tail recursion. It may appear from above code that I have bypassed base
@@ -722,7 +722,7 @@ Disassembly of section .text:
       </d:para>
       <d:sect3>
         <d:title>Naive Version</d:title>
-        <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+        <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
 
 long long fibonacci(int input);
 
@@ -763,20 +763,20 @@ long long fibonacci(int input)
           corresponding fib call):
         </d:para>
         <d:figure>
-          <d:title>Function calls for 5th Fibonacci number</d:title>
           <d:mediaobject>
             <d:imageobject>
               <d:imagedata fileref="../images/fib5.png" align="center" />
             </d:imageobject>
           </d:mediaobject>
+          <d:title>Function calls for 5th Fibonacci number</d:title>
         </d:figure>
         <d:figure>
-          <d:title>Function calls for 7th Fibonacci number</d:title>
           <d:mediaobject>
             <d:imageobject>
               <d:imagedata fileref="../images/fib7.png" align="center" />
             </d:imageobject>
           </d:mediaobject>
+          <d:title>Function calls for 7th Fibonacci number</d:title>
         </d:figure>
         <d:para>
           As you can see for every next number the number of elements on left
@@ -826,7 +826,7 @@ long long fibonacci(int input)
           single recursion form will allow us to do tail recursion. The code is
           given below:
         </d:para>
-        <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+        <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
 
 void fib(unsigned int *input, unsigned long long *fib1, unsigned long long *fib2, unsigned long long *fibn)
 {
@@ -882,17 +882,17 @@ Which Fibonacci number you want?
 45
 1134903170
 
-real	0m7.535s
-user	0m6.796s
-sys	0m0.008s
+real  0m7.535s
+user  0m6.796s
+sys 0m0.008s
 computer:~ shivdayal$ time ./a.out 
 Enter the fibonacci number you want(positive integer please):
 45
 1134903170 is the Fibonacci number
 
-real	0m0.864s
-user	0m0.001s
-sys	0m0.002s]]></d:screen>
+real  0m0.864s
+user  0m0.001s
+sys 0m0.002s]]></d:screen>
         <d:para>
           If I try to compute 50th number then it breaks my patience. But the
           tail recursive version blows away even the 80th number easily. As you
@@ -910,9 +910,9 @@ sys	0m0.002s]]></d:screen>
 45
 1134903170
 
-real	0m3.841s
-user	0m2.640s
-sys	0m0.003s]]></d:screen>
+real  0m3.841s
+user  0m2.640s
+sys 0m0.003s]]></d:screen>
         <d:para>
           but it still is no match for our optimized tail recursive
           version. Thus, we can conslude that even through compilers are very
@@ -981,7 +981,7 @@ sys	0m0.003s]]></d:screen>
         </d:inlineequation>
       <d:sect3>
         <d:title>Naive Implementation</d:title>
-        <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+        <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
  
 int ackermann(int m, int n)
 {
@@ -1049,9 +1049,9 @@ A(3, 2) = 29
 A(4, 0) = 13
 A(4, 1) = 65533
 
-real	0m18.102s
-user	0m18.080s
-sys	0m0.018s]]></d:screen>
+real  0m18.102s
+user  0m18.080s
+sys 0m0.018s]]></d:screen>
         <d:para>
           But if I compile it using <d:code>-O3</d:code> flag then for the same
           code I have following:
@@ -1078,9 +1078,9 @@ A(3, 2) = 29
 A(4, 0) = 13
 A(4, 1) = 65533
 
-real	0m1.748s
-user	0m1.742s
-sys	0m0.005s]]></d:screen>
+real  0m1.748s
+user  0m1.742s
+sys 0m0.005s]]></d:screen>
         <d:para>
           The problem with converting Ackermann function to tail recursive
           version is storing the values of intermediate values of
@@ -1095,7 +1095,7 @@ sys	0m0.005s]]></d:screen>
           Another version of Ackermann function which is a tail-recursive
           version.
         </d:para>
-        <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+        <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
 
 int ackermann(unsigned int *m, unsigned int *n, unsigned int* a, int* len)
 {
@@ -1159,14 +1159,14 @@ A(3, 2) = 29
 A(4, 0) = 13
 A(4, 1) = 65533
 
-real	0m2.934s
-user	0m2.926s
-sys	0m0.006s]]></d:screen>
+real  0m2.934s
+user  0m2.926s
+sys 0m0.006s]]></d:screen>
         <d:para>
           However, we can improve this by doing caching previous results which
           is shown in the following piece of code:
         </d:para>
-        <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+        <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -1210,7 +1210,7 @@ int main()
         <d:para>
           and the timing is given below:
         </d:para>
-        <d:programlisting role="CLexer"><![CDATA[A(0, 0) = 1
+        <d:programlisting role="CLexer" language="c"><![CDATA[A(0, 0) = 1
 A(0, 1) = 2
 A(0, 2) = 3
 A(0, 3) = 4
@@ -1231,15 +1231,28 @@ A(3, 2) = 29
 A(4, 0) = 13
 A(4, 1) = 65533
 
-real	0m0.005s
-user	0m0.002s
-sys	0m0.002s]]></d:programlisting>
+real  0m0.005s
+user  0m0.002s
+sys 0m0.002s]]></d:programlisting>
       </d:sect3>
     </d:sect2>
   </d:sect1>
   <d:sect1>
     <d:title>Binary Search</d:title>
     <d:para>
+      Searching a set of data is one of the most common and important
+      operations in computer science. The importance of the search can be
+      recognized from the success Google. The problem with search is that it is
+      easy to search small amount of data but harder for large set. Most of the
+      time we search for strings and rarely for numbers. The simplest approach
+      would be the naive, brute force method to compare each item of the
+      collection with the key to be searched which would result in
+      <d:inlineequation><math
+                            xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></math></d:inlineequation>
+      time complexity, which simply is not good enough. Another problem is that
+      since we compare strings that would result in increased time complexity
+      other than that is for search. The first improvement which we can do on
+      linear search is by using binary search algorithm.
       Binary search is a classic divide and conquer algorithm which tells if a
       value is present in a set of values in <d:inlineequation><math
       xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>log</mi><mn>2</mn></msub><mfenced><mi>n</mi></mfenced></math></d:inlineequation>. The
@@ -1258,7 +1271,7 @@ sys	0m0.002s]]></d:programlisting>
     <d:para>
       First let us see an iterative version of the algorithm:
     </d:para>
-    <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+    <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
 #include <stddef.h>
     
 int main()
@@ -1293,7 +1306,7 @@ int main()
     <d:para>
       Now let us see recursive version:
     </d:para>
-    <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+    <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
 #include <stddef.h>
 
 void binary_search(size_t *a, size_t first, size_t last, size_t search)
@@ -1331,102 +1344,108 @@ int main()
   binary_search(a, first, last, search);
   return 0;
 }]]></d:programlisting>
+    <d:para>
+      While you may think that this solution is correct the truth cannot be
+      farther from it. There is a gaping issue with the code presented
+      above. Read the code again and see if you can find that. For the time
+      being I will entertain you with a quote from Donald E. Knuth.
+    </d:para>
+    <d:blockquote>
+      <d:attribution>
+        DEK
+      </d:attribution>
+      <d:para>
+        Although the basic idea of binary search is comparatively
+        straightforward, the details can be surprisingly tricky.
+      </d:para>
+    </d:blockquote>
+    <d:para>
+       On the funnier side of life it is not that only novice programmers make
+       mistakes. Even expert programmers make mistakes. John Bentley, author of
+       very good books(<d:emphasis role="italic">Programming Pearls, More
+       Programming Pearls and Writing Efficient Programs</d:emphasis>) assigned
+       it as a problem in a course for
+       professional programmers. Surprisingly, ninety percent could not write
+       correct code even after several hours. Even his own implementation in
+       1986 print of Programming Pearls, contained an error which remained
+       there for 20 years.
+    </d:para>
+    <d:para>
+      Coming back to the error, it is on the line which contains the code
+      <d:code>middle = (first + last)/2;</d:code>. Experienced programmer would
+      have already noticed it. The problem is common when you add any two
+      numbers there is always a chance that sum will overflow. Thus, you need
+      to cast it to larger data type. Since, we are using
+      <d:code>size_t</d:code> for data type which is good enough for holding
+      average of two such numbers we do not need to cast it. If it would have
+      been just plain sum then we would have needed <d:code>long
+      long</d:code> or its unsigned counterpart to be accurate. Here, we can
+      use a nifty calculation to find out the average. We can write the same
+      calculation as <d:code>middle = last + (first - last)/2;</d:code>, which
+      would work for all values of <d:code>first</d:code> and
+      <d:code>last</d:code>.
+    </d:para>
+    <d:sect2>
+      <d:title>A Simple Problem</d:title>
+      <d:para>
+        Although it is not related to recursion, following the above discussion
+        on the overflow a simple problem can be 
+        formulated. Given an array of numbers find out its average. Now this is
+        very simple and beginners always cause overflow in this. Floating-point
+        division is allowed for the sake of accuracy.
+      </d:para>
+    </d:sect2>
   </d:sect1>
-  <d:bibliography>
-    <d:title>Bibliography</d:title>
-    <d:biblioentry>
-      <d:abbrev>NK</d:abbrev>
-      <d:authorgroup>
-        <d:author>
-          <d:personname>
-            <d:firstname>
-              Niklaus
-            </d:firstname>
-            <d:surname>
-              Wirth
-            </d:surname>
-          </d:personname>
-        </d:author>
-      </d:authorgroup>
-      <d:copyright>
-        <d:year>1976</d:year>
-        <d:holder>Prentice Hall</d:holder>
-      </d:copyright>
-      <d:citetitle>Algorithms + Data Structures = Programs</d:citetitle>
-      <d:biblioid class="isbn">978-0-13-022418-7</d:biblioid>
-    </d:biblioentry>
-    <d:biblioentry>
-      <d:abbrev>MFRBFMFSK</d:abbrev>
-      <d:authorgroup>
-        <d:author>
-          <d:personname>
-            <d:firstname>
-              Matthais
-            </d:firstname>
-            <d:surname>
-              Felleisen
-            </d:surname>
-          </d:personname>
-        </d:author>
-        <d:author>
-          <d:personname>
-            <d:firstname>
-              Robert
-            </d:firstname>
-            <d:surname>
-              Findler
-            </d:surname>
-          </d:personname>
-        </d:author>
-        <d:author>
-          <d:personname>
-            <d:firstname>
-              Matthias
-            </d:firstname>
-            <d:surname>
-              Flatt
-            </d:surname>
-          </d:personname>
-        </d:author>
-        <d:author>
-          <d:personname>
-            <d:firstname>
-              Shriram
-            </d:firstname>
-            <d:surname>
-              Krishnamurthy
-            </d:surname>
-          </d:personname>
-        </d:author>      
-      </d:authorgroup>
-      <d:copyright>
-        <d:year>2001</d:year>
-        <d:holder>MIT Press</d:holder>
-      </d:copyright>
-      <d:citetitle>How to Design Programs: An Introduction to Computing and Programming</d:citetitle>
-      <d:biblioid class="isbn">978-0-26-206218-3</d:biblioid>
-    </d:biblioentry>
-    <d:biblioentry>
-      <d:abbrev>MF</d:abbrev>
-      <d:authorgroup>
-        <d:author>
-          <d:personname>
-            <d:firstname>
-              Matthais
-            </d:firstname>
-            <d:surname>
-              Felleisen
-            </d:surname>
-          </d:personname>
-        </d:author>
-      </d:authorgroup>
-      <d:copyright>
-        <d:year>2002</d:year>
-        <d:holder>Springer, UK</d:holder>
-      </d:copyright>
-      <d:citetitle>Developing Interactive Web Programs. In <d:quote>Advanced
-      Functional Programming: 4th International School</d:quote></d:citetitle>
-      <d:biblioid class="isbn">978-3-540-44833-4-4</d:biblioid>
-    </d:biblioentry>
-  </d:bibliography>
+  <d:sect1>
+    <d:title>Towers of Hanoi(Brahma)</d:title>
+    <d:para>
+      The next example is the famous Towers of Hanoi which is also known as
+      Towers of Brahma or Lucas' Tower. This puzzle was invented by the French
+      Mathematician Édouard Lucas in 1883. There is a story about an Indian
+      temple in Kashi Vishwanath which contains a large room with three
+      time-worn posts in it surrounded by 64 golden disks. According to
+      directive issued by Hindu God Brahma the Brahmin priests are moving the
+      disks. According to the directive of Brahma once priest would have moved
+      all the disks then the world will end.
+    </d:para>
+    <d:para>
+      If the legend were true, and priests moved the disks in such way that it
+      would require minimum no. of moves and they take one second per disk
+      movement, it would take them <d:inlineequation><math
+      xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>2</mn><mn>64</mn></msup><mo>-</mo><mn>1</mn></math></d:inlineequation>
+      seconds or roughly 585 billion years, or 18,446,744,073,709,551,615 turns to
+      finish, or about 127 times the current age of the sun. Thus, there is no
+      need to worry because earth will not have a source of energy, which
+      supports all the life. The other variation of the legend replaces priests
+      with monks, temple with monastery and location with Hanoi,
+      Vietnam. For us, the programmers, the location does not matter neither
+      does the legend. What matters is a program which can solve this
+      puzzle. First let us have a pictorial representation of the problem then
+      we will observe the constraints imposed on us by Gods about the puzzle.
+    </d:para>
+    <d:figure>
+      <d:mediaobject>
+        <d:imageobject>
+          <d:imagedata fileref="../images/tower_hanoi.png" align="center" />
+        </d:imageobject>
+      </d:mediaobject>
+      <d:title>Towers of Hanoi</d:title>
+    </d:figure>
+    <d:para>
+      The objective of the puzzle is to move all disks from leftmost stand to
+      rightmost under following rules:
+      <d:orderedlist>
+        <d:listitem>
+          Only one disk must be moved at a time.
+        </d:listitem>
+        <d:listitem>
+          A move can only take the uppermost disk from one of the towers
+          and place it on top of another tower.
+        </d:listitem>
+        <d:listitem>
+          No disk may be placed on top of a smaller disk.
+        </d:listitem>
+      </d:orderedlist>
+    </d:para>
+  </d:sect1>
 </d:chapter>

@@ -479,17 +479,17 @@ Div(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
       below is the flowchart for Euclid's algorithm.
     </d:para>
     <d:figure>
-      <d:title>Flowchart for Euclid's GCD Algorithm</d:title>
       <d:mediaobject>
         <d:imageobject>
           <d:imagedata fileref="../images/euclid_fc.png" align="center" />
         </d:imageobject>
       </d:mediaobject>
+      <d:title>Flowchart for Euclid's GCD Algorithm</d:title>
     </d:figure>
     <d:para>
       Given below is a sample C program which implements this algorithm:
     </d:para>
-    <d:programlisting role="CLexer"><![CDATA[#include <stdio.h>
+    <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
 
 int main()
 {
@@ -733,28 +733,28 @@ int main()
         and which does not.
       </d:para>
       <d:figure>
-        <d:title>Graphs of some common functions</d:title>
         <d:mediaobject>
           <d:imageobject>
             <d:imagedata fileref="../images/function_plot_cropped.png" align="center"/>
           </d:imageobject>
         </d:mediaobject>
+        <d:title>Graphs of some common functions</d:title>
       </d:figure>
       <d:figure>
-        <d:title>Graphs of some more common functions</d:title>
         <d:mediaobject>
           <d:imageobject>
             <d:imagedata fileref="../images/function_plot1_cropped.png" align="center" />
           </d:imageobject>
         </d:mediaobject>
+        <d:title>Graphs of some more common functions</d:title>
       </d:figure>
       <d:figure>
-        <d:title>Graph of O(n!)</d:title>
         <d:mediaobject>
           <d:imageobject>
             <d:imagedata fileref="../images/factorial_cropped.png" align="center" />
           </d:imageobject>
         </d:mediaobject>
+        <d:title>Graph of O(n!)</d:title>
       </d:figure>
       <d:para>
         I am presenting a table for runtime of various complexities, looking at
@@ -1008,29 +1008,29 @@ int main()
         In case you prefer graphs to mathematical functions to understand, below
         I present all three big notations.
         <d:figure>
-          <d:title>Graphical representation of big-<math
-          xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi></math> notation</d:title>
           <d:mediaobject>
             <d:imageobject>
               <d:imagedata fileref="../images/big-o.png" align="center" />
             </d:imageobject>
           </d:mediaobject>
+          <d:title>Graphical representation of big-<math
+          xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi></math> notation</d:title>
         </d:figure>
         <d:figure>
-          <d:title>Graphical representation of big-<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#937;</mi></math> notation</d:title>
           <d:mediaobject>
             <d:imageobject>
               <d:imagedata fileref="../images/big-omega.png" align="center" />
             </d:imageobject>
           </d:mediaobject>
+          <d:title>Graphical representation of big-<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#937;</mi></math> notation</d:title>
         </d:figure>
         <d:figure>
-          <d:title>Graphical representation of big-<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#920;</mi></math> notation</d:title>
           <d:mediaobject>
             <d:imageobject>
               <d:imagedata fileref="../images/big-theta.png" align="center" />
             </d:imageobject>
           </d:mediaobject>
+          <d:title>Graphical representation of big-<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#920;</mi></math> notation</d:title>
         </d:figure>
       </d:para>
     </d:sect2>
@@ -1043,7 +1043,7 @@ int main()
         to do that. For example consider the following code which computes sum
         of n numbers stored in an array.
       </d:para>
-      <d:programlisting role="CLexer"><![CDATA[for(i=sum=0; i<n; ++i)
+      <d:programlisting role="CLexer" language="c"><![CDATA[for(i=sum=0; i<n; ++i)
   sum += a[i];]]></d:programlisting>
       <d:para>
         First we have two initializations for <d:code>i</d:code> and
