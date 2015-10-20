@@ -1,0 +1,122 @@
+<d:bibliography version="5.0" xmlns:d="http://docbook.org/ns/docbook"
+                xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:mml="http://www.w3.org/1998/Math/MathML">
+  <?xml-stylesheet href="../css/style.css" type="text/css"?>
+  <?dbhtml filename="bibliography/index.html" ?>
+  <d:title>Bibliography</d:title>
+  <d:biblioentry>
+    <d:abbrev>NK</d:abbrev>
+    <d:authorgroup>
+      <d:author>
+        <d:personname>
+          <d:firstname>
+            Niklaus
+          </d:firstname>
+          <d:surname>
+            Wirth
+          </d:surname>
+        </d:personname>
+      </d:author>
+    </d:authorgroup>
+    <d:copyright>
+      <d:year>1976</d:year>
+      <d:holder>Prentice Hall</d:holder>
+    </d:copyright>
+    <d:citetitle>Algorithms + Data Structures = Programs</d:citetitle>
+    <d:biblioid class="isbn">978-0-13-022418-7</d:biblioid>
+  </d:biblioentry>
+  <d:biblioentry>
+    <d:abbrev>MFRBFMFSK</d:abbrev>
+    <d:authorgroup>
+      <d:author>
+        <d:personname>
+          <d:firstname>
+            Matthais
+          </d:firstname>
+          <d:surname>
+            Felleisen
+          </d:surname>
+        </d:personname>
+      </d:author>
+      <d:author>
+        <d:personname>
+          <d:firstname>
+            Robert
+          </d:firstname>
+          <d:surname>
+            Findler
+          </d:surname>
+        </d:personname>
+      </d:author>
+      <d:author>
+        <d:personname>
+          <d:firstname>
+            Matthias
+          </d:firstname>
+          <d:surname>
+            Flatt
+          </d:surname>
+        </d:personname>
+      </d:author>
+      <d:author>
+        <d:personname>
+          <d:firstname>
+            Shriram
+          </d:firstname>
+          <d:surname>
+            Krishnamurthy
+          </d:surname>
+        </d:personname>
+      </d:author>      
+    </d:authorgroup>
+    <d:copyright>
+      <d:year>2001</d:year>
+      <d:holder>MIT Press</d:holder>
+    </d:copyright>
+    <d:citetitle>How to Design Programs: An Introduction to Computing and Programming</d:citetitle>
+    <d:biblioid class="isbn">978-0-26-206218-3</d:biblioid>
+  </d:biblioentry>
+  <d:biblioentry>
+    <d:abbrev>MF</d:abbrev>
+    <d:authorgroup>
+      <d:author>
+        <d:personname>
+          <d:firstname>
+            Matthais
+          </d:firstname>
+          <d:surname>
+            Felleisen
+          </d:surname>
+        </d:personname>
+      </d:author>
+    </d:authorgroup>
+    <d:copyright>
+      <d:year>2002</d:year>
+      <d:holder>Springer, UK</d:holder>
+    </d:copyright>
+    <d:citetitle>Developing Interactive Web Programs. In <d:quote>Advanced
+    Functional Programming: 4th International School</d:quote></d:citetitle>
+    <d:biblioid class="isbn">978-3-540-44833-4-4</d:biblioid>
+  </d:biblioentry>
+  <d:biblioentry>
+    <d:abbrev>DEK</d:abbrev>
+    <d:authorgroup>
+      <d:author>
+        <d:personname>
+          <d:firstname>
+            Donald
+          </d:firstname>
+          <d:surname>
+            Knuth
+          </d:surname>
+        </d:personname>
+      </d:author>
+    </d:authorgroup>
+    <d:copyright>
+      <d:year>1997</d:year>
+      <d:holder>Addison-Wesley</d:holder>
+    </d:copyright>
+    <d:citetitle>The Art of Computer Programming(Volume 3): Sorting and Saerching</d:citetitle>
+    <d:biblioid class="isbn">0-201-89685-0</d:biblioid>
+  </d:biblioentry>
+</d:bibliography>
