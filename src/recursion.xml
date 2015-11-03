@@ -1386,13 +1386,188 @@ int main()
       <d:code>last</d:code>.
     </d:para>
     <d:sect2>
-      <d:title>A Simple Problem</d:title>
+      <d:title>A Simple Problem of Average Calculation</d:title>
       <d:para>
         Although it is not related to recursion, following the above discussion
-        on the overflow a simple problem can be 
+        on overflow a simple problem can be 
         formulated. Given an array of numbers find out its average. Now this is
         very simple and beginners always cause overflow in this. Floating-point
-        division is allowed for the sake of accuracy.
+        division is allowed for the sake of accuracy. The above logic can be
+        easily extended. For example, average of n numbers is given by
+      </d:para>
+      <d:para></d:para>
+      <d:inlineequation>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mi>v</mi><mi>e</mi><mi>r</mi><mi>a</mi><mi>g</mi><mi>e</mi><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mfrac><mrow><msub><mi>a</mi><mn>0</mn></msub><mo>+</mo><msub><mi>a</mi><mn>1</mn></msub><mo>+</mo><mo>&#8943;</mo><mo>+</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><mi>n</mi></mfrac></math>
+      </d:inlineequation>
+      <d:para></d:para>
+      <d:para>
+        which can be rewritten as:
+      </d:para>
+      <d:para></d:para>
+      <d:inlineequation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mi>v</mi><mi>e</mi><mi>r</mi><mi>a</mi><mi>g</mi><mi>e</mi><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><msub><mi>a</mi><mn>0</mn></msub><mo>+</mo><mfrac><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>-</mo><msub><mi>a</mi><mn>0</mn></msub><mo>+</mo><msub><mi>a</mi><mn>2</mn></msub><mo>-</mo><msub><mi>a</mi><mn>0</mn></msub><mo>+</mo><mo>&#8943;</mo><mo>+</mo><msub><mi>a</mi><mi>n</mi></msub><mo>-</mo><msub><mi>a</mi><mn>0</mn></msub></mrow><mi>n</mi></mfrac></math>
+      </d:inlineequation>
+      <d:para></d:para>
+      <d:para>
+        Implementing the above formula will cause no overflow. An
+        example implementation is given below:
+      </d:para>
+      <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
+#include <stddef.h>
+
+int main()
+{
+  size_t n = 0;
+
+  printf("Enter the size of array:\n");
+  scanf("%zu", &n);
+
+  int a[n];
+  
+  printf("Enter the elements of the array:\n");
+  for(size_t i = 0; i < n; ++i)
+    scanf("%d", &a[i]);
+
+  double average = a[0];
+
+  for(size_t i = 1; i < n; ++i)
+  {
+    average += (a[i]-a[0])/(float)n;
+  }
+
+  printf("Average is %lf\n", average);
+  
+  return 0;
+}
+]]></d:programlisting>
+    </d:sect2>
+    <d:para>
+      Again, coming back to the binary search implementation you would notice
+      that if there are duplicates in the array then the position of key can
+      be anything. The above implementation do not guarantee that lowest index
+      of duplicate search elements will be returned. For example, consider
+      following case:
+    </d:para>
+    <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
+#include <stddef.h>
+
+void binary_search(size_t *a, size_t first, size_t last, size_t search)
+{
+  size_t middle = (first+last)/2;
+
+  if (first > last) {
+    printf("Not found! %zu is not present in the list.\n", search);
+    return;
+  } else {
+    if (a[middle] < search)
+      first = middle + 1;
+    else if (a[middle] == search) {
+      printf("%zu found at location %zu.\n", search, middle);
+      return;
+    }
+    else
+      last = middle - 1;
+  }
+
+  binary_search(a, first, last, search);
+}
+
+int main()
+{
+  size_t first, last, search;
+  size_t a[10] = {0, 1, 2, 3, 4, 8, 8, 8, 8 ,9};
+
+  printf("Enter value to find\n");
+  scanf("%zu", &search);
+
+  first = 0;
+  last = 9;
+
+  binary_search(a, first, last, search);
+  return 0;
+}]]></d:programlisting>
+    <d:para>
+      The algorithm outputs the index 7 for the search. If we defer the
+      equality match then we will always get the lowest index for example:
+    </d:para>
+    <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
+
+int main()
+{
+  size_t first, last, middle, search;
+  size_t array[10] = {0, 1, 2, 3, 4, 5, 8, 8, 8 ,9};
+
+  printf("Enter value to find\n");
+  scanf("%zu", &search);
+
+  first = 0;
+  last = 9;
+
+  while (first < last)
+  {
+    size_t middle = first + (last - first)/2;
+
+    if (array[middle] < search)
+      first = middle + 1;
+    else
+      last = middle;
+  }
+
+  if ((last == first) && (array[first] == search))
+    printf("%d is found at %zuth location.\n", search, first);
+  else
+    printf("%d was not found.\n", search);
+  return 0;
+}]]></d:programlisting>
+    <d:para>
+      The value 8 will always be found at 6th index. The loss is that this
+      algorithm makes early termination impossible. For large arrays
+      that are a power of 2, the savings is about two iterations. Half the
+      time, a match is found with one iteration left to go; one quarter the
+      time with two iterations left, one eighth with three iterations, and so
+      forth. The infinite series sum is 2.
+    </d:para>
+    <d:para>
+      The calculation of infinite series is given below:
+    </d:para>
+    <d:para></d:para>
+    <d:para></d:para>
+    <d:informalequation>
+      <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>+</mo><mfrac><mn>2</mn><mn>4</mn></mfrac><mo>+</mo><mfrac><mn>3</mn><mn>8</mn></mfrac><mo>+</mo><mfrac><mn>4</mn><mn>16</mn></mfrac><mo>+</mo><mfrac><mn>5</mn><mn>32</mn></mfrac><mo>+</mo><mo>&#8943;</mo></math>
+    </d:informalequation>
+    <d:para></d:para>
+    <d:para></d:para>
+    <d:informalequation>
+      <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>S</mi><mn>2</mn></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>+</mo><mfrac><mn>2</mn><mn>8</mn></mfrac><mo>+</mo><mfrac><mn>3</mn><mn>16</mn></mfrac><mo>+</mo><mfrac><mn>4</mn><mn>32</mn></mfrac><mo>+</mo><mfrac><mn>5</mn><mn>64</mn></mfrac><mo>+</mo><mo>&#8943;</mo></math>
+    </d:informalequation>
+    <d:para></d:para>
+    <d:para></d:para>
+    <d:para>
+      Subtracting and solving geometric series we get sum as 2.
+    </d:para>
+    <d:sect2>
+      <d:title>Complexity Analysis of Binary Search</d:title>
+      <d:para>
+        The worst case and average case complexity of binary search is
+        <d:inlineequation><math
+                              xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><msub><mi>log</mi><mn>2</mn></msub><mfenced><mi>n</mi></mfenced><mo>)</mo></math></d:inlineequation>
+        while the best case is <d:inlineequation><math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></math></d:inlineequation>. Space
+        complexity of binary search is <d:inlineequation><math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></math></d:inlineequation>
+        because no extra space is needed. Computation of time complexity is
+        really easy. Say, we begin with array of size n then clearly we will
+        divide the array in half and in worst case our smallest array would be
+        of size 1. Let us say that take k steps then clearly
+        <d:inlineequation><math
+                              xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>=</mo><msup><mn>2</mn><mi>k</mi></msup></math></d:inlineequation>,
+        i.e. <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>k</mi><mo>=</mo><msub><mi>log</mi><mn>2</mn></msub><mfenced><mi>n</mi></mfenced></math>. Thus,
+        in those many k steps we can conclude whether we have a value in our
+        array or not. Mathematically the value can be more accurately given as
+        floor of k i.e. <d:inlineequation><math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mi>k</mi><mo>=</mo><mo>&#8970;</mo><msub><mi>log</mi><mn>2</mn></msub><mi>n</mi><mo>&#8971;</mo></math></d:inlineequation>
+        to round k to next integral value.
       </d:para>
     </d:sect2>
   </d:sect1>
