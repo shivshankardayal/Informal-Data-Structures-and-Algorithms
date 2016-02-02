@@ -18,8 +18,8 @@
   -->
 
   <!-- Use the official stylesheet distro -->
-  <!--xsl:import href="/usr/share/xml/docbook/stylesheet/docbook-xsl-ns/html/chunk.xsl" /-->
-  <xsl:import href="/opt/local//share/xsl/docbook-xsl-ns/html/chunk.xsl" />
+  <xsl:import href="/usr/share/xml/docbook/stylesheet/docbook-xsl-ns/html/chunk.xsl" />
+  <!--xsl:import href="/opt/local//share/xsl/docbook-xsl-ns/html/chunk.xsl" /-->
 
   <!-- The location of the highlighting configuration -->
   <!--<xsl:import href="/usr/share/xml/docbook/stylesheet/docbook-xsl-ns/highlighting/common.xsl" />
@@ -27,6 +27,7 @@
   
   <xsl:template name="user.head.content">
     <xsl:copy-of select="document('analytics.js', /)"/>
+    <xsl:copy-of select="document('mathjax.js', /)"/>
   </xsl:template>
   <xsl:template name="user.footer.navigation">
     <br/>

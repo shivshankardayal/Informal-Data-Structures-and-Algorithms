@@ -53,11 +53,11 @@
   <!-- http://iweb.dl.sourceforge.net/project/sourcesans.adobe/SourceSansPro_FontsOnly-1.050.zip -->
   <!-- http://iweb.dl.sourceforge.net/project/sourcecodepro.adobe/SourceCodePro_FontsOnly-1.017.zip -->
   <xsl:param name="xetex.font">
-    <xsl:text>\setmainfont[Ligatures=TeX,Scale=1.05]{Times}
+    <xsl:text>\setmainfont[Ligatures=TeX,Scale=1.05]{Latin Modern Roman}
     </xsl:text>
-    <xsl:text>\setsansfont{Helvetica}
+    <xsl:text>\setsansfont{Latin Modern Sans}
     </xsl:text>
-    <xsl:text>\setmonofont{Courier}
+    <xsl:text>\setmonofont{Latin Modern Mono}
     </xsl:text>
   </xsl:param>
 </xsl:stylesheet>

@@ -1,11 +1,11 @@
-html:
+html: src/*.xml html.xsl Makefile domp.py
 	xsltproc --xinclude --stringparam html.stylesheet "../css/bootstrap.min.css ../css/bootstrap-responsive.min.css ../css/styled.min.css" --path "src css" --output build/ html.xsl dsa.xml
 #	perl -pi -e "s/\.pdf\"/\.png\"/g;" src/*.xml
 	find . -name "*.html" | xargs perl -pi -e "s/<html>/<!DOCTYPE html>/g;"
 	cp -r images build/
 	./domp.py
-#	cp -r build/* /var/www/dsa/
-	cp -r build/* /opt/local/share/nginx/html/dsa/
+	cp -r build/* /var/www/dsa/
+#	cp -r build/* /opt/local/share/nginx/html/dsa/
 
 p: src/*.xml dblatex.xsl Makefile
 	rm -rf pdf
@@ -14,6 +14,8 @@ p: src/*.xml dblatex.xsl Makefile
 	dblatex -bxetex -T db2latex -p dblatex.xsl -P preface.tocdepth="1" pdf/dsa.xml
 
 latex:
+	rm -rf pdf
+	cp -r src pdf	
 	dblatex -bxetex -T db2latex -p dblatex.xsl -P preface.tocdepth="1" -t tex src/dsa.xml -o pdf/dsa.tex
 	perl -pi -e "s/\.png/\.pdf/g;" pdf/dsa.tex
 	./lstlisting_to_minted.sh
