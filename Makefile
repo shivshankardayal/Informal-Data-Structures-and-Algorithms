@@ -35,3 +35,9 @@ fop: src/*.xml fop.xsl Makefile
 
 clean:
 	rm -rf pdf/* build/*
+
+epub: src/*.xml epub.xsl Makefile
+	xsltproc --xinclude --stringparam html.stylesheet "../css/bootstrap.min.css ../css/bootstrap-responsive.min.css ../css/epub.min.css" --path "src css" epub.xsl dsa.xml
+	cp -r images OEBPS
+	./epub.py
+	zip -r dsa.epub mimetype css META-INF/ OEBPS/

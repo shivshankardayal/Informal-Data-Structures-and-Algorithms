@@ -4,7 +4,7 @@
   <?xml-stylesheet href="../css/style.css" type="text/css"?>
   <?dbhtml filename="introduction/index.html" ?>
   <d:title>Introduction</d:title>
-  <d:para> 
+  <d:para>
     First thing first. Definitely this is not the only book on data structures
     and algorithms. There are many great books on the subject. I will mention
     few of those. No links to any online shop will be given as it will show my
@@ -553,7 +553,18 @@ int main()
         probabilistic way of deducing run-time or rather more practical
         notion. Since it is much easier to computer Big-O complexity we will
         focus on it but from time to time I will also introduce amortized
-        complexity for analysis of algorithms where suitable.
+        complexity for analysis of algorithms where suitable. Unfortunately, it
+        is much harder to compute average case complexity or amortized
+        complexity. To computer average case complexity one must make
+        assumption about distribution of input which may not match with
+        realistic inputs and realistic inputs are not easily represented as
+        mathematical model. On the other hand worst-case complexity is quite
+        acceptable and is universally acceptable but a <d:ulink
+        url="http://queue.acm.org/detail.cfm?id=1814327">paper by Paul
+        Kemp</d:ulink> shows that what can go wrong with worst case
+        complexity. Note that worst case complexity comes in picture for very
+        large inputs thus an algorithm demonstrating better worst case
+        complexity is not necessarily better algorithm for real-world programs.
       </d:para>
       <d:para>
         Big-O is a member of a larger family of notations that is called Landau
@@ -1072,6 +1083,18 @@ int main()
         As you can guess if we have nested loops complexity wil increase in
         terms of power of n. However, the complexity may not increase exactly
         by integral power.
+      </d:para>
+      <d:para>
+        The complexity calculation done here is known as RAM model of
+        complexity calculation. A program is loaded in memory and instructions
+        of the program execute one by one. These instructions are assembly
+        instructions with cost in CPU cycles but for simplicity we associate a
+        cost with instructions of whatever language we are using. Thus, we are
+        abstracting the exact complexity computation in terms of programming
+        language's operations. Here it is C but it can be any other language
+        for that matter. The model does not change, it is same whether our
+        choice of language is C++, Java, Perl, Python, Haskell, Erlang or any
+        other language.
       </d:para>
     </d:sect2>
     <d:sect2>
