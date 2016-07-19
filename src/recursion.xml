@@ -1622,5 +1622,513 @@ int main()
         </d:listitem>
       </d:orderedlist>
     </d:para>
+    <d:para>
+      First we do a recursive solution and then we will see the iterative
+      solution as iterative one is trickier. Consider a stack of n disks. Then,
+      we consider it as two disks. One consists of n-1 disks and the nth
+      disk. Then, we move them to appropriate pegs and then we split n-1 disks
+      in two i.e. one of n-2 and then another of (n-1)th. Thus, recursive
+      solution is implemented. Given below is the recursive version of the
+      code:
+    </d:para>
+    <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
+
+void move(int n, char left, char right, char mid)
+{
+  if(n > 0) {
+    // move n-1 disks from left to mid
+    move(n-1, left, mid, right);
+    
+    // move nth disk from left to right
+    printf("Moved disk %d from left to right\n", n);
+
+    // move n-1 disks from mid to right
+    move(n-1, mid, left, right);
+  }
+}
+
+int main()
+{
+  unsigned int n = 0;
+
+  printf("How many disks you want to move?\n");
+  scanf("%d", &n);
+
+  move(n, 'L', 'R', 'C'); // L is left, R is right and C is center disk
+  
+  return 0;
+}]]></d:programlisting>
+    <d:screen>How many disks you want to move?
+3
+Moved disk 1 from left to right
+Moved disk 2 from left to right
+Moved disk 1 from left to right
+Moved disk 3 from left to right
+Moved disk 1 from left to right
+Moved disk 2 from left to right
+Moved disk 1 from left to right
+    </d:screen>
+    <d:para>
+      From the description of the program it appears hard to understand but the
+      program is really simple if you look at the output for 2, 3, 4 and 5
+      disks one by one. Once you see how stack is winded and unwinded then you
+      will understand the solution. The description says move n-1 disks but in
+      reality there is no such movement of n-1 disks but that is propagated
+      further to next function. In reality, you move 1 disk. The description is
+      abstract and conceptual just to describe the solution.
+    </d:para>
+    <d:para>
+      The iterative solution is not very intuitive to figure easily thus I will
+      present it straight away. Optimal solution is divided in two cases; one
+      for odd and another for even no. of disks.
+    </d:para>
+    <d:para>
+      If even no. of disks are in question:
+      <d:itemizedlist>
+        <d:listitem>
+          move disk between left to center
+        </d:listitem>
+        <d:listitem>
+          move disk between left to right
+        </d:listitem>
+        <d:listitem>
+          move disk between center and right 
+        </d:listitem>
+        <d:indexterm>
+          rinse and repeat till complete
+        </d:indexterm>
+      </d:itemizedlist>
+      If odd no. of disks are in question:
+      <d:itemizedlist>
+        <d:listitem>
+          move disks between left and right
+        </d:listitem>
+        <d:listitem>
+          move disks between left and center
+        </d:listitem>
+        <d:listitem>
+          move disks between center and right
+        </d:listitem>
+        <d:listitem>
+          rinse and repeat till complete
+        </d:listitem>
+      </d:itemizedlist>
+    </d:para>
+    <d:para>
+      An iterative implementation is given below:
+    </d:para>
+    <d:programlisting role="CLexer" language="c"><![CDATA[#include <stdio.h>
+#include <stdlib.h> // for malloc
+#include <limits.h> // for UINT_MIN
+#include <math.h> // for calculating total no. of moves
+
+// we create a stack of disks
+typedef struct stack {
+  // used for creating stack
+  int capacity;
+  // top of stack
+  int top;
+  // contiguous array to hold disks
+   int* array;
+}stackT;
+
+stackT* create_stack( int capacity)
+{
+  stackT* s = (stackT*)malloc(sizeof(stackT));
+  
+  s->capacity = capacity;
+  s->top = -1;
+  s->array = ( int*)malloc(sizeof(int)*s->capacity);
+
+  return s;
+}
+
+// obviously stack is full when top is the last element
+int is_full(stackT* s)
+{
+  return (s->top == s->capacity - 1);
+}
+
+// same as full stack is empty if top is -1
+int is_empty(stackT* s)
+{
+  return (s->top == -1);
+}
+
+// push an element to stack increasing top
+void push(stackT* s, int element)
+{
+  if (is_full(s))
+    return;
+  s->array[++s->top] = element;
+}
+
+// pop an element from stack
+ int pop(stackT* s)
+{
+  if (is_empty(s))
+    return INT_MIN;
+  return s->array[s->top--];
+}
+
+void move_disks(stackT* left, stackT* right, char l, char r)
+{
+   int l_disk = pop(left);
+   int r_disk = pop(right);
+
+  // When l is empty
+  if (l_disk == INT_MIN)
+  {
+    push(left, r_disk);
+    printf("Move the disk %d from \'%c\' to \'%c\'\n", r_disk, r, l);
+  }
+
+  // When r is empty
+  else if (r_disk == INT_MIN)
+  {
+    push(right, l_disk);
+    printf("Move the disk %d from \'%c\' to \'%c\'\n", l_disk, l, r);
+  }
+
+  // When top disk of l > top disk of r
+  else if (l_disk > r_disk)
+  {
+    push(left, l_disk);
+    push(left, r_disk);
+    printf("Move the disk %d from \'%c\' to \'%c\'\n", r_disk, r, l);
+  }  
+
+  // When top disk of l < top disk of r
+  else
+  {
+    push(right, r_disk);
+    push(right, l_disk);
+    printf("Move the disk %d from \'%c\' to \'%c\'\n", l_disk, l, r);
+  }
+}
+
+// implement core logic
+void hanoi_iter( int n, stackT* left, stackT* mid, stackT* right)
+{
+   long i, total_moves;
+  char l = 'L', r = 'R', m = 'M';
+
+  // if no. of disks is even then we need to swap M and R
+  if(n % 2 == 0) {
+    char temp = r;
+    r = m;
+    m = temp;
+  }
+
+  total_moves = pow(2, n) - 1;
+  // obviously larger no. represent larger disks to they will
+  // be pushed first
+  for(i = n; i >= 1; i--) {
+    push(left, i);
+  }
+
+  for(i = 1; i <= total_moves; ++i) {
+    if(i % 3 == 1) {
+      move_disks(left, right, l, r);
+    } else if (i % 3 == 2) {
+      move_disks(left, mid, l, m);
+    } else if (i % 3 == 0) {
+      move_disks(mid, right, m, r);
+    }
+  }
+}
+
+int main()
+{
+   int n = 0;
+  
+  printf("How many disks you want?\n");
+  scanf("%d", &n);
+ 
+  stackT *left, *mid, *right;
+ 
+  // Create three stacks of size 'n'
+  // to hold the disks
+  left = create_stack(n);
+  mid = create_stack(n);
+  right = create_stack(n);
+ 
+  hanoi_iter(n, left, mid, right);
+  
+  return 0;
+}]]></d:programlisting>
+    <d:para>
+      and the output is:
+    </d:para>
+    <d:screen>How many disks you want?
+3
+Move the disk 1 from 'L' to 'R'
+Move the disk 2 from 'L' to 'M'
+Move the disk 1 from 'R' to 'M'
+Move the disk 3 from 'L' to 'R'
+Move the disk 1 from 'M' to 'L'
+Move the disk 2 from 'M' to 'R'
+Move the disk 1 from 'L' to 'R'
+    </d:screen>
+    <d:sect2>
+      <d:title>
+        Time and Space Complexity
+      </d:title>
+      <d:para>
+        Let the time required for <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math>
+        disks is <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mrow><mo
+        form="prefix">(</mo><mi>n</mi><mo
+        form="postfix">)</mo></mrow></mrow></math>. As you can see, there are 2
+        recursive calls for <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></math>
+        disks and one constant time operation to move a disk from 'left' peg to
+        'right' peg. Let the cost of this constant time operation be <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>k</mi><mn>1</mn></msub></mrow></math>.
+      </d:para>
+      <d:para>
+        Therefore,
+        <d:informalequation>
+          <math
+              xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mrow><mo
+              form="prefix">(</mo><mi>n</mi><mo
+              form="postfix">)</mo></mrow><mo>=</mo><mn>2</mn><mi>T</mi><mrow><mo
+              form="prefix">(</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo
+              form="postfix">)</mo></mrow><mo>+</mo><msub><mi>k</mi><mn>1</mn></msub></mrow></math>
+        </d:informalequation>
+        <d:inlineequation>
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mrow><mo form="prefix">(</mo><mn>0</mn><mo form="postfix">)</mo></mrow><mo>=</mo><msub><mi>k</mi><mn>2</mn></msub></mrow></math>,
+        </d:inlineequation>
+        a constant.
+        <d:informalequation>
+          <math
+              xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mrow><mo
+              form="prefix">(</mo><mn>1</mn><mo
+              form="postfix">)</mo></mrow><mo>=</mo><mn>2</mn><msub><mi>k</mi><mn>2</mn></msub><mo>+</mo><msub><mi>k</mi><mn>1</mn></msub></mrow></math>
+        </d:informalequation>
+        <d:informalequation>
+          <math
+              xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mrow><mo
+              form="prefix">(</mo><mn>2</mn><mo
+              form="postfix">)</mo></mrow><mo>=</mo><mn>4</mn><msub><mi>k</mi><mn>2</mn></msub><mo>+</mo><mn>2</mn><msub><mi>k</mi><mn>1</mn></msub><mo>+</mo><msub><mi>k</mi><mn>1</mn></msub></mrow></math>
+        </d:informalequation>
+        <d:informalequation>
+          <math
+              xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mrow><mo
+              form="prefix">(</mo><mn>2</mn><mo
+              form="postfix">)</mo></mrow><mo>=</mo><mn>8</mn><msub><mi>k</mi><mn>2</mn></msub><mo>+</mo><mn>4</mn><msub><mi>k</mi><mn>1</mn></msub><mo>+</mo><mn>2</mn><msub><mi>k</mi><mn>1</mn></msub><mo>+</mo><msub><mi>k</mi><mn>1</mn></msub></mrow></math>
+        </d:informalequation>
+        Coefficient of <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>k</mi><mn>1</mn></msub><mo>=</mo><msup><mn>2</mn><mi>n</mi></msup></mrow></math>. Coefficient
+        of <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>k</mi><mn>2</mn></msub><mo>=</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>-</mo><mn>1</mn></mrow></msup></mrow></math>. Therefore,
+        time complexity is <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>O</mi><mrow><mo
+        form="prefix">(</mo><msup><mn>2</mn><mi>n</mi></msup><mo
+        form="postfix">)</mo></mrow></mrow></math>.
+      </d:para>
+      <d:para>
+        Thus, you see in closed for of time complexity is exponential and it
+        double for every extra disk. Exponentially complex algorithms are very
+        expensive in nature and if you believe in mythology then universe is
+        going to stay for a long long time so do not fret.
+      </d:para>
+      <d:para>
+        For both the versions storage is required only for disks i.e. a unit
+        constant space. So for <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math>
+        disks space complexity is <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>O</mi><mrow><mo
+        form="prefix">(</mo><mi>n</mi><mo
+        form="postfix">)</mo></mrow></mrow></math>, which is linear and quite
+        good because space complexity is rarely less than linear because you
+        never want to lose original data. Only in extreme cases algorithms
+        allow destruction of original data in that case space complexity is
+        less than what we have observed for this problem.
+      </d:para>
+    </d:sect2>
+  </d:sect1>
+  <d:sect1>
+    <d:title>Prefix, Infix and Postfix Notations and Recursion</d:title>
+    <d:para>
+      <d:emphasis role="bold">Polish notation (PN)</d:emphasis>, also known
+      <d:emphasis role="bold">as normal Polish notation (NPN),</d:emphasis>
+      <d:emphasis role="bold">Łukasiewicz notation, Warsaw notation, Polish
+      prefix notation</d:emphasis> or simply <d:emphasis role="bold">prefix
+      notation,</d:emphasis> is a form of notation for logic, arithmetic, and
+      algebra. The prefixes <d:quote>pre-</d:quote>, <d:quote>post-</d:quote>
+      and <d:quote>in-</d:quote> refer to the respective, relative position of
+      the operators with respect to the two operands. In prefix notation
+      operator appears before two operands while in postfix notation operator
+      appears after two operands and in infix it appears in between two
+      operands as you already know.
+      It is harder to read prefix and postfix notations in the beginning
+      because we are used to infix and not to prefix or postfix. Might I make a
+      suggestion to make prefix notation default in education system. :)
+    </d:para>
+    <d:para>
+      Prefix notation and its counterpart postfix notation
+      distinguishable from infix notation in a manner that it does not require
+      parentheses to represent algebraic expressions. In prefix notation,
+      operators are placed in front of operands and reverse for postfix
+      notation. In postfix notation, operators are placed after the
+      operands. This absence of parentheses does not mean that expression is
+      ambiguous. The expressions present in prefix and postfix notations are
+      unambiguous. The prefix notation was first invented(when I say that it
+      means he was the first person who gave it formally and there is no other
+      proof of someone else giving this.) by Polish logician Jan Łukasiewicz in
+      1924 in order to simplify sentential logic.
+    </d:para>
+    <d:para>
+      When prefix or postfix notations are used as a syntax for mathematical
+      expressions by programming languages, it is readily parsed in abstract
+      syntax trees and can define a one-to-one representation for the
+      same.Because of this several programming languages like Lisp, Ambi,
+      Tcl(in mathop library), Postscript and Forth(these last two are stack
+      based programming languages). Also, certain calculators use this notation
+      heavily for expression evaluation.
+    </d:para>
+    <d:para>
+      The role of recursion in solving these problems is very important as
+      recursion simplifies these computations by a lot. The importance of
+      prefix or postfix representation can be understood by following
+      examples. Consider the expression in infix form:
+      <d:informalequation>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>2</mn><mo>+</mo><mn>3</mn><mo>*</mo><mn>4</mn></mrow></math>
+      </d:informalequation>
+      now since we do not have parentheses to override this, the result would
+      be 14. But, if it would have been
+      <d:informalequation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo
+                                                                         form="prefix">(</mo><mn>2</mn><mo>+</mo><mn>3</mn><mo form="postfix">)</mo></mrow><mo>*</mo><mn>4</mn></mrow></math>
+      </d:informalequation>
+      then result would be 20. Now, as you see parentheses change the entire
+      result. The operator precedence rules require the presence of parentheses
+      for correct representation of our desired representation. No such
+      parentheses are necessary in prefix notation. These two expression can be
+      written as <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>+</mo><mn>2</mn><mo>*</mo><mn>3</mn><mspace
+      width="1em" /><mn>4</mn></mrow></math>
+      and <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>*</mo><mo>+</mo><mn>2</mn><mspace
+      width="1em" /><mn>3</mn><mspace width="1em" /><mn>4</mn></mrow></math>. In
+      first of these two + operator will wait for the second operand to become
+      available before it can be applied. Thus, 3 and 4 will be multiplied
+      first and then added to 2. Prefix notations are very popular with stack
+      based systems as stack can be used to solve the expressions quite
+      easily. Since we have not covered stack yet we will omit that for
+      now. Once we have studies stack we will come back to these notations in
+      more detail. However, for now we will try to solve these using
+      recursion. First let us see few examples of prefix and postfix notation
+      as compared to infix:
+    </d:para>
+    <d:table frame="border" class="leftcenter"
+             border="1">
+	    <d:colgroup width="0*"/>
+	    <d:colgroup width="0*"/>
+	    <d:colgroup width="0*"/>
+      <d:caption>Prefix, postfix and infix examples</d:caption>
+      <d:thead>
+        <d:tr bgcolor="#aaaaaa">
+          <d:th>Infix</d:th>
+          <d:th>Prefix</d:th>
+          <d:th>Postfix</d:th>
+        </d:tr>
+      </d:thead>
+	    <d:tr>
+	      <d:td>A + B</d:td>
+	      <d:td>+ AB</d:td>
+	      <d:td>AB +</d:td>
+	    </d:tr>
+	    <d:tr>
+	      <d:td>A + B - C</d:td>
+	      <d:td>- + ABC</d:td>
+	      <d:td>AB + C -</d:td>
+	    </d:tr>
+	    <d:tr>
+	      <d:td>A + B * C</d:td>
+	      <d:td>+ A * BC</d:td>
+	      <d:td>ABC * +</d:td>
+      </d:tr>
+	    <d:tr>
+	      <d:td>A * (B + C)</d:td>
+	      <d:td>* A + BC</d:td>
+	      <d:td>ABC + *</d:td>
+	    </d:tr>
+	    <d:tr>
+	      <d:td>A * B + C</d:td>
+	      <d:td>+* ABC</d:td>
+	      <d:td>AB * C +</d:td>
+	    </d:tr>
+	    <d:tr>
+	      <d:td>A - B / (C * D $ E)</d:td>
+	      <d:td>- A / B * C $ DE</d:td>
+	      <d:td>ABCDE $ * / -</d:td>
+	    </d:tr>
+	    <d:tr>
+	      <d:td>A + B * C - D + E/F/(G + H)</d:td>
+	      <d:td>+ - * + ABCD // EF + GH</d:td>
+	      <d:td>AB + C + D - EF / GH + / +</d:td>
+	    </d:tr>
+	    <d:tr>
+	      <d:td>A + B * C + D - E + F</d:td>
+	      <d:td>- + + A * BCD + EF</d:td>
+	      <d:td>ABC + * D + EF * -</d:td>
+	    </d:tr>
+	  </d:table>
+    <d:para>
+      Consider a very simple program for prefix evaluation using recursion:
+      <d:programlisting role="CLexer" language="c"><![CDATA[// This program evaluates a small postfix expression
+// made up of four simple operators and single digit
+// numbers
+
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <limits.h>
+
+int i = 0;
+const char *a = "+4 5";
+
+int prefix_eval() {
+  int x = 0;
+
+  while (a[i] == ' ')
+    i++;
+
+  if (a[i] == '+')
+  {
+    i++;
+    return prefix_eval() + prefix_eval();
+  }
+
+  if (a[i] == '*')
+  {
+    i++;
+    return prefix_eval() * prefix_eval();
+  }
+
+  while ( (a[i] >= '0') && (a[i] <= '9'))
+    x = 10*x + (a[i++]-'0');
+
+  return x;
+}
+
+int main()
+{
+  printf("Result is %d\n", prefix_eval());
+  
+  return 0;
+}
+]]></d:programlisting>
+      and the output is:      
+    </d:para>
+    <d:screen>Result is 9</d:screen>
+    <d:para>
+      
+    </d:para>
   </d:sect1>
 </d:chapter>

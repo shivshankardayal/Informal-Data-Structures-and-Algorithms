@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <d:chapter version="5.0" xmlns:d="http://docbook.org/ns/docbook"
            xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink"
            xmlns:mml="http://www.w3.org/1998/Math/MathML">
@@ -529,6 +530,216 @@ int main()
       time. Sometimes we may be bound by amount of memory available to
       use. This may forbade us from using those algorithms which consume more
       memory even though they run faster.
+    </d:para>
+    <d:para>
+      Before we proceed let us familiarize ourselves with some special
+      functions of mathematics and mathematical constants:
+    </d:para>
+    <d:table frame="border" class="leftcenter"
+             border="1">
+	    <d:colgroup width="0*"/>
+	    <d:colgroup width="0*"/>
+	    <d:colgroup width="0*"/>
+      <d:caption>Special Functions</d:caption>
+      <d:thead>
+        <d:tr bgcolor="#aaaaaa">
+          <d:th>Function</d:th>
+          <d:th>Name</d:th>
+          <d:th>Typical Value</d:th>
+          <d:th>Approximation</d:th>
+        </d:tr>
+        <d:tr>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix">&#x0230A;</mo><mi>x</mi><mo form="postfix">&#x0230B;</mo></mrow></math></d:td>
+          <d:td>floor function</d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix">&#x0230A;</mo><mn>3.14</mn><mo form="postfix">&#x0230B;</mo></mrow><mo>=</mo><mn>3</mn></mrow></math></d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi></mrow></math></d:td>
+        </d:tr>
+        <d:tr>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix">&#x02308;</mo><mi>x</mi><mo form="postfix">&#x02309;</mo></mrow></math></d:td>
+          <d:td>ceiling function</d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix">&#x02308;</mo><mn>3.14</mn><mo form="postfix">&#x02309;</mo></mrow><mo>=</mo><mn>4</mn></mrow></math></d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi></mrow></math></d:td>
+        </d:tr>
+        <d:tr>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>log</mi><mn>2</mn></msub><mi>N</mi></mrow></math></d:td>
+          <d:td>binary logarithm</d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>log</mi><mn>2</mn></msub><mn>1024</mn><mo>=</mo><mn>10</mn></mrow></math></d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>1.44</mn><mi>ln</mi><mi>N</mi></mrow></math></d:td>
+        </d:tr>
+        <d:tr>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>F</mi><mi>N</mi></msub></mrow></math></d:td>
+          <d:td>Fibonacci numbers</d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>F</mi><mn>10</mn></msub><mo>=</mo><mn>55</mn></mrow></math></d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>&#x003D5;</mi><mi>N</mi></msup><mo>&#x0002F;</mo><msqrt><mn>5</mn></msqrt></mrow></math></d:td>
+        </d:tr>
+        <d:tr>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>H</mi><mi>N</mi></msub></mrow></math></d:td>
+          <d:td>harmonic numbers</d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>H</mi><mn>10</mn></msub><mo>&#x2248;</mo><mo>=</mo><mn>2</mn><mo>.</mo><mn>9</mn></math></d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>ln</mi><mi>N</mi><mo>=</mo><mi>&#x3B3;</mi></math></d:td>
+        </d:tr>
+        <d:tr>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>N</mi><mo>!</mo></mrow></math></d:td>
+          <d:td>factorial function</d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>10</mn><mo>!</mo><mo>=</mo><mn>3628800</mn></mrow></math></d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mrow><mo form="prefix">(</mo><mi>N</mi><mo>&#x0002F;</mo><mi>e</mi><mo form="postfix">)</mo></mrow><mi>N</mi></msup></mrow></math></d:td>
+        </d:tr>
+        <d:tr>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>lg</mi><mi>N</mi><mo>!</mo></mrow></math></d:td>
+          <d:td></d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>lg</mi><mn>100</mn><mo>!</mo><mo>&#x02248;</mo><mn>520</mn></mrow></math></d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>N</mi><mi>lg</mi><mi>N</mi><mo>-</mo><mn>1.44</mn><mi>N</mi></mrow></math></d:td>
+        </d:tr>
+      </d:thead>
+    </d:table>
+    <d:table frame="border" class="leftcenter"
+             border="1">
+	    <d:colgroup width="0*"/>
+	    <d:colgroup width="0*"/>
+	    <d:colgroup width="0*"/>
+      <d:caption>Some constants</d:caption>
+      <d:thead>
+        <d:tr bgcolor="#aaaaaa">
+          <d:th>Constant</d:th>
+          <d:th>Value</d:th>
+        </d:tr>
+        <d:tr>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>e</mi></mrow></math></d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>2.71828</mn><mo>.</mo><mo>.</mo><mo>.</mo></mrow></math></d:td>
+        </d:tr>
+        <d:tr>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>&#x003B3;</mi></mrow></math></d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>0.577211</mn><mo>.</mo><mo>.</mo><mo>.</mo></mrow></math></d:td>
+        </d:tr>
+        <d:tr>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>&#x003D5;</mi></mrow></math></d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac linethickness="1"><mrow><mo form="prefix">(</mo><mn>1</mn><mo>+</mo><msqrt><mn>5</mn></msqrt><mo form="postfix">)</mo></mrow><mn>2</mn></mfrac><mo>=</mo><mn>1.61803</mn><mo>.</mo><mo>.</mo><mo>.</mo></mrow></math></d:td>
+        </d:tr>
+        <d:tr>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ln</mi><mn>2</mn></mrow></math></d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>0.693147</mn><mo>.</mo><mo>.</mo><mo>.</mo></mrow></math></d:td>
+        </d:tr>
+        <d:tr>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>lg</mi><mi>e</mi></mrow></math></d:td>
+          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>1</mn><mo>&#x0002F;</mo><mi>ln</mi><mn>2</mn><mo>=</mo><mn>1.44269</mn><mo>.</mo><mo>.</mo><mo>.</mo></mrow></math></d:td>
+        </d:tr>
+      </d:thead>
+    </d:table>
+    <d:para>
+      If we consider harmonic sequence defined by the equation
+      <d:informalequation>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>H</mi><mi>N</mi></msub><mo>=</mo><mn>1</mn><mo>+</mo><mfrac
+            linethickness="1"><mn>1</mn><mn>2</mn></mfrac><mo>+</mo><mfrac
+            linethickness="1"><mn>1</mn><mn>3</mn></mfrac><mo>+</mo><mfrac
+            linethickness="1"><mn>1</mn><mn>4</mn></mfrac><mo>+</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>+</mo><mfrac
+            linethickness="1"><mn>1</mn><mi>N</mi></mfrac></mrow></math>
+      </d:informalequation>
+      then
+      it looks like following curve for definite integral
+      <d:inlineequation>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ln</mi><mi>N</mi><mo>=</mo><mstyle
+            displaystyle="true"><munderover><mo>&#x0222B;</mo><mi>x</mi><mi>N</mi></munderover></mstyle><mfrac
+            linethickness="1"><mrow><mo>&#x02146;</mo><mi>x</mi></mrow><mi>x</mi></mfrac></mrow>
+        </math>.
+      </d:inlineequation>
+      <d:figure>
+        <d:mediaobject>
+          <d:imageobject>
+            <d:imagedata fileref="../images/harmonic_cropped.png" align="center"/>
+          </d:imageobject>
+        </d:mediaobject>
+        <d:title>Harmonic series approximation</d:title>
+      </d:figure>
+      As you can see the harmonic sequence is defined by the total area of the
+      bars in the image while logarithm natural is the area under curve. The
+      formula
+      <d:informalequation>
+        <math
+            xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>H</mi><mi>N</mi></msub><mo>&#x02248;</mo><mi>ln</mi><mi>N</mi><mo>+</mo><mi>&#x003B3;</mi><mo>+</mo><mrow><mo
+            form="prefix">(</mo><mn>1</mn><mo>&#x0002F;</mo><mn>12</mn><mi>N</mi><mo
+            form="postfix">)</mo></mrow></mrow></math>
+      </d:informalequation>
+      is a very good approximation for the harmonic sequence where <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>&#x003B3;</mi></mrow></math>
+      is <d:emphasis role="italic">Euler–Mascheroni constant</d:emphasis> also
+      known <d:emphasis role="italic">Euler's constant</d:emphasis> after Swiss
+      mathematician Leonhard Euler. <d:emphasis role="italic">Lorenzo
+      Mascheroni</d:emphasis> was an Italian mathematician.
+    </d:para>
+    <d:para>
+      Similarly, for Fibonacci sequence 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89,
+      144, 233, 377 ... the nth term is represented by the recurrence relation
+      <math
+          xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>F</mi><mi>N</mi></msub><mo>=</mo><msub><mi>F</mi><mrow><mi>N</mi><mo>-</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>F</mi><mrow><mi>N</mi><mo>-</mo><mn>2</mn></mrow></msub></mrow></math>
+      for <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>N</mi><mo>&#x02265;</mo><mn>2</mn></mrow></math>
+      where <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>F</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn><mtext>and</mtext><msub><mi>F</mi><mn>1</mn></msub><mo>=</mo><mn>1</mn></mrow></math>. These
+      Finonacci numbers have many interesting properties. Fibonacci series also
+      occurs in nature. For example, have a look at the following
+      image(courtesy, <d:ulink
+      url="https://en.wikipedia.org/wiki/Fibonacci_number"><d:citetitle>Wikipedia</d:citetitle></d:ulink>):
+      <d:figure>
+        <d:mediaobject>
+          <d:imageobject>
+            <d:imagedata fileref="../images/FibonacciChamomile.png" align="center"/>
+          </d:imageobject>
+        </d:mediaobject>
+        <d:title>Fibonacci numbers in Yellow Chamomile</d:title>
+      </d:figure>
+      In this picture, the yellow Chamomile is showing the arrangements in
+      21(blue) and 13(aqua) spirals. Similarly, the sunflower image for its
+      seeds also depict similar arrangements as shown below:
+      <d:figure>
+        <d:mediaobject>
+          <d:imageobject>
+            <d:imagedata fileref="../images/Fibona48.png" align="center"/>
+          </d:imageobject>
+        </d:mediaobject>
+        <d:title>Fibonacci numbers in sunflower</d:title>
+      </d:figure>
+      A geometrical representation of Fibinacci numbers can be given by golden
+      spiral.
+      <d:figure>
+        <d:mediaobject>
+          <d:imageobject>
+            <d:imagedata fileref="../images/golden59.png" align="center"/>
+          </d:imageobject>
+        </d:mediaobject>
+        <d:title>The golden spiral</d:title>
+      </d:figure>
+      The sizes of squares are 1, 1, 2, 3, 5, 8, 13, 21 and 34. The spiral
+      converges at the intersection of the two blue lines (P), and the ratio of
+      the lengths of these two lines BP: PD is <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>&#x003D5;</mi></mrow></math>,
+      the Golden Ratio. In geometry, a golden spiral is a logarithmic spiral
+      whose growth factor is the golden ratio. The polar equation for a golden
+      spiral is the same as for other logarithmic spirals, but with a special
+      value of the growth factor <math
+      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>b</mi></mrow></math>:
+      <d:inlineequation><math
+                            xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>r</mi><mo>=</mo><mi>a</mi><msup><mi>e</mi><mrow><mi>b</mi><mi>&#x003B8;</mi></mrow></msup></mrow></math></d:inlineequation>.
+      An alternative image is given below(countesy <d:ulink
+      url="https://en.wikipedia.org/wiki/Fibonacci_number#/media/File:34*21-FibonacciBlocks.png"><d:citetitle>Wikipedia</d:citetitle></d:ulink>):
+      <d:figure>
+        <d:mediaobject>
+          <d:imageobject>
+            <d:imagedata fileref="../images/34x21-FibonacciBlocks.png" align="center"/>
+          </d:imageobject>
+        </d:mediaobject>
+        <d:title>Square representation of Fibonacci numbers</d:title>
+      </d:figure>
+      Another occurrence of Fibinacci number is in rose petals as shown below:
+      <d:figure>
+        <d:mediaobject>
+          <d:imageobject>
+            <d:imagedata fileref="../images/Fibona50.png" align="center"/>
+          </d:imageobject>
+        </d:mediaobject>
+        <d:title>Fibonacci numbers in rose petals</d:title>
+      </d:figure>
     </d:para>
     <d:sect2>
       <d:title>Big O Notation</d:title>
@@ -1448,10 +1659,33 @@ int main()
             xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>x</mi><msup><mo>)</mo><mi>&#945;</mi></msup><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><msup><mo>)</mo><mi>&#945;</mi></msup><mo>&#160;</mo><mo>&#8704;</mo><mi>&#945;</mi><mo>&#8712;</mo><msup><mi
             mathvariant="normal">&#8477;</mi><mo>+</mo></msup></math>.
       </d:listitem>
+      <d:para>
+        Following questions are based on simple calculations.
+      </d:para>
+      <d:listitem>
+        For what value of <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>N</mi></mrow></math>
+        is <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>10</mn><mi>N</mi><mi>lg</mi><mi>N</mi><mo>&#x0003E;</mo><mn>2</mn><msup><mi>N</mi><mn>2</mn></msup></mrow></math>?
+      </d:listitem>
+      <d:listitem>
+        For what value of <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>N</mi></mrow></math>
+        is <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>N</mi><mrow><mn>1</mn><mo>&#x0002F;</mo><mn>2</mn></mrow></msup></mrow></math>
+        between <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>N</mi><msup><mrow><mo
+        form="prefix">(</mo><mi>lg</mi><mi>N</mi><mo
+        form="postfix">)</mo></mrow><mn>2</mn></msup><mo>&#x0002F;</mo><mn>2</mn></mrow></math>
+        and <math
+        xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>2</mn><mi>N</mi><msup><mrow><mo
+        form="prefix">(</mo><mi>lg</mi><mi>N</mi><mo
+        form="postfix">)</mo></mrow><mn>2</mn></msup></mrow></math>?
+      </d:listitem>
     </d:orderedlist>
   </d:sect1>
   <d:sect1>
-    <d:title>Solutions</d:title>
+    <d:title>Solutions of Selected Problems</d:title>
     <d:orderedlist>
       <d:listitem>
         Clearly, <math

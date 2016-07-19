@@ -1,0 +1,25 @@
+\documentclass{article}
+% translate with >> pdflatex -shell-escape <file>
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\pagestyle{empty}
+
+\begin{document}
+\begin{tikzpicture}[scale=1]%
+  \draw (0,0) -- (0, 2) -- (2/3, 2) -- (2/3, 0) -- cycle;
+  \draw (2/3,0) -- (2/3, 1) -- (4/3, 1) -- (4/3, 0) -- cycle;
+  \draw (4/3,0) -- (4/3, 2/3) -- (6/3, 2/3) -- (6/3, 0) -- cycle;
+  \draw (6/3,0) -- (6/3, 2/4) -- (8/3, 2/4) -- (8/3, 0) -- cycle;
+  \draw (8/3,0) -- (8/3, 2/5) -- (10/3, 2/5) -- (10/3, 0) -- cycle;
+  \draw (10/3,0) -- (10/3, 2/6) -- (12/3, 2/6) -- (12/3, 0) -- cycle;
+  \draw (12/3,0) -- (12/3, 2/7) -- (14/3, 2/7) -- (14/3, 0) -- cycle;
+  \draw (14/3,0) -- (14/3, 2/8) -- (16/3, 2/8) -- (16/3, 0) -- cycle;
+  \draw (16/3,0) -- (16/3, 2/9) -- (18/3, 2/9) -- (18/3, 0) -- cycle;
+  \draw (18/3,0) -- (18/3, 2/10) -- (20/3, 2/10) -- (20/3, 0) -- cycle;
+  \draw plot [smooth] coordinates {(0, 2) (2/3, 2/2) (4/3, 2/3) (6/3, 2/4) (8/3, 2/5) (10/3, 2/6) (12/3, 2/7) (14/3, 2/8) (16/3, 2/9) (18/3, 2/10)};
+  \draw (0, -.1) node[below] {1};
+  \draw (20/3, -.1) node[below] {N};
+\end{tikzpicture}%
+\end{document}
