@@ -1,11 +1,11 @@
 html: src/*.xml html.xsl Makefile domp.py
-	xsltproc --xinclude --stringparam html.stylesheet "../css/bootstrap.min.css ../css/bootstrap-responsive.min.css ../css/styled.min.css" --path "src css" --output build/ html.xsl dsa.xml
+	xsltproc --xinclude --stringparam html.stylesheet "../css/bootstrap.min.css ../css/bootstrap-responsive.min.css ../css/styled.min.css ../css/pygments.css" --path "src css" --output build/ html.xsl dsa.xml
 #	perl -pi -e "s/\.pdf\"/\.png\"/g;" src/*.xml
 	find . -name "*.html" | xargs perl -pi -e "s/<html>/<!DOCTYPE html>/g;"
 	find . -name "*.html" | xargs perl -pi -e "s/<meta/<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta/g;"
 	cp -r images build/
 	./domp.py
-	cp -r build/* /var/www/dsa/
+	cp -r build/* /var/www/data-structure-algorithms/
 #	cp -r build/* /opt/local/share/nginx/html/dsa/
 
 p: src/*.xml dblatex.xsl Makefile
