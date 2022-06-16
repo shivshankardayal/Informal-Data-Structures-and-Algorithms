@@ -10,7 +10,7 @@
     and algorithms. There are many great books on the subject. I will mention
     few of those. No links to any online shop will be given as it will show my
     bias towards that store. The first book is the most authoritative book on
-    the subject 
+    the subject
     which treats topics in great depth. It is the <d:quote>The Art of Computer
     Programming</d:quote> by Donald E. Knuth. The book is available in several
     volumes. Volume 1 describes Fundamental Algorithms, 2 describes numerical
@@ -53,7 +53,7 @@
   </d:para>
   <d:para>
     There are specific structures which facilitate specific operations. For
-    example, a stack allows access of data only 
+    example, a stack allows access of data only
     from top. A queue is helpful to realize a life-like queue. A linked list
     allows traversal in forward or backward or both directions but not
     random. Binary trees are helpful for faster searches. Graphs can be used
@@ -193,16 +193,13 @@ Mod(x, y): UnsignedInteger       => Mod = Remainder of x/y]]></d:screen>
       <d:para>
         To foster the ideas as how to represent an ADT let us consider another
         example of rational numbers. A rational number is a fraction which
-        either terminates or repeats upon division for example, <math
-        xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mfrac
-        bevelled="true"><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mfrac
-        bevelled="true"><mrow><mo>&#160;</mo><mn>2</mn></mrow><mn>3</mn></mfrac><mo>,</mo><mfrac
-        bevelled="true"><mn>7</mn><mn>9</mn></mfrac></math>. Thus, we see that
+        either terminates or repeats upon division for example,
+        <d:inlineequation><d:mathphrase>\frac{1}{2}, \frac{2}{3}, \frac{7}{9}</d:mathphrase></d:inlineequation>. Thus, we see that
         denominators and numerators are integers. We also have to consider the
         sign of these rational numbers, which, may be positive or negative
         which we will represent using character data type for example. For
         completeness let us define a minimalistic character abstract data type
-        as well. 
+        as well.
       </d:para>
       <d:screen><![CDATA[ADT Character
 Object: A character on English PC-104 keyboard which can fit in 8 bits
@@ -279,13 +276,13 @@ Sub(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
 Mul(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
                                                  return <n1*n2,
                                                  d1*d2, '+'>
-                                               else 
+                                               else
                                                  return <n1*n2,
                                                  d1*d2, '-'>
 Div(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
                                                  return <n1*d2,
                                                  d1*n2, '+'>
-                                               else 
+                                               else
                                                  return <n1*d2,
                                                  d1*n2, '-'>]]>
       </d:screen>
@@ -300,9 +297,8 @@ Div(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
         <d:code>IsEqual</d:code> operation. Usually ADTs are equal when they
         have equal value but in case of rational numbers they can be equal even
         if absolute fractions are not equal. Rather, the different fractions
-        will have equal value in their reduced form, for example, <math
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        display="inline"><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mfrac><mn>2</mn><mn>4</mn></mfrac><mo>,</mo><mfrac><mn>3</mn><mn>6</mn></mfrac></math>.
+        will have equal value in their reduced form, for example, <d:inlineequation><d:mathphrase>\frac{1}{2}, \frac{2}{4},
+        \frac{3}{6}</d:mathphrase></d:inlineequation>.
       </d:para>
       <d:para>
         Now that we have learned small bits of how to define an ADT let us turn
@@ -337,7 +333,7 @@ Div(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
           changes in implementation are localized to the implementation details
           and users of the ADT are not effected which allows decoupling of ADT
           implementation and its usage which results in parallel work on both
-          sides. 
+          sides.
         </d:para>
       </d:sect3>
       <d:sect3>
@@ -363,8 +359,8 @@ Div(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
         performance criterion in terms of memory and time. For example, I will
         quote the author of STL, Alexander Stepanov who puts forth his argument
         as: <d:blockquote><d:attribution>Alexander
-        Stepanov</d:attribution><d:para>The 
-        reason for introducing the notion of abstract 
+        Stepanov</d:attribution><d:para>The
+        reason for introducing the notion of abstract
         data types was to allow interchangeable software modules. You cannot
         have interchangeable modules unless these modules share similar
         complexity behavior. If I replace one module with another module with
@@ -400,7 +396,7 @@ Div(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
       Europe. It was translated into Latin as <d:quote>Algoritmi de numero
       Indorum</d:quote> (in English, <d:quote>Al-Khwarizmi on the Hindu Art of
       Reckoning</d:quote>). The term <d:quote>Algoritmi</d:quote> in the title
-      of the book led to the term <d:quote>algorithm</d:quote>. Usage of the 
+      of the book led to the term <d:quote>algorithm</d:quote>. Usage of the
       word evolved to include all definite procedures for solving problems or
       performing tasks. The question is a what is an algorithm. An algorithm is
       a finite sequence of well-defined operations on some input data which
@@ -416,7 +412,7 @@ Div(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
       mathematician born in Prussia(modern Russia). Coincidently, John Von
       Neumann(father of modern computer architecture and inventor of merge
       sort) was his assistant for some time. The geniuses of Hilbert and
-      Neumann is well 
+      Neumann is well
       known. Hilbert's problems which is a list of 23 problems have fueled much
       of mathematical research of 20th century while Neumann contributed to
       development of computers, nuclear bombs both Uranium and Hydrogen bombs
@@ -438,36 +434,31 @@ Div(n1, d1, s1, n2, d2, s2): Rational       => if(s1 == s2)
     <d:para>
       <d:emphasis role="bold">Algorithm A</d:emphasis>
       (<d:emphasis role="italic">Euclid's algorithm</d:emphasis>) Given two
-      positive integers <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math> and <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math> find the
-      greatest common divisor, i.e. the 
+      positive integers
+      <d:inlineequation><d:mathphrase>a</d:mathphrase></d:inlineequation>
+      and <d:inlineequation><d:mathphrase>b</d:mathphrase></d:inlineequation>
+      find the
+      greatest common divisor, i.e. the
       largest positive integer which evenly divides (remainder after division
-      is 0) both <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math> and <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math>.
+      is 0) both <d:inlineequation><d:mathphrase>a</d:mathphrase></d:inlineequation> and
+      <d:inlineequation><d:mathphrase>b</d:mathphrase></d:inlineequation>.
     </d:para>
     <d:para>
-      <d:emphasis role="bold">A1.</d:emphasis> [Find remainder.] Divide <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math> 
-      by <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math>. Say <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math> is remainder
-      (<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math> will
-      certainly be <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn><mo>&#8804;</mo><mi>r</mi><mo>&lt;</mo><mi>b</mi></math>). 
+      <d:emphasis role="bold">A1.</d:emphasis> [Find remainder.] Divide <d:inlineequation><d:mathphrase>a</d:mathphrase></d:inlineequation>
+      by <d:inlineequation><d:mathphrase>b</d:mathphrase></d:inlineequation>. Say
+      <d:inlineequation><d:mathphrase>r</d:mathphrase></d:inlineequation>
+      is remainder
+      (<d:inlineequation><d:mathphrase>r</d:mathphrase></d:inlineequation> will
+      certainly be <d:inlineequation><d:mathphrase>0\leq r &lt; b</d:mathphrase></d:inlineequation>.
     </d:para>
     <d:para>
-      <d:emphasis role="bold">A2.</d:emphasis> [Is it zero?] If <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi><mo>=</mo><mn>0</mn></math>
+      <d:emphasis role="bold">A2.</d:emphasis> [Is it zero?] If <d:inlineequation><d:mathphrase>r = 0</d:mathphrase></d:inlineequation>
       terminate execution b is the GCD.
     </d:para>
     <d:para>
-      <d:emphasis role="bold">A3.</d:emphasis> [Exchange values.] Set <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mo>=</mo><mi>b</mi></math> 
-      and <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi><mo>=</mo><mi>r</mi></math>. Goto
-      step A1. 
+      <d:emphasis role="bold">A3.</d:emphasis> [Exchange values.] Set <d:inlineequation><d:mathphrase>a = b</d:mathphrase></d:inlineequation>
+      and <d:inlineequation><d:mathphrase>b = r</d:mathphrase></d:inlineequation>. Goto
+      step A1.
     </d:para>
     <d:para>
       I will use the word A for alorithm. This algorithm will have a
@@ -535,115 +526,96 @@ int main()
       Before we proceed let us familiarize ourselves with some special
       functions of mathematics and mathematical constants:
     </d:para>
-    <d:table frame="border" class="leftcenter"
-             border="1">
+    <d:table class="leftcenter">
 	    <d:colgroup width="0*"/>
 	    <d:colgroup width="0*"/>
 	    <d:colgroup width="0*"/>
       <d:caption>Special Functions</d:caption>
-      <d:thead>
-        <d:tr bgcolor="#aaaaaa">
+        <d:tr>
           <d:th>Function</d:th>
           <d:th>Name</d:th>
           <d:th>Typical Value</d:th>
           <d:th>Approximation</d:th>
         </d:tr>
         <d:tr>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix">&#x0230A;</mo><mi>x</mi><mo form="postfix">&#x0230B;</mo></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>\lfloor x\rfloor</d:mathphrase></d:inlineequation></d:td>
           <d:td>floor function</d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix">&#x0230A;</mo><mn>3.14</mn><mo form="postfix">&#x0230B;</mo></mrow><mo>=</mo><mn>3</mn></mrow></math></d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>\lfloor 3.14\rfloor = 3</d:mathphrase></d:inlineequation></d:td>
+          <d:td><d:inlineequation><d:mathphrase>x</d:mathphrase></d:inlineequation></d:td>
         </d:tr>
         <d:tr>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix">&#x02308;</mo><mi>x</mi><mo form="postfix">&#x02309;</mo></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>\lceil x\rceil</d:mathphrase></d:inlineequation></d:td>
           <d:td>ceiling function</d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix">&#x02308;</mo><mn>3.14</mn><mo form="postfix">&#x02309;</mo></mrow><mo>=</mo><mn>4</mn></mrow></math></d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>\lceil 3.14\rceil = 4</d:mathphrase></d:inlineequation></d:td>
+          <d:td><d:inlineequation><d:mathphrase>x</d:mathphrase></d:inlineequation></d:td>
         </d:tr>
         <d:tr>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>log</mi><mn>2</mn></msub><mi>N</mi></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>\log_2N</d:mathphrase></d:inlineequation></d:td>
           <d:td>binary logarithm</d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>log</mi><mn>2</mn></msub><mn>1024</mn><mo>=</mo><mn>10</mn></mrow></math></d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>1.44</mn><mi>ln</mi><mi>N</mi></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>\log_21024 = 10</d:mathphrase></d:inlineequation></d:td>
+          <d:td><d:inlineequation><d:mathphrase>1.44\ln N</d:mathphrase></d:inlineequation></d:td>
         </d:tr>
         <d:tr>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>F</mi><mi>N</mi></msub></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>F_N</d:mathphrase></d:inlineequation></d:td>
           <d:td>Fibonacci numbers</d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>F</mi><mn>10</mn></msub><mo>=</mo><mn>55</mn></mrow></math></d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>&#x003D5;</mi><mi>N</mi></msup><mo>&#x0002F;</mo><msqrt><mn>5</mn></msqrt></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>F_{10} = 55</d:mathphrase></d:inlineequation></d:td>
+          <d:td><d:inlineequation><d:mathphrase>\phi^N/\sqrt{5}</d:mathphrase></d:inlineequation></d:td>
         </d:tr>
         <d:tr>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>H</mi><mi>N</mi></msub></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>H_N</d:mathphrase></d:inlineequation></d:td>
           <d:td>harmonic numbers</d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>H</mi><mn>10</mn></msub><mo>&#x2248;</mo><mo>=</mo><mn>2</mn><mo>.</mo><mn>9</mn></math></d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>ln</mi><mi>N</mi><mo>=</mo><mi>&#x3B3;</mi></math></d:td>
+          <d:td>H_{10}\approx 2.9</d:td>
+          <d:td><d:inlineequation><d:mathphrase>\ln N = \gamma</d:mathphrase></d:inlineequation></d:td>
         </d:tr>
         <d:tr>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>N</mi><mo>!</mo></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>N!</d:mathphrase></d:inlineequation></d:td>
           <d:td>factorial function</d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>10</mn><mo>!</mo><mo>=</mo><mn>3628800</mn></mrow></math></d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mrow><mo form="prefix">(</mo><mi>N</mi><mo>&#x0002F;</mo><mi>e</mi><mo form="postfix">)</mo></mrow><mi>N</mi></msup></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>10! = 3628800</d:mathphrase></d:inlineequation></d:td>
+          <d:td><d:inlineequation><d:mathphrase>(N/e)^N</d:mathphrase></d:inlineequation></d:td>
         </d:tr>
         <d:tr>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>lg</mi><mi>N</mi><mo>!</mo></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>\log N!</d:mathphrase></d:inlineequation></d:td>
           <d:td></d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>lg</mi><mn>100</mn><mo>!</mo><mo>&#x02248;</mo><mn>520</mn></mrow></math></d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>N</mi><mi>lg</mi><mi>N</mi><mo>-</mo><mn>1.44</mn><mi>N</mi></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>\log 100! = 520</d:mathphrase></d:inlineequation></d:td>
+          <d:td><d:inlineequation><d:mathphrase>N\log N - 1.44 N</d:mathphrase></d:inlineequation></d:td>
         </d:tr>
-      </d:thead>
     </d:table>
-    <d:table frame="border" class="leftcenter"
-             border="1">
+    <d:table class="leftcenter">
 	    <d:colgroup width="0*"/>
 	    <d:colgroup width="0*"/>
 	    <d:colgroup width="0*"/>
       <d:caption>Some constants</d:caption>
-      <d:thead>
         <d:tr bgcolor="#aaaaaa">
           <d:th>Constant</d:th>
           <d:th>Value</d:th>
         </d:tr>
         <d:tr>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>e</mi></mrow></math></d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>2.71828</mn><mo>.</mo><mo>.</mo><mo>.</mo></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>e</d:mathphrase></d:inlineequation></d:td>
+          <d:td><d:inlineequation><d:mathphrase>2.71828</d:mathphrase></d:inlineequation></d:td>
         </d:tr>
         <d:tr>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>&#x003B3;</mi></mrow></math></d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>0.577211</mn><mo>.</mo><mo>.</mo><mo>.</mo></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>\gamma</d:mathphrase></d:inlineequation></d:td>
+          <d:td><d:inlineequation><d:mathphrase>0.577211\ldots</d:mathphrase></d:inlineequation></d:td>
         </d:tr>
         <d:tr>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>&#x003D5;</mi></mrow></math></d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac linethickness="1"><mrow><mo form="prefix">(</mo><mn>1</mn><mo>+</mo><msqrt><mn>5</mn></msqrt><mo form="postfix">)</mo></mrow><mn>2</mn></mfrac><mo>=</mo><mn>1.61803</mn><mo>.</mo><mo>.</mo><mo>.</mo></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>\phi</d:mathphrase></d:inlineequation></d:td>
+          <d:td><d:inlineequation><d:mathphrase>\frac{(1 + \sqrt{5})}{2}= 1.61803\ldots</d:mathphrase></d:inlineequation></d:td>
         </d:tr>
         <d:tr>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ln</mi><mn>2</mn></mrow></math></d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>0.693147</mn><mo>.</mo><mo>.</mo><mo>.</mo></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>\ln 2</d:mathphrase></d:inlineequation></d:td>
+          <d:td><d:inlineequation><d:mathphrase>0.693147\ldots</d:mathphrase></d:inlineequation></d:td>
         </d:tr>
         <d:tr>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>lg</mi><mi>e</mi></mrow></math></d:td>
-          <d:td><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>1</mn><mo>&#x0002F;</mo><mi>ln</mi><mn>2</mn><mo>=</mo><mn>1.44269</mn><mo>.</mo><mo>.</mo><mo>.</mo></mrow></math></d:td>
+          <d:td><d:inlineequation><d:mathphrase>\log 2</d:mathphrase></d:inlineequation></d:td>
+          <d:td><d:inlineequation><d:mathphrase>1/\ln 2 = 1.44269\ldots</d:mathphrase></d:inlineequation></d:td>
         </d:tr>
-      </d:thead>
     </d:table>
     <d:para>
       If we consider harmonic sequence defined by the equation
-      <d:informalequation>
-        <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>H</mi><mi>N</mi></msub><mo>=</mo><mn>1</mn><mo>+</mo><mfrac
-            linethickness="1"><mn>1</mn><mn>2</mn></mfrac><mo>+</mo><mfrac
-            linethickness="1"><mn>1</mn><mn>3</mn></mfrac><mo>+</mo><mfrac
-            linethickness="1"><mn>1</mn><mn>4</mn></mfrac><mo>+</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>+</mo><mfrac
-            linethickness="1"><mn>1</mn><mi>N</mi></mfrac></mrow></math>
-      </d:informalequation>
+      <d:inlineequation><d:mathphrase>H_N = 1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{N}</d:mathphrase></d:inlineequation>
       then
       it looks like following curve for definite integral
-      <d:inlineequation>
-        <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ln</mi><mi>N</mi><mo>=</mo><mstyle
-            displaystyle="true"><munderover><mo>&#x0222B;</mo><mi>x</mi><mi>N</mi></munderover></mstyle><mfrac
-            linethickness="1"><mrow><mo>&#x02146;</mo><mi>x</mi></mrow><mi>x</mi></mfrac></mrow>
-        </math>.
-      </d:inlineequation>
+      <d:informalequation><d:mathphrase>\ln N = \int_x^N\frac{dx}{x}</d:mathphrase></d:informalequation>
       <d:figure>
         <d:mediaobject>
           <d:imageobject>
@@ -655,12 +627,7 @@ int main()
       As you can see the harmonic sequence is defined by the total area of the
       bars in the image while logarithm natural is the area under curve. The
       formula
-      <d:informalequation>
-        <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>H</mi><mi>N</mi></msub><mo>&#x02248;</mo><mi>ln</mi><mi>N</mi><mo>+</mo><mi>&#x003B3;</mi><mo>+</mo><mrow><mo
-            form="prefix">(</mo><mn>1</mn><mo>&#x0002F;</mo><mn>12</mn><mi>N</mi><mo
-            form="postfix">)</mo></mrow></mrow></math>
-      </d:informalequation>
+      <d:inlineequation><d:mathphrase>H_N\approx \ln N + \gamma + (1/12 N)</d:mathphrase></d:inlineequation>
       is a very good approximation for the harmonic sequence where <math
       xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>&#x003B3;</mi></mrow></math>
       is <d:emphasis role="italic">Euler–Mascheroni constant</d:emphasis> also
@@ -671,12 +638,10 @@ int main()
     <d:para>
       Similarly, for Fibonacci sequence 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89,
       144, 233, 377 ... the nth term is represented by the recurrence relation
-      <math
-          xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>F</mi><mi>N</mi></msub><mo>=</mo><msub><mi>F</mi><mrow><mi>N</mi><mo>-</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>F</mi><mrow><mi>N</mi><mo>-</mo><mn>2</mn></mrow></msub></mrow></math>
-      for <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>N</mi><mo>&#x02265;</mo><mn>2</mn></mrow></math>
-      where <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>F</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn><mtext>and</mtext><msub><mi>F</mi><mn>1</mn></msub><mo>=</mo><mn>1</mn></mrow></math>. These
+      <d:inlineequation><d:mathphrase>F_N = F_{N -1} + F_{N - 2}</d:mathphrase></d:inlineequation>
+      for <d:inlineequation><d:mathphrase>N\geq 2</d:mathphrase></d:inlineequation>
+      where <d:inlineequation><d:mathphrase>F_0 = 0</d:mathphrase></d:inlineequation>
+      and <d:inlineequation><d:mathphrase>F_1 = 1</d:mathphrase></d:inlineequation>. These
       Finonacci numbers have many interesting properties. Fibonacci series also
       occurs in nature. For example, have a look at the following
       image(courtesy, <d:ulink
@@ -712,15 +677,11 @@ int main()
       </d:figure>
       The sizes of squares are 1, 1, 2, 3, 5, 8, 13, 21 and 34. The spiral
       converges at the intersection of the two blue lines (P), and the ratio of
-      the lengths of these two lines BP: PD is <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>&#x003D5;</mi></mrow></math>,
+      the lengths of these two lines BP: PD is <d:inlineequation><d:mathphrase>\phi</d:mathphrase></d:inlineequation>,
       the Golden Ratio. In geometry, a golden spiral is a logarithmic spiral
       whose growth factor is the golden ratio. The polar equation for a golden
       spiral is the same as for other logarithmic spirals, but with a special
-      value of the growth factor <math
-      xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>b</mi></mrow></math>:
-      <d:inlineequation><math
-                            xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>r</mi><mo>=</mo><mi>a</mi><msup><mi>e</mi><mrow><mi>b</mi><mi>&#x003B8;</mi></mrow></msup></mrow></math></d:inlineequation>.
+      value of the growth factor <d:inlineequation><d:mathphrase>b:r = ae^{b\theta}</d:mathphrase></d:inlineequation>
       An alternative image is given below(countesy <d:ulink
       url="https://en.wikipedia.org/wiki/Fibonacci_number#/media/File:34*21-FibonacciBlocks.png"><d:citetitle>Wikipedia</d:citetitle></d:ulink>):
       <d:figure>
@@ -749,11 +710,11 @@ int main()
         consumption of memory and CPU. Memory consumption is known as space
         complexity and CPU consumption is known as time complexity. The second
         categorization is by the methods by which we measure complexity of an
-        algorithm. One of the popular methods is Big-O notation denoted by <math
-        xmlns="http://www.w3.org/1998/Math/MathML"
-        display="inline"><mi>O</mi></math>. Big-O notation focuses on upper bound
+        algorithm. One of the popular methods is Big-O notation denoted by
+        <d:inlineequation><d:mathphrase>O</d:mathphrase></d:inlineequation>.
+        Big-O notation focuses on upper bound
         of algorithms for huge sets of data(tending to be infinity) and thus is
-        known as asymptotic 
+        known as asymptotic
         complexity. Another method which is less popular is amortized
         complexity. Amortized complexity is not concerned about worst-case
         performance but rather average run time for all cases.  In an algorithm
@@ -801,31 +762,20 @@ int main()
       </d:para>
       <d:para>
         Now let us try to understand what is big-O notation and how to compute
-        it. Consider two functions <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
-        and <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>. Let
+        it. Consider two functions <d:inlineequation><d:mathphrase>f(x)</d:mathphrase></d:inlineequation>
+        and <d:inlineequation><d:mathphrase>g(x)</d:mathphrase></d:inlineequation>. Let
         us assume that these functions operate on a subset of real numbers. Then
-        in big-O notation <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
-        is written in terms of <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
+        in big-O notation <d:inlineequation><d:mathphrase>f(x)</d:mathphrase></d:inlineequation>
+        is written in terms of <d:inlineequation><d:mathphrase>g(x)</d:mathphrase></d:inlineequation>
         as follows:
       </d:para>
-      <d:informalequation>
-        <math
-            xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>O</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&#160;</mo><mi>a</mi><mi>s</mi><mo>&#160;</mo><mi>x</mi><mo>&#8594;</mo><mo>&#8734;</mo></math>
-      </d:informalequation>
+      <d:informalequation><d:mathphrase>f(x) = O(g(x)) \text{~as~} x\rightarrow \infty</d:mathphrase></d:informalequation>
       <d:para>
-        if and only if there is a positive constant <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>K</mi></math> such that
-        for all sufficiently large values of <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mo>~</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math> is at most <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>K</mi></math> multiplied
-        by <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mo>~</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
-        in absolute value. That is, <math
-        xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>~=</mo><mo>~</mo><mi>O</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo></math>
+        if and only if there is a positive constant <d:inlineequation><d:mathphrase>x</d:mathphrase></d:inlineequation> such that
+        for all sufficiently large values of <d:inlineequation><d:mathphrase>x, ~ f(x)</d:mathphrase></d:inlineequation>,
+        is at most <d:inlineequation><d:mathphrase>K</d:mathphrase></d:inlineequation> multiplied
+        by <d:inlineequation><d:mathphrase>x_0</d:mathphrase></d:inlineequation>
+        in absolute value. That is, <d:inlineequation><d:mathphrase>|f(x)|\leq K|g(x)|~\forall~x>x_0</d:mathphrase></d:inlineequation>
         if and only if there exists a positive real number <math
         xmlns="http://www.w3.org/1998/Math/MathML"><mi>K</mi></math> and a real
         number <math
@@ -1092,7 +1042,7 @@ int main()
       <d:para>
         The complexity of function <math
         xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>2</mn><mi>x</mi></msup></math>
-        rises so 
+        rises so
         fast that it is already beyond the number of years sun is going to
         survive.
       </d:para>
@@ -1151,7 +1101,7 @@ int main()
       </d:informalequation>
       <d:para>
         If we want to write exact order of growth without being accurate about
-        constant factors <math 
+        constant factors <math
         xmlns="http://www.w3.org/1998/Math/MathML"><mi>L</mi></math> and <math
         xmlns="http://www.w3.org/1998/Math/MathML"><mi>K</mi></math> then we use
         <math
@@ -1208,7 +1158,7 @@ int main()
         algorithm will behave. The problem with big-<math
         xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi></math> notation is that even though it talks about two constants <math
         xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>x</mi><mn>0</mn></msub></math>
-        and <math 
+        and <math
         xmlns="http://www.w3.org/1998/Math/MathML"><mi>K</mi></math> it does not
         give any hints about there values or how to compute them. It also does
         not put any restriction on the values of these constants not gives any
@@ -1373,13 +1323,13 @@ int main()
         <d:para>
           Little-<math
           xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#969;</mi></math>
-          notation is the inverse of the <math 
+          notation is the inverse of the <math
           xmlns="http://www.w3.org/1998/Math/MathML"><mi>o</mi></math>-notation
           i.e.,
           <d:informalequation>
             <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>&#8712;</mo><mi>o</mi><mo>(</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>)</mo><mo>&#8660;</mo><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>&#969;</mi><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>
           </d:informalequation>
-          i.e. 
+          i.e.
         </d:para>
         <d:informalequation>
           <math
